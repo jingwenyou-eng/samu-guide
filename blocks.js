@@ -399,7 +399,7 @@ window.SITE_BLOCKS={
     },
     {
       "id": 28,
-      "name": "泛醇清涼面膜",
+      "name": "泛醇肌底賦活面膜",
       "s": "pan",
       "cats": [
         "mask"
@@ -884,6 +884,20 @@ window.SITE_BLOCKS={
               "video": "https://www.instagram.com/reel/C-zVbz5PQPR/?exln=MXg4MDlvMzNtd3NzMw==",
               "desc": "",
               "buy": ""
+            },
+            {
+              "label": "抗老緊緻面膜",
+              "product": 16,
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDYxMDg4NjIwODU5NjAw?story_media_id=3603871753019602872&vrfl=cTE3NTVzbWVwenNz",
+              "desc": "",
+              "buy": ""
+            },
+            {
+              "label": "泛醇肌底賦活面膜",
+              "product": 28,
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTc2NzY1MzU3MDg1ODkz?story_media_id=3962944340809514833&srtk=MWF2b3ZmZmNtNXIwbw==",
+              "desc": "",
+              "buy": ""
             }
           ]
         },
@@ -943,6 +957,13 @@ window.SITE_BLOCKS={
               "label": "B5 面霜",
               "product": 27,
               "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
+              "desc": "",
+              "buy": ""
+            },
+            {
+              "label": "泛醇肌底賦活面膜",
+              "product": 28,
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTc2NzY1MzU3MDg1ODkz?story_media_id=3962944340809514833&srtk=MWF2b3ZmZmNtNXIwbw==",
               "desc": "",
               "buy": ""
             }
