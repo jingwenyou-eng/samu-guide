@@ -210,6 +210,20 @@ footer::before{content:"";display:block;height:18px;margin-bottom:12px;backgroun
 .kt2.dragging{opacity:.45}
 .kt2.over-b{box-shadow:0 -3px 0 var(--rose)}
 .kt2.over-a{box-shadow:0 3px 0 var(--rose)}
+.rte{display:grid;gap:10px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.rte-h{font-family:var(--title);font-size:14.5px;margin-top:6px}
+.rte-h small{font-family:var(--body);font-weight:400;font-size:12px;color:var(--sub);margin-left:6px}
+.rte-row{display:grid;grid-template-columns:1fr 1fr .8fr 2.2fr auto;gap:8px;align-items:end}
+.rte label{display:grid;gap:4px;font-size:12px;color:var(--sub);min-width:0}
+.rte input,.rte select,.rte textarea{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 9px;width:100%;min-width:0}
+.rte .tmv{display:flex;gap:4px}
+.rte .tmv .btn2{padding:5px 9px;font-size:12px}
+.rte .tmv .btn2:disabled{opacity:.35;cursor:default}
+.rte-notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.rte-pk{min-width:560px}
+.rte-pk td,.rte-pk th{padding:5px 6px}
+.rte-pk input{width:70px;text-align:center}
+@media (max-width:640px){.rte-row{grid-template-columns:1fr 1fr}.rte-row .wide{grid-column:1/-1}.rte .tmv{grid-column:1/-1}}
 /* blocks */
 .blocks{display:grid;gap:22px}
 .kp-t .pick-note{font-size:13px;color:var(--ink);background:var(--rose-soft);border-radius:10px;padding:6px 10px}
@@ -365,15 +379,23 @@ footer a{color:var(--sub)}
   .sitem{grid-template-columns:64px minmax(0,1fr)}
   .sitem .sw{width:64px;height:64px}
 }
+/* fix: explicit image sizes (no aspect-ratio) so images never overlap text */
+.sheet .sw,.sheet .sw.has-img{aspect-ratio:auto;max-height:none;justify-self:center;width:min(340px,calc(100vw - 64px),44vh);height:min(340px,calc(100vw - 64px),44vh)}
+.sheet .sw:not(.has-img){width:100%;height:120px}
+@media (max-width:560px){.kp .sw{aspect-ratio:auto;max-height:none;width:100%;height:min(280px,calc(100vw - 96px))}}
+.gb-note{background:rgb(255 255 255 / .14);border:1px solid rgb(255 255 255 / .35);color:#fff;border-radius:16px;padding:12px 16px;display:grid;gap:4px}
+.gb-note b{font-size:12px;letter-spacing:.12em;color:#fff;opacity:.85}
+.gb .gb-note p{opacity:1;font-size:13.5px;line-height:1.75;white-space:pre-line;max-width:none}
+.be-f textarea{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;resize:vertical}
 </style>
 <script>window.SITE_MODE=true;</script>
 <script src="blocks.js"></script>
 <script>
 /* ===== Google Analytics 設定 =====
-   到 analytics.google.com 申請後，把下面的 G-WVCZLB2KP7 換成你的「評估 ID」即可開始統計 */
+   到 analytics.google.com 申請後，把下面的 G-XXXXXXXXXX 換成你的「評估 ID」即可開始統計 */
 const GA_ID="G-WVCZLB2KP7";
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
-if(/^G-[A-Z0-9]+$/.test(GA_ID)&&GA_ID!=="G-WVCZLB2KP7"){const s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+GA_ID;document.head.appendChild(s);gtag("js",new Date());gtag("config",GA_ID)}
+if(/^G-[A-Z0-9]+$/.test(GA_ID)&&GA_ID!=="G-XXXXXXXXXX"){const s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+GA_ID;document.head.appendChild(s);gtag("js",new Date());gtag("config",GA_ID)}
 function gaEvent(name,params){try{gtag("event",name,params||{})}catch(e){}}
 </script>
 </head>
@@ -504,6 +526,397 @@ const esc=s=>s.replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&qu
    實際顯示的內容以 blocks.js 為準；要修改請在網址後面加 #edit 開啟編輯器，
    編輯後下載 blocks.js 上傳到 GitHub 覆蓋即可。 */
 const KOL_EMBED={
+ "blocks": [
+  {
+   "id": "yanna",
+   "type": "kol",
+   "name": "YANNA",
+   "title": "",
+   "sub": "@___7yanna22___・依限時動態主題整理",
+   "link": "https://www.instagram.com/___7yanna22___/",
+   "linkLabel": "",
+   "themes": [
+    {
+     "id": "pdrn",
+     "title": "PDRN 晚安面膜",
+     "items": [
+      {
+       "label": "綠色晚安面膜",
+       "product": 34,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4016957257480554325&rpxt=NzdrZmVrZzEwYzNo",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "粉色晚安面膜",
+       "product": 35,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4016981250996686695&rpxt=NzdrZmVrZzEwYzNo",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "PDRN 水凝面膜",
+       "product": 36,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzNDI4MjAyMTQ1NzAx?story_media_id=3810439031059105818&xtok=MWd4ZDhiMG43N2pqaw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "PH 一般面膜系列",
+       "product": null,
+       "video": "https://www.instagram.com/reel/C-zVbz5PQPR/?exln=MXg4MDlvMzNtd3NzMw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "cream",
+     "title": "面霜大集合",
+     "items": [
+      {
+       "label": "屏障修護霜",
+       "product": 3,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4017021219073871589&cplk=NzdrZmVrZzEwYzNo",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "平衡面霜",
+       "product": 7,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3608191810927440831&xtok=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 面霜",
+       "product": 27,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔面霜",
+       "product": 22,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxMjYwNDQ3MDI1MjY1?story_media_id=3699521432285245445&psln=MXQ3Mzh4ZXhiM3JsYQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "超神萬用霜",
+       "product": 10,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTQ4NjE3MzA0Mzc4NDM5?story_media_id=3659635021403013453&mdxt=MWVtc2xwYm11Nnhlbw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "clean",
+     "title": "清潔・洗卸",
+     "items": [
+      {
+       "label": "PH 平衡洗面乳",
+       "product": 2,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ3OTE5NjQxMTQ2Mzk0?story_media_id=3538592362560182457&dlrf=MTRjaGl3NGt6cG8wNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "潔顏粉",
+       "product": 18,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg3NDE2MzA1Njc4NzAw?story_media_id=3658252953355930207&exln=YnAzanViM3RlZ25k",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 洗面凝膠",
+       "product": 24,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3606032689016914492&psln=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔清潔卸妝油",
+       "product": 19,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "pore",
+     "title": "毛孔護理",
+     "items": [
+      {
+       "label": "毛孔清潔卸妝油",
+       "product": 19,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔護理氧氣瓶",
+       "product": 20,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzYxNDE5NDEyMTUwMTMy?story_media_id=3672707581283888539&psln=MWR5d2ljdHp4enF1cA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔緊緻精華",
+       "product": 21,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzYxNDE5NDEyMTUwMTMy?story_media_id=3674160532095448521&psln=MWR5d2ljdHp4enF1cA",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔面霜",
+       "product": 22,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxMjYwNDQ3MDI1MjY1?story_media_id=3699521432285245445&psln=MXQ3Mzh4ZXhiM3JsYQ==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "mask",
+     "title": "面膜系列",
+     "items": [
+      {
+       "label": "PH 保濕補水面膜",
+       "product": 11,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODg0MDQyNjMyMTE4NTQ5?story_media_id=3494636104043502272&exln=MWhwODRpaTY5ZHczbw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "沁涼面膜",
+       "product": 12,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3918412106165971114&mdxt=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔面膜",
+       "product": 15,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3918437052283713962&cplk=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "激光面膜",
+       "product": 23,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg3NDE2MzA1Njc4NzAw?story_media_id=3658291950971203074&psln=YnAzanViM3RlZ25k",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "b5",
+     "title": "B5 泛醇修護",
+     "items": [
+      {
+       "label": "B5 洗面凝膠",
+       "product": 24,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3606032689016914492&psln=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 去角質爽膚水",
+       "product": 25,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ4MjI2MTI3MTg4NjE4?story_media_id=3657465694968978275&psln=bWNpZ3Vha2VnZG9q",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 舒緩精華",
+       "product": 26,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ4MjI2MTI3MTg4NjE4?story_media_id=3657522973080556215&vrfl=bWNpZ3Vha2VnZG9q",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 面霜",
+       "product": 27,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "exfo",
+     "title": "去角質・棉片",
+     "items": [
+      {
+       "label": "雲朵去角質",
+       "product": 9,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3626990793518880200&mdxt=MWIzeWduZWtjOWp1cw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "平衡棉片",
+       "product": 5,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3605361189897305228&dlrf=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "平滑棉片",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxNDYzMDYzOTAxNjk5?story_media_id=3671297145548203055&obrf=MXl1endoNmxnMTI2",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "霜噴霧",
+       "product": 4,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxNDYzMDYzOTAxNjk5?story_media_id=3671273935268074580&srtk=MXl1endoNmxnMTI2",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "sun",
+     "title": "防曬・素顏",
+     "items": [
+      {
+       "label": "三種防曬重點整理",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTc0ODM2OTIzNDI1NzMz?story_media_id=3956765784190204919&dlrf=MXBteHkxdGJoeGdkdg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "防曬乳",
+       "product": 8,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3917672316847911832&rpxt=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "防曬棒",
+       "product": 40,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDMzNDczMDA2NDM4MTI5?story_media_id=3674841832783515867&srtk=MWE4b3pibjl1dmc4eg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "PDRN 噴霧",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3917701310317987615&dlrf=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "懶人素顏霜",
+       "product": 39,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTQ4NjE3MzA0Mzc4NDM5?story_media_id=3659689062325679555&dlrf=MWVtc2xwYm11Nnhlbw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "懶人素顏霜（新版）",
+       "product": 39,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzNDI4MjAyMTQ1NzAx?story_media_id=3811919232767319099&obrf=MWd4ZDhiMG43N2pqaw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "hair",
+     "title": "頭髮護理",
+     "items": [
+      {
+       "label": "洗髮露",
+       "product": 46,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA5NzMzNTA5NTE1Mjkw?story_media_id=3658954261981537769&rpxt=amRxNjkzNXRydW5o",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "護髮素",
+       "product": 45,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA5NzMzNTA5NTE1Mjkw?story_media_id=3659040912200039150&vrfl=amRxNjkzNXRydW5o",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "routine",
+     "title": "保養順序",
+     "items": [
+      {
+       "label": "使用順序 1",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTEwMTE3NTI1MDgxMjk3?story_media_id=3539282492434226932&xtok=MWpsdGRubDhpcmEzNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "使用順序 2",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzOTY2NzA0ODM0Nzkx?story_media_id=3679665930604780056&vrfl=NjJlZGYyMXUyazN4",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "tmvt52cnw010",
+     "title": "超強私密保養三大王",
+     "items": [
+      {
+       "label": "妹妹三寶",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgwODIzODMyOTAzNDIx?story_media_id=3694460924574228146&exln=dWM2djF6eDYwdHQy",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "私密處益菌舒緩霜",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgwODIzODMyOTAzNDIx?story_media_id=3703890870321083562&mdxt=dWM2djF6eDYwdHQy",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "益生菌雙效調理護理凝膠",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgwODIzODMyOTAzNDIx?story_media_id=3706024929571773205&cplk=dWM2djF6eDYwdHQy",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "私密益菌潤澤泡泡慕絲",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgwODIzODMyOTAzNDIx?story_media_id=3706763986681644183&mdxt=dWM2djF6eDYwdHQy",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bmvsa5zhj1",
+   "type": "brand",
+   "name": "韓國藥局限定",
+   "title": "",
+   "sub": "",
+   "link": "",
+   "linkLabel": "",
+   "themes": []
+  }
+ ],
+ "buy": {},
  "products": [
   {
    "id": 1,
@@ -1086,376 +1499,91 @@ const KOL_EMBED={
   }
  ],
  "series": {},
- "blocks": [
-  {
-   "id": "yanna",
-   "type": "kol",
-   "name": "YANNA",
-   "title": "",
-   "sub": "@___7yanna22___・依限時動態主題整理",
-   "link": "https://www.instagram.com/___7yanna22___/",
-   "linkLabel": "",
-   "themes": [
-    {
-     "id": "pdrn",
-     "title": "PDRN 晚安面膜",
-     "items": [
-      {
-       "label": "綠色晚安面膜",
-       "product": 34,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4016957257480554325&rpxt=NzdrZmVrZzEwYzNo",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "粉色晚安面膜",
-       "product": 35,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4016981250996686695&rpxt=NzdrZmVrZzEwYzNo",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "PDRN 水凝面膜",
-       "product": 36,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzNDI4MjAyMTQ1NzAx?story_media_id=3810439031059105818&xtok=MWd4ZDhiMG43N2pqaw==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "PH 一般面膜系列",
-       "product": null,
-       "video": "https://www.instagram.com/reel/C-zVbz5PQPR/?exln=MXg4MDlvMzNtd3NzMw==",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "cream",
-     "title": "面霜大集合",
-     "items": [
-      {
-       "label": "屏障修護霜",
-       "product": 3,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4017021219073871589&cplk=NzdrZmVrZzEwYzNo",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "平衡面霜",
-       "product": 7,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3608191810927440831&xtok=MWV2Mm1jZzg3NWptbA==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "B5 面霜",
-       "product": 27,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "毛孔面霜",
-       "product": 22,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxMjYwNDQ3MDI1MjY1?story_media_id=3699521432285245445&psln=MXQ3Mzh4ZXhiM3JsYQ==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "超神萬用霜",
-       "product": 10,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTQ4NjE3MzA0Mzc4NDM5?story_media_id=3659635021403013453&mdxt=MWVtc2xwYm11Nnhlbw==",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "clean",
-     "title": "清潔・洗卸",
-     "items": [
-      {
-       "label": "PH 平衡洗面乳",
-       "product": 2,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ3OTE5NjQxMTQ2Mzk0?story_media_id=3538592362560182457&dlrf=MTRjaGl3NGt6cG8wNQ==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "潔顏粉",
-       "product": 18,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg3NDE2MzA1Njc4NzAw?story_media_id=3658252953355930207&exln=YnAzanViM3RlZ25k",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "B5 洗面凝膠",
-       "product": 24,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3606032689016914492&psln=MWV2Mm1jZzg3NWptbA==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "毛孔清潔卸妝油",
-       "product": 19,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "mask",
-     "title": "面膜系列",
-     "items": [
-      {
-       "label": "PH 保濕補水面膜",
-       "product": 11,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODg0MDQyNjMyMTE4NTQ5?story_media_id=3494636104043502272&exln=MWhwODRpaTY5ZHczbw==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "沁涼面膜",
-       "product": 12,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3918412106165971114&mdxt=MTlqbGZpbDAxdTVpMg==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "毛孔面膜",
-       "product": 15,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3918437052283713962&cplk=MTlqbGZpbDAxdTVpMg==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "激光面膜",
-       "product": 23,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg3NDE2MzA1Njc4NzAw?story_media_id=3658291950971203074&psln=YnAzanViM3RlZ25k",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "pore",
-     "title": "毛孔護理",
-     "items": [
-      {
-       "label": "毛孔清潔卸妝油",
-       "product": 19,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "毛孔護理氧氣瓶",
-       "product": 20,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzYxNDE5NDEyMTUwMTMy?story_media_id=3672707581283888539&psln=MWR5d2ljdHp4enF1cA==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "毛孔緊緻精華",
-       "product": 21,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzYxNDE5NDEyMTUwMTMy?story_media_id=3674160532095448521&psln=MWR5d2ljdHp4enF1cA",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "毛孔面霜",
-       "product": 22,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxMjYwNDQ3MDI1MjY1?story_media_id=3699521432285245445&psln=MXQ3Mzh4ZXhiM3JsYQ==",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "b5",
-     "title": "B5 泛醇修護",
-     "items": [
-      {
-       "label": "B5 洗面凝膠",
-       "product": 24,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3606032689016914492&psln=MWV2Mm1jZzg3NWptbA==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "B5 去角質爽膚水",
-       "product": 25,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ4MjI2MTI3MTg4NjE4?story_media_id=3657465694968978275&psln=bWNpZ3Vha2VnZG9q",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "B5 舒緩精華",
-       "product": 26,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ4MjI2MTI3MTg4NjE4?story_media_id=3657522973080556215&vrfl=bWNpZ3Vha2VnZG9q",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "B5 面霜",
-       "product": 27,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "exfo",
-     "title": "去角質・棉片",
-     "items": [
-      {
-       "label": "雲朵去角質",
-       "product": 9,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3626990793518880200&mdxt=MWIzeWduZWtjOWp1cw==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "平衡棉片",
-       "product": 5,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3605361189897305228&dlrf=MWV2Mm1jZzg3NWptbA==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "平滑棉片",
-       "product": null,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxNDYzMDYzOTAxNjk5?story_media_id=3671297145548203055&obrf=MXl1endoNmxnMTI2",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "霜噴霧",
-       "product": 4,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxNDYzMDYzOTAxNjk5?story_media_id=3671273935268074580&srtk=MXl1endoNmxnMTI2",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "sun",
-     "title": "防曬・素顏",
-     "items": [
-      {
-       "label": "三種防曬重點整理",
-       "product": null,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTc0ODM2OTIzNDI1NzMz?story_media_id=3956765784190204919&dlrf=MXBteHkxdGJoeGdkdg==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "防曬乳",
-       "product": 8,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3917672316847911832&rpxt=MTlqbGZpbDAxdTVpMg==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "防曬棒",
-       "product": 40,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDMzNDczMDA2NDM4MTI5?story_media_id=3674841832783515867&srtk=MWE4b3pibjl1dmc4eg==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "PDRN 噴霧",
-       "product": null,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3917701310317987615&dlrf=MTlqbGZpbDAxdTVpMg==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "懶人素顏霜",
-       "product": 39,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTQ4NjE3MzA0Mzc4NDM5?story_media_id=3659689062325679555&dlrf=MWVtc2xwYm11Nnhlbw==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "懶人素顏霜（新版）",
-       "product": 39,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzNDI4MjAyMTQ1NzAx?story_media_id=3811919232767319099&obrf=MWd4ZDhiMG43N2pqaw==",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "hair",
-     "title": "頭髮護理",
-     "items": [
-      {
-       "label": "洗髮露",
-       "product": 46,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA5NzMzNTA5NTE1Mjkw?story_media_id=3658954261981537769&rpxt=amRxNjkzNXRydW5o",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "護髮素",
-       "product": 45,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA5NzMzNTA5NTE1Mjkw?story_media_id=3659040912200039150&vrfl=amRxNjkzNXRydW5o",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "routine",
-     "title": "保養順序",
-     "items": [
-      {
-       "label": "使用順序 1",
-       "product": null,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTEwMTE3NTI1MDgxMjk3?story_media_id=3539282492434226932&xtok=MWpsdGRubDhpcmEzNQ==",
-       "desc": "",
-       "buy": ""
-      },
-      {
-       "label": "使用順序 2",
-       "product": null,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzOTY2NzA0ODM0Nzkx?story_media_id=3679665930604780056&vrfl=NjJlZGYyMXUyazN4",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    },
-    {
-     "id": "tmvt52cnw010",
-     "title": "超強私密保養三大王",
-     "items": [
-      {
-       "label": "妹妹三寶",
-       "product": null,
-       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgwODIzODMyOTAzNDIx?story_media_id=3694460924574228146&exln=dWM2djF6eDYwdHQy",
-       "desc": "",
-       "buy": ""
-      }
-     ]
-    }
-   ]
+ "routine": {
+  "steps": [
+   {
+    "id": "s1",
+    "cat": "remove",
+    "name": "卸妝",
+    "time": "晚上",
+    "why": "有上妝或擦防曬的日子先卸妝，減少毛孔阻塞。",
+    "freq": ""
+   },
+   {
+    "id": "s2",
+    "cat": "clean",
+    "name": "潔面",
+    "time": "早晚",
+    "why": "洗去髒污與多餘油脂，為後續保養打好基礎。",
+    "freq": ""
+   },
+   {
+    "id": "s3",
+    "cat": "toner",
+    "name": "化妝水",
+    "time": "早晚",
+    "why": "潔面後馬上補水，讓肌膚更好吸收精華。",
+    "freq": ""
+   },
+   {
+    "id": "s4",
+    "cat": "serum",
+    "name": "精華",
+    "time": "早晚",
+    "why": "針對你最在意的困擾集中加強。",
+    "freq": ""
+   },
+   {
+    "id": "s5",
+    "cat": "cream",
+    "name": "乳霜",
+    "time": "早晚",
+    "why": "鎖住水分與精華，穩定肌膚屏障。",
+    "freq": ""
+   },
+   {
+    "id": "s6",
+    "cat": "sun",
+    "name": "防曬",
+    "time": "早上",
+    "why": "白天最後一步，預防光老化與曬後泛紅。",
+    "freq": ""
+   }
+  ],
+  "weekly": [
+   {
+    "id": "w1",
+    "cat": "exfo",
+    "name": "去角質",
+    "time": "",
+    "why": "",
+    "freq": "每週 1–2 次"
+   },
+   {
+    "id": "w2",
+    "cat": "mask",
+    "name": "面膜",
+    "time": "",
+    "why": "",
+    "freq": "每週 2–3 次"
+   }
+  ],
+  "notes": {
+   "dry": "以弱酸保濕的 PH 系列為主，重點是補水與鎖水。",
+   "pore": "以酵母系列為主，清潔、控油兩頭兼顧。",
+   "red": "以 B5 泛醇與敏感肌系列為主，先穩定再加強。",
+   "glow": "以 PDRN 系列為主，加強光采與彈潤。",
+   "none": "先從溫和的基礎保養開始，以弱酸的 PH 系列打底。"
   },
-  {
-   "id": "bmvsa5zhj1",
-   "type": "brand",
-   "name": "韓國藥局限定",
-   "title": "",
-   "sub": "",
-   "link": "",
-   "linkLabel": "",
-   "themes": []
+  "footer": "早上：潔面 → 化妝水 → 精華 → 乳霜 → 防曬。晚上：卸妝 → 潔面 → 化妝水 → 精華 → 乳霜。使用新產品前建議先在耳後或下顎局部試用。",
+  "pick": {
+   "dry": {},
+   "pore": {},
+   "red": {},
+   "glow": {},
+   "none": {}
   }
- ],
- "buy": {}
+ }
 };
 /* ===== 首頁區塊類型（新增區塊時可選）===== */
 const BTYPES={
@@ -1529,20 +1657,28 @@ function render(){
       <div class="nav"><button class="link" data-go="back">← 上一題</button><button class="link" data-go="restart">重新選擇</button></div>`;
   }
 }
-/* ----- 推薦保養順序 ----- */
-const ROUTINE=[
-  {cat:"remove",name:"卸妝",time:"晚上",why:"有上妝或擦防曬的日子先卸妝，減少毛孔阻塞。"},
-  {cat:"clean",name:"潔面",time:"早晚",why:"洗去髒污與多餘油脂，為後續保養打好基礎。"},
-  {cat:"toner",name:"化妝水",time:"早晚",why:"潔面後馬上補水，讓肌膚更好吸收精華。"},
-  {cat:"serum",name:"精華",time:"早晚",why:"針對你最在意的困擾集中加強。"},
-  {cat:"cream",name:"乳霜",time:"早晚",why:"鎖住水分與精華，穩定肌膚屏障。"},
-  {cat:"sun",name:"防曬",time:"早上",why:"白天最後一步，預防光老化與曬後泛紅。"}
-];
-const WEEKLY=[
-  {cat:"exfo",name:"去角質",freq:"每週 1–2 次"},
-  {cat:"mask",name:"面膜",freq:"每週 2–3 次"}
-];
-const CON_NOTE={dry:"以弱酸保濕的 PH 系列為主，重點是補水與鎖水。",pore:"以酵母系列為主，清潔、控油兩頭兼顧。",red:"以 B5 泛醇與敏感肌系列為主，先穩定再加強。",glow:"以 PDRN 系列為主，加強光采與彈潤。"};
+/* ----- 推薦保養順序（可在編輯器修改）----- */
+const DEF_RT={
+  steps:[
+    {id:"s1",cat:"remove",name:"卸妝",time:"晚上",why:"有上妝或擦防曬的日子先卸妝，減少毛孔阻塞。"},
+    {id:"s2",cat:"clean",name:"潔面",time:"早晚",why:"洗去髒污與多餘油脂，為後續保養打好基礎。"},
+    {id:"s3",cat:"toner",name:"化妝水",time:"早晚",why:"潔面後馬上補水，讓肌膚更好吸收精華。"},
+    {id:"s4",cat:"serum",name:"精華",time:"早晚",why:"針對你最在意的困擾集中加強。"},
+    {id:"s5",cat:"cream",name:"乳霜",time:"早晚",why:"鎖住水分與精華，穩定肌膚屏障。"},
+    {id:"s6",cat:"sun",name:"防曬",time:"早上",why:"白天最後一步，預防光老化與曬後泛紅。"}],
+  weekly:[{id:"w1",cat:"exfo",name:"去角質",freq:"每週 1–2 次"},{id:"w2",cat:"mask",name:"面膜",freq:"每週 2–3 次"}],
+  notes:{dry:"以弱酸保濕的 PH 系列為主，重點是補水與鎖水。",pore:"以酵母系列為主，清潔、控油兩頭兼顧。",red:"以 B5 泛醇與敏感肌系列為主，先穩定再加強。",glow:"以 PDRN 系列為主，加強光采與彈潤。",none:"先從溫和的基礎保養開始，以弱酸的 PH 系列打底。"},
+  footer:"早上：潔面 → 化妝水 → 精華 → 乳霜 → 防曬。晚上：卸妝 → 潔面 → 化妝水 → 精華 → 乳霜。使用新產品前建議先在耳後或下顎局部試用。",
+  pick:{}
+};
+const RT_KEYS=[["dry","乾燥缺水"],["pore","毛孔・出油"],["red","泛紅敏感"],["glow","暗沉・彈性"],["none","沒選困擾"]];
+let RT=JSON.parse(JSON.stringify(DEF_RT));
+function normRT(r){r=r||{};const st=x=>({id:clean(x.id)||("s"+Math.random().toString(36).slice(2,8)),cat:CATNAME[x.cat]?x.cat:"cream",name:clean(x.name),time:clean(x.time),why:clean(x.why),freq:clean(x.freq)});
+  const pick={};for(const [k] of RT_KEYS){pick[k]={};const src=(r.pick||{})[k]||{};for(const sid in src){const n=parseInt(src[sid],10);if(n)pick[k][sid]=n}}
+  return {steps:Array.isArray(r.steps)?r.steps.map(st).filter(x=>x.name):DEF_RT.steps.map(st),weekly:Array.isArray(r.weekly)?r.weekly.map(st).filter(x=>x.name):DEF_RT.weekly.map(st),
+    notes:Object.fromEntries(RT_KEYS.map(([k])=>[k,clean((r.notes||{})[k]!=null?(r.notes||{})[k]:DEF_RT.notes[k])])),footer:clean(r.footer!=null?r.footer:DEF_RT.footer),pick}}
+function applyRoutine(cfg){RT=normRT(cfg&&cfg.routine)}
+applyRoutine(KOLCFG);
 function pickFor(stepCat,seriesList,used){
   const ok=p=>!(used&&used.has(p.id));
   const score=p=>[picked.has(p.id)?0:1,p.cats[0]===stepCat?0:1,seriesList.indexOf(p.s),p.id];
@@ -1555,19 +1691,21 @@ function pickFor(stepCat,seriesList,used){
 }
 function routineHTML(cons){
   const series=cons.length?[...new Set(cons.flatMap(c=>c.series))]:["ph"];
-  const steps=ROUTINE.map(s=>({...s,r:pickFor(s.cat,series)})).filter(s=>s.r);
+  const keys=cons.length?cons.map(c=>c.k):["none"];
+  const fixed=sid=>{for(const k of keys){const id=(RT.pick[k]||{})[sid];const p=id&&P.find(x=>x.id===id);if(p)return {p,fb:false}}return null};
+  const steps=RT.steps.map(s=>({...s,r:fixed(s.id)||pickFor(s.cat,series)})).filter(s=>s.r);
   const used=new Set(steps.map(s=>s.r.p.id));
-  const weekly=WEEKLY.map(s=>({...s,r:pickFor(s.cat,series,used)})).filter(s=>s.r);
+  const weekly=RT.weekly.map(s=>({...s,r:fixed(s.id)||pickFor(s.cat,series,used)})).filter(s=>s.r);
   ROUTINE_IDS=new Set([...steps,...weekly].map(s=>s.r.p.id));
   const row=(label,meta,s)=>{const p=s.r.p,S=SERIES[p.s];return `<button class="rs" data-id="${p.id}">${sw(S,p)}<span class="rs-t">
     <span class="rs-no">${label}<span class="rs-time">${meta}</span></span>
     <b>${esc(p.name)}${badgeOf(p.id)}</b>
-    <span class="rs-why">${s.why||p.desc}${s.r.fb?"（此系列沒有這一步，搭配溫和的基礎品項）":""}</span>
+    <span class="rs-why">${esc(s.why||p.desc)}${s.r.fb?"（此系列沒有這一步，搭配溫和的基礎品項）":""}</span>
     <span class="rs-how">${p.how}</span><em class="tapx">點我看詳情 ›</em></span></button>`};
-  return `<div class="rt"><div class="rt-head"><h3>你的推薦保養順序</h3><p>${cons.length?cons.map(c=>CON_NOTE[c.k]).join(""):"先從溫和的基礎保養開始，以弱酸的 PH 系列打底。"}點產品可看詳細介紹。</p></div>
-    <div class="rs-list">${steps.map((s,i)=>row(`STEP ${i+1}・${s.name}`,s.time,s)).join("")}</div>
-    ${weekly.length?`<div class="rt-sub">每週加強</div><div class="rs-list">${weekly.map(s=>row(s.name,s.freq,s)).join("")}</div>`:""}
-    <p class="note">早上：潔面 → 化妝水 → 精華 → 乳霜 → 防曬。晚上：卸妝 → 潔面 → 化妝水 → 精華 → 乳霜。使用新產品前建議先在耳後或下顎局部試用。</p></div>`;
+  return `<div class="rt"><div class="rt-head"><h3>你的推薦保養順序</h3><p>${esc(keys.map(k=>RT.notes[k]||"").join(""))}點產品可看詳細介紹。</p></div>
+    <div class="rs-list">${steps.map((s,i)=>row(`STEP ${i+1}・${esc(s.name)}`,esc(s.time),s)).join("")}</div>
+    ${weekly.length?`<div class="rt-sub">每週加強</div><div class="rs-list">${weekly.map(s=>row(esc(s.name),esc(s.freq),s)).join("")}</div>`:""}
+    ${RT.footer?`<p class="note">${esc(RT.footer)}</p>`:""}</div>`;
 }
 let ROUTINE_IDS=new Set();
 function renderKol(){renderBlocks()}
@@ -1745,8 +1883,9 @@ function renderGB(){
     let cd="";
     if(target){const s=Math.max(0,Math.floor((target-now)/1000));cd=`<div class="cd"><span style="background:none;padding:0;opacity:.85">${now<g.start?"距離開團":"距離結團"}</span><span><b>${Math.floor(s/86400)}</b> 天</span><span><b>${pad(Math.floor(s%86400/3600))}</b> 時</span><span><b>${pad(Math.floor(s%3600/60))}</b> 分</span><span><b>${pad(s%60)}</b> 秒</span></div>`}
     el.innerHTML=`<div class="row"><span class="tagx">${state}</span><span class="left">團購時間 ${fmt(g.start)} – ${fmt(g.end)}</span></div>
-      <h2>${esc(g.title||"SAM'U 團購活動")}</h2>${g.note?`<p>${esc(g.note)}</p>`:""}${cd}
+      <h2>${esc(g.title||"SAM'U 團購活動")}</h2>${cd}
       ${ids.length?`<div class="pp">${ids.map(id=>`<button data-id="${id}">${esc(P.find(p=>p.id===id).name)}</button>`).join("")}</div>`:""}
+      ${g.note?`<div class="gb-note"><b>開團備註</b><p>${esc(g.note)}</p></div>`:""}
       ${g.link&&target?`<a class="go" data-gbgo href="${esc(g.link)}" target="_blank" rel="noopener">立即跟團 →</a>`:""}`;
     if(!target)clearInterval(cdTimer);
   };
@@ -1771,7 +1910,7 @@ function buildAdmin(){
         <label>開團日期（當天 00:00 開始）<input id="gb-start" type="date"></label>
         <label>結團日期（當天 23:59 結束）<input id="gb-end" type="date"></label>
         <label class="full">團購連結（全站所有「前往購買」按鈕都會連到這裡）<input id="gb-link" type="url" placeholder="https://"></label>
-        <label>備註（選填，顯示在團購區）<input id="gb-note" maxlength="60" placeholder="例：滿 2 件享 9 折"></label>
+        <label class="full">開團備註（選填，可換行，顯示在團購區）<textarea id="gb-note" rows="8" maxlength="600" placeholder="例：滿 3000 免運"></textarea></label>
         <label>活動產品編號（選填）<input id="gb-products" placeholder="例：31, 32, 36"></label>
         <div class="row"><button class="btn" type="submit">儲存活動</button><button class="btn2" type="button" id="gbClear">清除活動</button><span class="status" id="gbMsg" aria-live="polite"></span></div>
       </form></div>
@@ -1803,12 +1942,17 @@ let BDRAFT=null, BMODE="admin";
 const itemsToText=items=>items.map(i=>[i.label,i.product||"",i.video,i.desc].join(" | ").replace(/(\s\|\s*)+$/,"")).join("\n");
 const textToItems=txt=>txt.split("\n").map(l=>l.trim()).filter(Boolean).map(l=>{const [a="",b="",c="",d="",...e]=l.split(/\s*[|｜]\s*/);const n=parseInt(b,10);
   return {label:a.trim(),product:((BDRAFT&&BDRAFT.products)||P).some(p=>p.id===n)?n:null,video:c.trim(),desc:d.trim(),buy:e.join("|").trim()}}).filter(i=>i.label||i.product);
-function draftFromCfg(){return {blocks:JSON.parse(JSON.stringify(blocksList())),buy:{...((KOLCFG&&KOLCFG.buy)||{})},products:JSON.parse(JSON.stringify(P)),series:JSON.parse(JSON.stringify((KOLCFG&&KOLCFG.series)||{})),pedit:null,psearch:""}}
+function draftFromCfg(){return {blocks:JSON.parse(JSON.stringify(blocksList())),buy:{...((KOLCFG&&KOLCFG.buy)||{})},products:JSON.parse(JSON.stringify(P)),series:JSON.parse(JSON.stringify((KOLCFG&&KOLCFG.series)||{})),pedit:null,psearch:"",routine:JSON.parse(JSON.stringify(RT))}}
 function readBDraft(){
   const box=$("kolPanel"); if(!BDRAFT||!box||!box.querySelector(".be"))return;
   BDRAFT.blocks=BDRAFT.blocks.map((b,bi)=>({id:b.id,type:$("b-type-"+bi)?.value||b.type,name:($("b-name-"+bi)?.value||"").trim(),title:($("b-title-"+bi)?.value||"").trim(),
     sub:($("b-sub-"+bi)?.value||"").trim(),link:($("b-link-"+bi)?.value||"").trim(),linkLabel:($("b-ll-"+bi)?.value||"").trim(),
     themes:b.themes.map((t,ti)=>({id:t.id,title:($(`b-${bi}-t-${ti}`)?.value||"").trim(),items:textToItems($(`b-${bi}-i-${ti}`)?.value||"")}))}));
+  if($("rt-footer")){const R=BDRAFT.routine,g=id=>($(id)?.value||"").trim();
+    R.steps=R.steps.map((x,i)=>({id:x.id,cat:g("rt-s-cat-"+i)||x.cat,name:g("rt-s-name-"+i),time:g("rt-s-time-"+i),why:g("rt-s-why-"+i)}));
+    R.weekly=R.weekly.map((x,i)=>({id:x.id,cat:g("rt-w-cat-"+i)||x.cat,name:g("rt-w-name-"+i),freq:g("rt-w-freq-"+i)}));
+    for(const [k] of RT_KEYS){R.notes[k]=g("rt-note-"+k);R.pick[k]={};for(const x of [...R.steps,...R.weekly]){const n=parseInt(g(`rt-pk-${k}-${x.id}`),10);if(n)R.pick[k][x.id]=n}}
+    R.footer=g("rt-footer")}
   if($("eg-title")){const v=id=>($(id)?.value||"").trim();BDRAFT.gb={title:v("eg-title"),start:v("eg-start"),end:v("eg-end"),link:v("eg-link"),note:v("eg-note")}}
 }
 function renderKolAdmin(){
@@ -1832,6 +1976,7 @@ function renderKolAdmin(){
       <div><button class="btn2" type="button" data-tadd="${bi}">＋ 新增主題</button></div></div>`}).join("")||`<p class="sub" style="margin:0">目前沒有任何區塊。</p>`}
     <div class="be-add"><label>新區塊類型<select id="newBType">${typeOpts("kol")}</select></label><button class="btn2" type="button" id="bAdd">＋ 新增區塊</button></div></div>
     ${productEditorHTML()}
+    ${routineEditorHTML()}
     ${BMODE==="file"?gbEditorHTML():`<p class="sub" style="margin:16px 0 0">購買按鈕統一使用上方「團購活動設定」的團購連結。</p>`}
     <div class="form" style="margin-top:14px"><div class="row">${BMODE==="admin"?`<button class="btn" type="button" id="kSave">儲存區塊設定</button>`:`<button class="btn" type="button" id="kPreview">套用並預覽</button><button class="btn2" type="button" id="kDownload">下載 blocks.js</button><button class="btn2" type="button" id="kCopy">複製設定內容</button>`}<span class="status" id="kMsg" aria-live="polite"></span></div></div>`;
 }
@@ -1847,14 +1992,17 @@ function draftData(){
       const st=new Date(g.start+"T00:00:00").getTime(),en=new Date(g.end+"T23:59:59").getTime();
       if(en<=st){m.className="status err";m.textContent="結團日期不能早於開團日期。";return null}
       groupbuy={title:g.title,start:st,end:en,link:g.link,note:g.note,products:(GB&&GB.products)||[]}}else groupbuy=null}
-  return {...(groupbuy!==undefined?{groupbuy}:{}),products:BDRAFT.products,series:BDRAFT.series,blocks:BDRAFT.blocks.map((b,bi)=>({...b,id:b.id||("b"+Date.now().toString(36)+bi),themes:b.themes.filter(t=>t.title).map((t,ti)=>({...t,id:t.id||("t"+Date.now().toString(36)+bi+ti)}))})),buy:BDRAFT.buy};
+  const rtBad=[...BDRAFT.routine.steps,...BDRAFT.routine.weekly].find(x=>!x.name);if(rtBad){m.className="status err";m.textContent="推薦保養順序的每個步驟都要填名稱。";return null}
+  const badPick=RT_KEYS.flatMap(([k])=>Object.values(BDRAFT.routine.pick[k]||{})).find(n=>!BDRAFT.products.some(p=>p.id===n));
+  if(badPick){m.className="status err";m.textContent=`推薦保養順序指定的產品編號 ${badPick} 不存在。`;return null}
+  return {...(groupbuy!==undefined?{groupbuy}:{}),routine:BDRAFT.routine,products:BDRAFT.products,series:BDRAFT.series,blocks:BDRAFT.blocks.map((b,bi)=>({...b,id:b.id||("b"+Date.now().toString(36)+bi),themes:b.themes.filter(t=>t.title).map((t,ti)=>({...t,id:t.id||("t"+Date.now().toString(36)+bi+ti)}))})),buy:BDRAFT.buy};
 }
 async function saveKol(){
   const data=draftData(); if(!data)return; const m=$("kMsg");
   m.textContent="儲存中…";
   try{await DB.doc("site/kol").set({...data,at:Date.now()})}
   catch(err){m.className="status err";m.textContent="儲存失敗："+(err&&err.code==="invalid_argument"?"你的帳號沒有編輯權限。":"請稍後再試一次。");return}
-  KOLCFG=data; applyCatalog(data); syncPicked(); renderBlocks(); render();
+  KOLCFG=data; applyCatalog(data); applyRoutine(data); syncPicked(); renderBlocks(); render();
   m.textContent="已儲存，登入的訪客已看到更新。正在同步給未登入的訪客…";
   try{sessionStorage.setItem("samu-admin","1")}catch(e){}
   try{await publishEmbed({kol:data})}
@@ -1870,9 +2018,42 @@ function gbEditorHTML(){
       <label>團購連結<input id="eg-link" type="url" value="${esc(g.link)}" placeholder="https://（開團後填入）"></label>
       <label>開團日期（當天 00:00）<input id="eg-start" type="date" value="${esc(g.start)}"></label>
       <label>結團日期（當天 23:59）<input id="eg-end" type="date" value="${esc(g.end)}"></label>
-      <label>備註（選填）<input id="eg-note" maxlength="60" value="${esc(g.note)}" placeholder="例：滿 3000 免運"></label>
+      <label style="grid-column:1/-1">開團備註（選填，可換行）<textarea id="eg-note" rows="8" maxlength="600" placeholder="例：滿 3000 免運">${esc(g.note)}</textarea></label>
     </div><p class="sub" style="margin:6px 0 0">不辦活動時，把兩個日期都清空即可隱藏團購區。</p>`;
 }
+/* ----- 推薦保養順序編輯 ----- */
+function routineEditorHTML(){
+  const R=BDRAFT.routine, catOpts=v=>Object.entries(CATNAME).map(([k,n])=>`<option value="${k}"${k===v?" selected":""}>${n}</option>`).join("");
+  const mv=(kind,i,n)=>`<span class="tmv"><button class="btn2" type="button" data-rtmove="${kind}:${i}:-1" ${i===0?"disabled":""} aria-label="上移">↑</button><button class="btn2" type="button" data-rtmove="${kind}:${i}:1" ${i===n-1?"disabled":""} aria-label="下移">↓</button><button class="btn2" type="button" data-rtdel="${kind}:${i}">刪除</button></span>`;
+  const all=[...R.steps.map(x=>({...x,lab:"每日・"+x.name})),...R.weekly.map(x=>({...x,lab:"每週・"+x.name}))];
+  return `<h3 style="margin-top:20px">推薦保養順序 <small>問卷結果顯示的保養步驟、說明與推薦產品</small></h3>
+    <div class="rte">
+      <b class="rte-h">每日步驟（依順序顯示為 STEP 1、2、3…）</b>
+      ${R.steps.map((x,i)=>`<div class="rte-row"><label>名稱<input id="rt-s-name-${i}" maxlength="12" value="${esc(x.name)}"></label><label>產品類別<select id="rt-s-cat-${i}">${catOpts(x.cat)}</select></label><label>時段<input id="rt-s-time-${i}" maxlength="8" value="${esc(x.time)}" placeholder="早晚"></label><label class="wide">說明<input id="rt-s-why-${i}" maxlength="60" value="${esc(x.why)}"></label>${mv("s",i,R.steps.length)}</div>`).join("")}
+      <div><button class="btn2" type="button" data-rtadd="s">＋ 新增每日步驟</button></div>
+      <b class="rte-h">每週加強</b>
+      ${R.weekly.map((x,i)=>`<div class="rte-row"><label>名稱<input id="rt-w-name-${i}" maxlength="12" value="${esc(x.name)}"></label><label>產品類別<select id="rt-w-cat-${i}">${catOpts(x.cat)}</select></label><label>頻率<input id="rt-w-freq-${i}" maxlength="12" value="${esc(x.freq)}" placeholder="每週 1–2 次"></label><span class="wide"></span>${mv("w",i,R.weekly.length)}</div>`).join("")}
+      <div><button class="btn2" type="button" data-rtadd="w">＋ 新增每週步驟</button></div>
+      <b class="rte-h">各肌膚困擾的開頭說明</b>
+      <div class="rte-notes">${RT_KEYS.map(([k,n])=>`<label>${n}<input id="rt-note-${k}" maxlength="80" value="${esc(R.notes[k]||"")}"></label>`).join("")}</div>
+      <b class="rte-h">指定推薦產品 <small>填產品編號；留空會依系列自動挑選。複選多個困擾時，以排在前面的困擾為準。</small></b>
+      <div class="tbl"><table class="rte-pk"><thead><tr><th>步驟</th>${RT_KEYS.map(([,n])=>`<th>${n}</th>`).join("")}</tr></thead><tbody>
+        ${all.map(x=>`<tr><td>${esc(x.lab)}</td>${RT_KEYS.map(([k])=>`<td><input id="rt-pk-${k}-${x.id}" inputmode="numeric" maxlength="4" value="${(R.pick[k]||{})[x.id]||""}" placeholder="自動"></td>`).join("")}</tr>`).join("")}
+      </tbody></table></div>
+      <label class="rte-foot">結尾小提醒<textarea id="rt-footer" rows="2" maxlength="200">${esc(R.footer)}</textarea></label>
+      <div><button class="btn2" type="button" id="rtReset">恢復預設順序</button></div>
+    </div>`;
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest("#kolPanel"))return; const t=e.target;
+  const a=t.closest("[data-rtadd]");if(a){readBDraft();const k=a.dataset.rtadd,id=(k==="s"?"s":"w")+Date.now().toString(36);
+    if(k==="s")BDRAFT.routine.steps.push({id,cat:"serum",name:"新步驟",time:"早晚",why:""});else BDRAFT.routine.weekly.push({id,cat:"mask",name:"新步驟",freq:"每週 1 次"});renderKolAdmin();return}
+  const mvb=t.closest("[data-rtmove]");if(mvb){readBDraft();const [k,i,d]=mvb.dataset.rtmove.split(":");const arr=BDRAFT.routine[k==="s"?"steps":"weekly"],a2=+i,b2=a2+ +d;
+    if(b2>=0&&b2<arr.length){[arr[a2],arr[b2]]=[arr[b2],arr[a2]];renderKolAdmin()}return}
+  const dl=t.closest("[data-rtdel]");if(dl){if(dl.dataset.confirm!=="1"){dl.dataset.confirm="1";dl.textContent="確認刪除";return}
+    readBDraft();const [k,i]=dl.dataset.rtdel.split(":");BDRAFT.routine[k==="s"?"steps":"weekly"].splice(+i,1);renderKolAdmin();return}
+  if(t.id==="rtReset"){if(t.dataset.confirm!=="1"){t.dataset.confirm="1";t.textContent="再按一次確認恢復預設";return}readBDraft();BDRAFT.routine=JSON.parse(JSON.stringify(DEF_RT));renderKolAdmin();return}
+});
 /* ----- 產品資料編輯 ----- */
 function allSeries(){return {...SERIES,...(BDRAFT?BDRAFT.series:{})}}
 function productEditorHTML(){
@@ -1958,7 +2139,7 @@ document.addEventListener("click",async e=>{
   const ta=t.closest("[data-tadd]");if(ta){readBDraft();BDRAFT.blocks[+ta.dataset.tadd].themes.push({id:"",title:"",items:[]});renderKolAdmin();return}
   const td=t.closest("[data-tdel]");if(td){readBDraft();const [bi,ti]=td.dataset.tdel.split(":").map(Number);BDRAFT.blocks[bi].themes.splice(ti,1);renderKolAdmin();return}
   if(t.id==="kSave"){saveKol();return}
-  if(t.id==="kPreview"){const d=draftData();if(!d)return;KOLCFG=d;applyCatalog(d);if("groupbuy" in d){GB=d.groupbuy;CELEBRATED=true;renderGB()}syncPicked();renderBlocks();render();showEditor(false,true);return}
+  if(t.id==="kPreview"){const d=draftData();if(!d)return;KOLCFG=d;applyCatalog(d);applyRoutine(d);if("groupbuy" in d){GB=d.groupbuy;CELEBRATED=true;renderGB()}syncPicked();renderBlocks();render();showEditor(false,true);return}
   if(t.id==="kDownload"){const d=draftData();if(!d)return;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([blocksFile(d)],{type:"text/javascript"}));a.download="blocks.js";document.body.appendChild(a);a.click();a.remove();$("kMsg").textContent="已下載 blocks.js，上傳到 GitHub 覆蓋舊檔即可更新網站。";return}
   if(t.id==="kCopy"){const d=draftData();if(!d)return;const txt=blocksFile(d);try{await navigator.clipboard.writeText(txt);$("kMsg").textContent="已複製，貼到 GitHub 的 blocks.js 取代全部內容即可。"}catch(err){$("kMsg").textContent="無法自動複製，請改用下載。"}return}
 });
@@ -2072,7 +2253,7 @@ async function publishEmbed(over){
   const art=await claude.use("artifact"); if(!art)throw {code:"not_granted"};
   const res=await fetch("src.html",{cache:"no-store"}); if(!res.ok)throw {code:"no_src"};
   let src=await res.text();
-  const vals={GB:("gb" in over)?over.gb:(GB&&GB.start?GB:null),KOL:("kol" in over)?over.kol:{blocks:blocksList(),buy:(KOLCFG&&KOLCFG.buy)||{},products:P,series:(KOLCFG&&KOLCFG.series)||{}}};
+  const vals={GB:("gb" in over)?over.gb:(GB&&GB.start?GB:null),KOL:("kol" in over)?over.kol:{blocks:blocksList(),buy:(KOLCFG&&KOLCFG.buy)||{},products:P,series:(KOLCFG&&KOLCFG.series)||{},routine:RT}};
   for(const k of ["GB","KOL"]){
     const mk="/*"+k+"*"+"/";
     const re=new RegExp("\\/\\*"+k+"\\*\\/[\\s\\S]*?\\/\\*"+k+"\\*\\/");
@@ -2109,7 +2290,7 @@ document.addEventListener("submit",async e=>{
   if(!window.claude||!claude.use)return;
   const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]);
   DB=db; if(!DB)return;
-  DB.doc("site/kol").onSnapshot(s=>{if(s.exists){const d=s.data();KOLCFG=d;applyCatalog(d);syncPicked();renderBlocks();if(st.step===3)_render()}},()=>{});
+  DB.doc("site/kol").onSnapshot(s=>{if(s.exists){const d=s.data();KOLCFG=d;applyCatalog(d);applyRoutine(d);syncPicked();renderBlocks();if(st.step===3)_render()}},()=>{});
   DB.doc("site/groupbuy").onSnapshot(s=>{GB=s.exists?s.data():null;renderGB();renderKol();if(!$("admin").hidden&&!document.activeElement?.closest("#gbForm"))fillForm();if(!$("admin").hidden)renderStats()},()=>{});
   if(!user)return;
   IS_ADMIN=await user.canEdit().catch(()=>false);
