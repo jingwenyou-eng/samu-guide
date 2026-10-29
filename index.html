@@ -1,0 +1,2145 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="SAM'U 產品導覽：回答兩個問題，找到適合你的保養品與使用順序。">
+<title>SAM'U 產品導覽</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+/* Layout: one centered quiz card (Q1 what → Q2 concern → results), then a KOL picks band, then a slide-in product sheet */
+:root{
+  --bg:#fbf1f2; --card:#ffffff; --ink:#2e1519; --sub:#8b6b71; --line:#f0dce0; --tile:#fdf6f7;
+  --rose:#c4203d; --rose-soft:#fbe2e7; --lav:#7c1328; --stem:#5d7a3b; --stem-soft:#e7eedb;
+  --title:"Shippori Mincho","Noto Serif TC",serif;
+  --cherry:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M34%208C30%2018%2025%2027%2021%2035M34%208C38%2019%2041%2029%2042%2037M34%208C40%202%2051%202%2056%208C50%2013%2040%2013%2034%208ZM37%208L52%207.5%27%2F%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2746%27%20r%3D%2711%27%2F%3E%3Ccircle%20cx%3D%2742%27%20cy%3D%2748%27%20r%3D%2711%27%2F%3E%3Cpath%20d%3D%27M14%2043a7%207%200%200%201%204.5-4.5M36%2045a7%207%200%200%201%204.5-4.5%27%2F%3E%3C%2Fsvg%3E");
+  --latin:"Outfit","Futura",sans-serif; --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a0e11;--card:#251519;--ink:#f7e9ec;--sub:#c2a3a9;--line:#43262d;--tile:#2e1b20;--rose:#f0708a;--rose-soft:#4a1f2a;--lav:#a8304b;--stem:#a3c27f;--stem-soft:#27311d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a0e11;--card:#251519;--ink:#f7e9ec;--sub:#c2a3a9;--line:#43262d;--tile:#2e1b20;--rose:#f0708a;--rose-soft:#4a1f2a;--lav:#a8304b;--stem:#a3c27f;--stem-soft:#27311d;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:grid;gap:22px}
+.brand{display:flex;justify-content:space-between;align-items:center}
+.brand b{font-family:var(--latin);font-weight:500;font-size:20px;letter-spacing:.06em}
+.brand span{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--sub)}
+.quiz{background:var(--card);border-radius:24px;padding:28px clamp(18px,4vw,36px) 30px;display:grid;gap:22px;box-shadow:0 10px 30px rgb(140 20 45 / .07)}
+.prog{display:flex;align-items:center;gap:10px;font-family:var(--latin);font-size:12px;letter-spacing:.12em;color:var(--sub)}
+.bar{flex:1;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--rose);border-radius:4px;transition:width .35s ease}
+.q{display:grid;gap:6px}
+.q small{font-family:var(--latin);font-weight:600;color:var(--rose);letter-spacing:.14em;font-size:12px}
+.q h1,.q h2{margin:0;font-size:clamp(22px,4.6vw,28px);font-weight:700;line-height:1.35;text-wrap:balance}
+.q p{margin:0;color:var(--sub);font-size:14px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;background:var(--tile);border:1.5px solid transparent;border-radius:16px;padding:14px 16px;display:grid;gap:2px;transition:border-color .15s,background .15s,transform .15s}
+.opt:hover{border-color:var(--rose);transform:translateY(-1px)}
+.opt b{font-weight:500;font-size:15.5px}
+.opt span{font-size:12.5px;color:var(--sub)}
+.opt.wide{grid-column:1/-1;background:transparent;border:1.5px dashed var(--line);text-align:center}
+.opt.wide:hover{border-color:var(--rose)}
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.link{all:unset;cursor:pointer;font-size:13.5px;color:var(--sub);text-decoration:underline;text-underline-offset:3px}
+.link:hover{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;padding:4px 12px;border-radius:999px;background:var(--rose-soft);color:var(--rose)}
+.list{display:grid;gap:10px}
+.item{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;padding:10px;border-radius:16px;background:var(--tile);border:1.5px solid transparent;transition:border-color .15s}
+.item:hover{border-color:var(--line)}
+.sw{width:60px;height:60px;border-radius:12px;background:linear-gradient(150deg,var(--t1),var(--t2));display:grid;place-items:center;font-family:var(--latin);font-size:10px;letter-spacing:.08em;color:#4a4352;text-align:center;line-height:1.2;padding:4px}
+.item .txt{min-width:0;display:grid;gap:1px}
+.item .s{font-size:12px;color:var(--sub)}
+.item b{font-weight:500;font-size:15px;line-height:1.4}
+.item .d{font-size:13px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .r{font-family:var(--latin);font-size:12px;color:var(--sub);white-space:nowrap}
+.badge{display:inline-block;margin-left:6px;font-size:11px;padding:1px 8px;border-radius:999px;background:var(--rose);color:#fff;vertical-align:2px;font-weight:500}
+.note{font-size:13px;color:var(--sub);margin:0}
+.kol{background:linear-gradient(135deg,var(--rose-soft),var(--card) 70%);border-radius:24px;padding:26px clamp(18px,4vw,32px);display:grid;gap:18px;border:1px solid var(--line)}
+.kh{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#e8546f,#7c1328);display:grid;place-items:center;color:#fff;font-family:var(--latin);font-weight:600;font-size:22px;flex:none}
+.kh .who{flex:1;min-width:160px;display:grid}
+.kh .who small{font-family:var(--latin);letter-spacing:.16em;font-size:11px;color:var(--rose);font-weight:600}
+.kh .who b{font-size:20px;font-weight:700}
+.kh .who span{font-size:13px;color:var(--sub)}
+.ig{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:500}
+.ig:hover{opacity:.88}
+.ig svg{width:16px;height:16px}
+.kol blockquote{margin:0;font-size:14.5px;line-height:1.7;padding-left:14px;border-left:2px solid var(--rose)}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.pick{background:var(--card);border-radius:16px;padding:12px;display:grid;gap:8px;align-content:start;border:1px solid var(--line)}
+.sw{position:relative;overflow:hidden}
+.sw.has-img{background:#fff;padding:0}
+.sw.has-img .sw-t{visibility:hidden}
+.sw img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.sheet .sw.has-img{aspect-ratio:4/3;max-height:42vh;width:auto;justify-self:center}
+.pick .sw{width:100%;height:auto;aspect-ratio:4/3;max-width:100%;font-size:11px}
+.pick button{all:unset;cursor:pointer;font-weight:500;font-size:14px;line-height:1.4}
+.pick a{font-size:12.5px;color:var(--rose);text-decoration:none}
+.pick a:hover{text-decoration:underline}
+.opt:focus-visible,.item:focus-visible,.link:focus-visible,.ig:focus-visible,.pick button:focus-visible,.close:focus-visible,.rel button:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.scrim{position:fixed;inset:0;background:rgb(45 10 18 / .35);z-index:20}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:88vh;max-width:640px;margin:0 auto;background:var(--card);z-index:21;overflow-y:auto;border-radius:24px 24px 0 0;padding:22px max(22px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(22px,env(safe-area-inset-left,0px));display:grid;gap:16px}
+.close{all:unset;cursor:pointer;justify-self:end;font-size:13px;color:var(--sub);padding:4px 12px;border:1px solid var(--line);border-radius:999px}
+.sheet .sw{width:100%;height:auto;aspect-ratio:16/7;max-width:100%;font-size:13px;border-radius:16px}
+.sheet h3{margin:0;font-size:21px;line-height:1.4}
+.sheet .s{font-size:13px;color:var(--sub)}
+.sheet p{margin:0}
+.sheet dl{display:grid;grid-template-columns:5em 1fr;gap:8px 12px;margin:0;font-size:14px;border-top:1px solid var(--line);padding-top:14px}
+.sheet dt{color:var(--sub)}.sheet dd{margin:0}
+.rel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--sub)}
+.rel button{all:unset;cursor:pointer;font-size:13px;padding:4px 10px;border-radius:999px;background:var(--tile);color:var(--ink)}
+/* cherry line art */
+.ch{display:inline-block;width:22px;height:22px;background:var(--rose);-webkit-mask:var(--cherry) center/contain no-repeat;mask:var(--cherry) center/contain no-repeat;vertical-align:-4px;margin-right:6px}
+.quiz,.kol{position:relative;overflow:hidden}
+.quiz::before,.kol::before{content:"";position:absolute;width:140px;height:140px;background:var(--rose);opacity:.09;-webkit-mask:var(--cherry) center/contain no-repeat;mask:var(--cherry) center/contain no-repeat;pointer-events:none}
+.quiz::before{right:-18px;top:-22px;transform:rotate(14deg)}
+.kol::before{right:10px;bottom:-30px;transform:rotate(-10deg)}
+.quiz>*,.kol>*{position:relative}
+.q small::before{content:"";display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;background:var(--rose);-webkit-mask:var(--cherry) center/contain no-repeat;mask:var(--cherry) center/contain no-repeat}
+footer::before{content:"";display:block;height:18px;margin-bottom:12px;background:radial-gradient(circle,var(--rose) 1.2px,transparent 1.6px) 0 50%/14px 14px repeat-x;opacity:.35}
+/* KOL stories */
+.stories{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
+.story{all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;width:76px;flex:none;text-align:center}
+.story .ring{width:66px;height:66px;border-radius:50%;padding:3px;background:var(--line);display:block;transition:background .2s}
+.story .ring>span{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--rose-soft);border:3px solid var(--card)}
+.story .ring .ch{width:28px;height:28px;margin:0;vertical-align:0}
+.story[aria-selected="true"] .ring{background:linear-gradient(135deg,#f6a9b8,var(--rose) 55%,var(--lav))}
+.story small{font-size:12px;line-height:1.35;color:var(--sub);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.story[aria-selected="true"] small{color:var(--ink);font-weight:500}
+.story:focus-visible .ring{outline:2px solid var(--rose);outline-offset:2px}
+.th{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px}
+.th b{font-family:var(--title);font-size:17px}
+.th a{font-size:13px;color:var(--rose);text-decoration:none}
+.th a:hover{text-decoration:underline}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tagb{all:unset;cursor:pointer;font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);transition:all .15s}
+.tagb::before{content:"# ";color:var(--rose)}
+.tagb:hover{border-color:var(--rose)}
+.tagb[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+.tagb[aria-pressed="true"]::before{color:#fff}
+.tagb:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.kp{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.kp .sw{width:96px;height:96px;font-size:10px}
+.kp-t{display:grid;gap:4px;min-width:0}
+.kp-t .s{font-size:12px;color:var(--sub)}
+.kp-t b{font-size:16px;font-weight:600;line-height:1.4}
+.kp-t p{margin:0;font-size:13.5px}
+.kp-t p.how{color:var(--sub);font-size:13px}
+.kp-act{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.buy{display:inline-flex;align-items:center;background:var(--rose);color:#fff;font-size:14px;font-weight:500;padding:9px 18px;border-radius:999px;text-decoration:none}
+.buy:hover{background:var(--lav)}
+.buy.off{background:var(--tile);color:var(--sub);border:1px dashed var(--line);cursor:default}
+.buy:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.kt{display:grid;grid-template-columns:1.1fr 1.4fr 1fr auto;gap:8px;align-items:end;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.kt label{display:grid;gap:4px;font-size:12px;color:var(--sub);min-width:0}
+.kt input,.bl input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;min-width:0}
+.kt2{display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--tile)}
+.kt2h{display:flex;gap:10px;align-items:end;flex-wrap:wrap}
+.kt2h label{flex:1;min-width:160px}
+.kt2 label{display:grid;gap:4px;font-size:12px;color:var(--sub);min-width:0}
+.kt2 input,.kt2 textarea{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;min-width:0}
+.kt2 textarea{font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.6;resize:vertical;white-space:pre;overflow-x:auto}
+.th span{font-size:12.5px;color:var(--sub)}
+.vid{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--card);font-size:14px;font-weight:500;padding:9px 16px;border-radius:999px;text-decoration:none}
+.vid:hover{opacity:.88}
+.vid svg{width:14px;height:14px}
+.vid:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.kp.kp-v{grid-template-columns:1fr}
+.kp-t .alias{font-size:12px;color:var(--rose)}
+.bl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:8px 12px;align-items:center;font-size:13px}
+@media (max-width:640px){.kt{grid-template-columns:1fr 1fr}.kt .full2{grid-column:1/-1}.bl{grid-template-columns:1fr}}
+@media (max-width:480px){.kp{grid-template-columns:64px minmax(0,1fr)}.kp .sw{width:64px;height:64px}}
+/* scroll hint */
+.more{all:unset;cursor:pointer;justify-self:center;display:grid;justify-items:center;gap:0;font-size:12.5px;color:var(--sub);letter-spacing:.04em;margin-block:-8px;padding:4px 12px;border-radius:999px;text-align:center}
+.more:hover{color:var(--rose)}
+.more svg{width:20px;height:20px;color:var(--rose);animation:nudge 1.6s ease-in-out infinite}
+.more:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media (prefers-reduced-motion:reduce){.more svg{animation:none}}
+/* tap hints & multi-select */
+.tap{margin:0 0 -8px;font-size:12px;color:var(--rose);letter-spacing:.04em}
+.tapx{display:block;font-style:normal;font-size:11.5px;color:var(--rose);margin-top:2px;font-family:var(--body);white-space:nowrap}
+.opt.multi{position:relative;padding-right:40px}
+.opt .ck{position:absolute;top:14px;right:14px;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);background:var(--card)}
+.opt.multi[aria-pressed="true"]{border-color:var(--rose);background:var(--rose-soft)}
+.opt.multi[aria-pressed="true"] .ck{background:var(--rose);border-color:var(--rose)}
+.opt.multi[aria-pressed="true"] .ck::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.go-res{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;background:var(--rose);color:#fff;font-weight:600;font-size:15px;padding:13px 20px;border-radius:999px}
+.go-res:hover{background:var(--lav)}
+.go-res:disabled{cursor:default;background:var(--tile);color:var(--sub);border:1px dashed var(--line)}
+.go-res:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+/* product editor */
+.pr-top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.pr-top input{flex:1;min-width:180px;font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.pr-list{display:grid;gap:6px;max-height:520px;overflow-y:auto;padding-right:4px}
+.pr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.pr-id{font-family:var(--latin);font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
+.pr-n{display:grid;font-size:13.5px;min-width:0}
+.pr-n small{font-size:11.5px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr-b{display:flex;gap:6px}
+.pr-b .btn2{padding:4px 10px;font-size:12px}
+.pf{display:grid;gap:10px;padding:14px;border:1.5px solid var(--rose);border-radius:12px;background:var(--card);margin:4px 0 8px}
+.pf-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
+.pf label{display:grid;gap:4px;font-size:12px;color:var(--sub);min-width:0}
+.pf input:not([type=checkbox]),.pf textarea{font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;min-width:0}
+.pf-cats{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12px;color:var(--sub)}
+.pf-cats>span{width:100%}
+.pf .pf-ck{display:inline-flex;grid-template-columns:none;align-items:center;gap:5px;font-size:13px;color:var(--ink)}
+.pf-act{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+@media (max-width:560px){.pf-g{grid-template-columns:1fr}.pr{grid-template-columns:1fr}.pr-b{justify-content:flex-start}}
+.pf-up{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pf-prev{width:84px;height:84px;border-radius:12px;border:1px dashed var(--line);background:#fff;display:grid;place-items:center;font-size:11.5px;color:#8b6b71;overflow:hidden;flex:none}
+.pf-prev img{width:100%;height:100%;object-fit:contain}
+.pf-up-r{display:flex;gap:8px;align-items:center;flex-wrap:wrap;flex:1;min-width:0}
+.pf-up-r .sub{font-size:12px;color:var(--sub);width:100%}
+.pf .pf-file{display:inline-flex;position:relative;overflow:hidden;color:var(--ink)}
+.pf-file input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.pf-file:focus-within{outline:2px solid var(--rose);outline-offset:2px}
+.pr{grid-template-columns:40px auto minmax(0,1fr) auto}
+.pr-th{width:40px;height:40px;border-radius:8px;background:#fff;border:1px solid var(--line);overflow:hidden}
+.pr-th img{width:100%;height:100%;object-fit:contain}
+@media (max-width:560px){.pr{grid-template-columns:40px minmax(0,1fr)}.pr-id{display:none}.pr-b{grid-column:1/-1}}
+.kt2 .drag{cursor:grab;user-select:none;font-size:18px;line-height:1;color:var(--sub);padding:8px 4px;align-self:center;letter-spacing:-3px}
+.kt2 .drag:active{cursor:grabbing}
+.kt2 .tmv{display:flex;gap:4px;align-self:center}
+.kt2 .tmv .btn2{padding:4px 9px;font-size:12px}
+.kt2 .tmv .btn2:disabled{opacity:.35;cursor:default}
+.kt2.dragging{opacity:.45}
+.kt2.over-b{box-shadow:0 -3px 0 var(--rose)}
+.kt2.over-a{box-shadow:0 3px 0 var(--rose)}
+/* blocks */
+.blocks{display:grid;gap:22px}
+.kp-t .pick-note{font-size:13px;color:var(--ink);background:var(--rose-soft);border-radius:10px;padding:6px 10px}
+.be{display:grid;gap:10px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.be-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.be-h b{font-family:var(--title);font-size:15px}
+.be-btns{display:flex;gap:6px;flex-wrap:wrap}
+.be-btns .btn2{padding:5px 12px;font-size:12px}
+.be-btns .btn2:disabled{opacity:.4;cursor:default}
+.be-f{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
+.be-f label,.be-add label{display:grid;gap:4px;font-size:12px;color:var(--sub);min-width:0}
+.be-f input,.be-f select,.be-add select{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;min-width:0}
+.be-add{display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:12px;border:1px dashed var(--line);border-radius:14px}
+.be-add label{min-width:160px}
+@media (max-width:560px){.be-f{grid-template-columns:1fr}}
+/* product search */
+.psearch{display:grid;gap:8px}
+.sbox{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:4px 8px 4px 16px;transition:border-color .15s}
+.sbox:focus-within{border-color:var(--rose)}
+.sbox svg{width:18px;height:18px;color:var(--rose);flex:none}
+.sbox input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);padding:9px 0}
+.sbox input::-webkit-search-cancel-button{display:none}
+.sclear{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;color:var(--sub);font-size:13px}
+.sclear:hover{background:var(--tile);color:var(--ink)}
+.sclear:focus-visible{outline:2px solid var(--rose)}
+.sres{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;display:grid;gap:6px;box-shadow:0 10px 30px rgb(140 20 45 / .07)}
+.sres-h{margin:2px 6px 4px;font-size:12.5px;color:var(--sub)}
+.sitem{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px;border-radius:12px}
+.sitem:hover{background:var(--tile)}
+.sitem:focus-visible{outline:2px solid var(--rose);outline-offset:-2px}
+.sitem .sw{width:52px;height:52px}
+.sitem .txt{display:grid;gap:1px;min-width:0}
+.sitem b{font-weight:500;font-size:14.5px;line-height:1.4}
+.sitem .s{font-size:12px;color:var(--sub)}
+.sitem .tapx{margin:0}
+@media (max-width:480px){.sitem{grid-template-columns:48px minmax(0,1fr)}.sitem .tapx{grid-column:2}.sitem .sw{width:48px;height:48px}}
+/* routine */
+.rt{display:grid;gap:12px;background:var(--rose-soft);border-radius:20px;padding:18px clamp(14px,3vw,22px)}
+.rt-head h3{margin:0;font-family:var(--title);font-size:19px}
+.rt-head p{margin:2px 0 0;font-size:13.5px;color:var(--sub)}
+.rs-list{display:grid;gap:8px;counter-reset:none}
+.rs{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:60px minmax(0,1fr);gap:14px;align-items:start;background:var(--card);border-radius:14px;padding:12px;border:1.5px solid transparent;transition:border-color .15s}
+.rs:hover{border-color:var(--rose)}
+.rs:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.rs-t{display:grid;gap:2px;min-width:0}
+.rs-no{font-size:11.5px;letter-spacing:.12em;color:var(--rose);font-weight:700;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rs-time{font-size:11px;letter-spacing:0;font-weight:500;color:var(--stem);background:var(--stem-soft);padding:1px 8px;border-radius:999px}
+.rs b{font-weight:500;font-size:15px;line-height:1.4}
+.rs-why{font-size:13px;color:var(--ink)}
+.rs-how{font-size:12.5px;color:var(--sub)}
+.rt-sub{font-size:12.5px;font-weight:700;color:var(--sub);letter-spacing:.08em;margin-top:4px}
+.rt-h{margin:6px 0 0;font-family:var(--title);font-size:17px}
+@media (max-width:480px){.rs{grid-template-columns:52px minmax(0,1fr)}}
+/* group-buy banner */
+.gb{background:linear-gradient(120deg,var(--rose),var(--lav));color:#fff;border-radius:24px;padding:22px clamp(18px,4vw,30px);display:grid;gap:12px;position:relative;overflow:hidden}
+.gb::after{content:"";position:absolute;right:-6px;bottom:-14px;width:150px;height:150px;background:#fff;opacity:.22;-webkit-mask:var(--cherry) center/contain no-repeat;mask:var(--cherry) center/contain no-repeat;transform:rotate(-12deg);pointer-events:none}
+.gb>*{position:relative;z-index:1}
+.gb .row{display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap}
+.gb .tagx{font-size:11px;font-weight:700;letter-spacing:.14em;background:rgb(255 255 255 / .2);padding:3px 10px;border-radius:999px}
+.gb .left{font-size:12.5px;opacity:.92;font-variant-numeric:tabular-nums}
+.gb h2{margin:0;font-size:clamp(19px,4vw,23px);line-height:1.35;text-wrap:balance}
+.gb p{margin:0;font-size:14px;opacity:.92;max-width:52ch}
+.gb .cd{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-variant-numeric:tabular-nums;font-size:12.5px}
+.gb .cd span{background:rgb(255 255 255 / .16);border-radius:8px;padding:2px 8px}
+.gb .cd b{font-size:16px;font-family:var(--title)}
+.gb .pp{display:flex;gap:6px;flex-wrap:wrap}
+.gb .pp button{all:unset;cursor:pointer;font-size:12.5px;padding:4px 11px;border-radius:999px;background:rgb(255 255 255 / .9);color:#2e1519}
+.gb .go{all:unset;cursor:pointer;justify-self:start;background:#fff;color:#2e1519;font-weight:600;font-size:14px;padding:10px 20px;border-radius:999px}
+.gb .go:hover{opacity:.9}
+.gb button:focus-visible,.gb a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* admin (same structure as the Giverny backend) */
+.wrap.wide{max-width:1000px}
+.adm-btn{all:unset;cursor:pointer;font-size:12px;letter-spacing:.08em;padding:5px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font-family:var(--body)}
+.adm-btn:hover{opacity:.88}
+.adm{display:grid;gap:14px}
+.ad-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ad-top h1{margin:0;font-family:var(--title);font-size:26px;display:flex;align-items:center;gap:10px}
+.ad-top h1 .ch{width:28px;height:28px;margin:0}
+.ad-top .sub{font-size:12.5px;color:var(--sub)}
+.btn2{all:unset;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:13px}
+.lock{display:flex;gap:12px;align-items:center;background:var(--rose-soft);color:var(--ink);border-radius:14px;padding:12px 16px}
+.lock svg{width:22px;height:22px;color:var(--rose);flex:none}
+.lock div{display:grid;gap:1px;min-width:0}
+.lock b{font-size:14px}
+.lock span{font-size:12.5px;color:var(--sub)}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.kpi span{display:block;font-size:12px;color:var(--sub);letter-spacing:.04em}
+.kpi b{display:block;font-family:var(--title);font-size:26px;font-variant-numeric:tabular-nums;line-height:1.3}
+.kpi small{font-size:11.5px;color:var(--sub)}
+.kpi.hl{background:var(--rose-soft);border-color:transparent}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
+.panel h3{font-family:var(--title);font-size:16px;margin:0 0 12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.panel h3 small{font-family:var(--body);font-size:12px;color:var(--sub);font-weight:400}
+.hb{display:grid;grid-template-columns:7.5em minmax(0,1fr) 5em;gap:10px;align-items:center;font-size:13px;margin-bottom:8px}
+.hb .tr{height:10px;border-radius:6px;background:var(--bg);overflow:hidden}
+.hb .tr i{display:block;height:100%;border-radius:6px;background:var(--rose)}
+.hb .tr i.g{background:var(--stem)}
+.hb em{font-style:normal;color:var(--sub);text-align:right;font-variant-numeric:tabular-nums;font-size:12px}
+.hb label{display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hb label i{width:10px;height:10px;border-radius:50%;flex:none;border:1px solid var(--line)}
+.trend{width:100%;height:auto;display:block}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--sub);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form label{display:grid;gap:4px;font-size:12.5px;color:var(--sub);min-width:0}
+.form .full{grid-column:1/-1}
+.form input,.form textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:100%;min-width:0}
+.form textarea{min-height:64px;resize:vertical}
+.form .row{grid-column:1/-1;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{all:unset;cursor:pointer;background:var(--rose);color:#fff;font-weight:500;font-size:14px;padding:10px 22px;border-radius:999px;letter-spacing:.04em}
+.btn:hover{background:var(--lav)}
+.status{font-size:12.5px;color:var(--stem)}
+.status.err{color:var(--rose)}
+.tbl{overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+.tbl th{text-align:left;font-weight:500;color:var(--sub);font-size:12px;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl th.n,.tbl td.n{text-align:right}
+.tbl th button{all:unset;cursor:pointer}
+.tbl th button[aria-pressed="true"]{color:var(--rose);font-weight:700}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.meter{height:6px;border-radius:6px;background:var(--bg);min-width:60px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--rose);border-radius:6px}
+.st{font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--sub);white-space:nowrap}
+.st.ok{background:var(--stem-soft);color:var(--stem)}
+.empty{padding:28px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:16px;background:var(--card)}
+.btn:focus-visible,.btn2:focus-visible,.adm-btn:focus-visible,.form input:focus-visible,.form textarea:focus-visible,.tbl th button:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+@media (max-width:860px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+@media (max-width:440px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.form{grid-template-columns:1fr}.hb{grid-template-columns:6em minmax(0,1fr) 4.5em}}
+footer{font-size:12px;color:var(--sub);line-height:1.8}
+footer a{color:var(--sub)}
+@media (max-width:480px){.opts{grid-template-columns:1fr 1fr}.item{grid-template-columns:52px 1fr}.item .r{display:none}.sw{width:52px;height:52px}}
+@media (prefers-reduced-motion:reduce){.opt,.bar i{transition:none}.opt:hover{transform:none}}
+/* larger product images */
+.kp{grid-template-columns:160px minmax(0,1fr);align-items:start}
+.kp .sw{width:160px;height:160px;border-radius:14px}
+.item{grid-template-columns:88px 1fr auto}
+.item .sw{width:88px;height:88px}
+.rs{grid-template-columns:84px minmax(0,1fr)}
+.rs .sw{width:84px;height:84px}
+.sitem{grid-template-columns:72px minmax(0,1fr) auto}
+.sitem .sw{width:72px;height:72px}
+.sheet .sw.has-img{width:100%;max-width:340px;height:auto;aspect-ratio:1/1;max-height:46vh}
+@media (max-width:560px){
+  .kp{grid-template-columns:1fr}
+  .kp .sw{width:100%;max-width:100%;height:auto;aspect-ratio:1/1;max-height:300px}
+  .item{grid-template-columns:76px 1fr}
+  .item .sw{width:76px;height:76px}
+  .rs{grid-template-columns:76px minmax(0,1fr)}
+  .rs .sw{width:76px;height:76px}
+  .sitem{grid-template-columns:64px minmax(0,1fr)}
+  .sitem .sw{width:64px;height:64px}
+}
+</style>
+<script>window.SITE_MODE=true;</script>
+<script src="blocks.js"></script>
+<script>
+/* ===== Google Analytics 設定 =====
+   到 analytics.google.com 申請後，把下面的 G-XXXXXXXXXX 換成你的「評估 ID」即可開始統計 */
+const GA_ID="G-XXXXXXXXXX";
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+if(/^G-[A-Z0-9]+$/.test(GA_ID)&&GA_ID!=="G-XXXXXXXXXX"){const s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+GA_ID;document.head.appendChild(s);gtag("js",new Date());gtag("config",GA_ID)}
+function gaEvent(name,params){try{gtag("event",name,params||{})}catch(e){}}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand"><b><span class="ch" aria-hidden="true"></span>SAM'U</b><span id="brandR">FIND YOUR MATCH</span></div>
+  <div id="front">
+    <div style="display:grid;gap:22px">
+      <section class="psearch" role="search">
+        <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="q" type="search" autocomplete="off" aria-label="搜尋產品" placeholder="搜尋產品，例如：晚安面膜、防曬、B5、素顏霜"><button type="button" class="sclear" id="qClear" hidden aria-label="清除搜尋">✕</button></div>
+        <div class="sres" id="qres" hidden aria-live="polite"></div>
+      </section>
+      <section class="gb" id="gb" hidden></section>
+      <div class="blocks" id="blocks"></div>
+      <button class="more" id="more" type="button"><span>往下看更多產品・回答兩題找到適合你的保養</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <section class="quiz" id="quiz" aria-live="polite"></section>
+    </div>
+  </div>
+  <div id="admin" class="adm" hidden></div>
+  <footer>產品依 SAM'U 韓國官方網站分類整理，中文品名為翻譯用名，介紹為導覽摘要，詳細資訊請以 <a href="https://sam-u.com/" target="_blank" rel="noopener">sam-u.com</a> 為準。</footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="d-name"></aside>
+
+<script>
+/* ===== KOL 推薦設定：替換成真實的名字、IG 帳號、貼文連結與推薦品項編號 ===== */
+const KOL={
+  name:"YANNA",
+  handle:"@___7yanna22___",                        // IG 帳號
+  ig:"https://www.instagram.com/___7yanna22___/",   // IG 主頁連結
+  intro:"SAM'U 愛用推薦",
+  quote:"YANNA 精選的 SAM'U 愛用品，點產品看詳細介紹，或到 IG 看她的實際分享。",
+  picks:[                                           // id = 產品編號，post = 該品項的 IG 貼文連結
+    {id:2, post:"https://www.instagram.com/___7yanna22___/"},
+    {id:7, post:"https://www.instagram.com/___7yanna22___/"},
+    {id:27,post:"https://www.instagram.com/___7yanna22___/"},
+    {id:37,post:"https://www.instagram.com/___7yanna22___/"}
+  ]
+};
+
+const SERIES={
+  ph:{en:"PH SENSITIVE",name:"PH 系列",t1:"#dbe7f6",t2:"#f1f6fc"},
+  pore:{en:"GALACTO PORE",name:"酵母系列",t1:"#d7eedc",t2:"#f1f9f3"},
+  pan:{en:"BORN PANTHENOL",name:"B5 泛醇系列",t1:"#e5ddf5",t2:"#f6f2fc"},
+  pdrn:{en:"PDRN",name:"PDRN 系列",t1:"#f6d7e1",t2:"#fdf1f5"},
+  sen:{en:"SENSITIVE",name:"敏感肌系列",t1:"#fae2d2",t2:"#fef5ef"},
+  hb:{en:"HAIR · BODY",name:"頭髮與身體護理",t1:"#d6ebef",t2:"#f0f8f9"},
+  shot:{en:"SYNERGY SHOT",name:"雙劑型特殊護理",t1:"#f2e8c9",t2:"#fbf8ec"}
+};
+const CATS=[
+  {k:"clean",name:"清潔",hint:"潔面凝膠、潔顏粉、潔顏露",cats:["clean"]},
+  {k:"remove",name:"卸妝",hint:"卸妝油、卸妝乳",cats:["remove"]},
+  {k:"toner",name:"化妝水",hint:"化妝水、噴霧、去角質化妝水",cats:["toner"]},
+  {k:"serum",name:"精華",hint:"精華、安瓶",cats:["serum"]},
+  {k:"cream",name:"乳霜",hint:"面霜、修護霜",cats:["cream"]},
+  {k:"mask",name:"面膜",hint:"片狀、晚安面膜",cats:["mask"]},
+  {k:"sun",name:"防曬・底妝",hint:"防曬乳、氣墊、潤色",cats:["sun","base"]},
+  {k:"exfo",name:"去角質",hint:"雲朵去角質、棉片",cats:["exfo"]},
+  {k:"lip",name:"護唇",hint:"護唇膏",cats:["lip"],skip:true},
+  {k:"hb",name:"頭髮・身體",hint:"洗髮、護髮、身體乳",cats:["hb"],skip:true}
+];
+const CONCERNS=[
+  {k:"dry",name:"乾燥缺水",hint:"緊繃、脫皮",series:["ph"]},
+  {k:"pore",name:"毛孔・出油",hint:"粗大、粉刺",series:["pore"]},
+  {k:"red",name:"泛紅敏感",hint:"容易刺癢、不穩",series:["pan","sen"]},
+  {k:"glow",name:"暗沉・彈性",hint:"無光澤、鬆弛",series:["pdrn","shot"]}
+];
+const CATNAME={clean:"清潔",remove:"卸妝",exfo:"去角質",toner:"化妝水",serum:"精華",cream:"乳霜",mask:"面膜",sun:"防曬",base:"底妝",lip:"護唇",hb:"頭髮・身體"};
+const ORDER=["remove","clean","exfo","toner","serum","cream","mask","sun","base","lip","hb"];
+let P=[
+ [1,"PH 化妝水","ph",["toner"],"130ml","弱酸性化妝水，清潔後第一道補水，舒緩並平衡肌膚。","洗臉後取適量以手或化妝棉輕拍全臉。"],
+ [2,"PH敏感潔顏泡沫潔顏乳","ph",["clean"],"150ml","弱酸性凝膠潔面，含玻尿酸與植物萃取，洗後不緊繃。","取適量加水搓揉起泡，輕柔按摩後以清水洗淨。"],
+ [3,"PH敏感雙重屏障修護霜","ph",["cream"],"100ml","大容量屏障修護面霜，加強鎖水，適合乾燥或換季肌膚。","保養最後一步取適量均勻塗抹全臉。"],
+ [4,"PH舒緩平衡面霜噴霧","ph",["toner"],"100ml","乳霜質地的保濕噴霧，隨時為乾燥肌膚補水，也可在妝上使用。","距離臉部約 20 公分均勻噴灑，輕拍吸收。"],
+ [5,"PH舒緩平衡棉片","ph",["exfo"],"130ml（60入）","溫和擦拭型棉片，輕柔帶走老廢角質，也可局部濕敷。","洗臉後取一片沿肌膚紋理輕輕擦拭，粗糙部位可濕敷數分鐘。"],
+ [6,"PH 安瓶精華","ph",["serum"],"30ml","濃縮保濕安瓶，加強舒緩與屏障修護。","化妝水後取 2–3 滴輕拍至吸收。"],
+ [7,"PH完美舒緩平衡乳霜","ph",["cream"],"60ml","接近肌膚 pH 值的保濕面霜，含玻尿酸與類神經醯胺成分，長效保濕。","保養最後一步取適量塗抹全臉。"],
+ [8,"PH高係數敏感防曬乳","ph",["sun"],"50ml","溫和弱酸性防曬乳，日常防護同時保濕。","保養最後一步、出門前 15 分鐘均勻塗抹，戶外適時補擦。"],
+ [9,"PH雲朵纖維素去角質","ph",["exfo"],"120ml","輕柔凝膠去角質，溫和代謝老廢角質。","於乾燥臉部取適量輕輕按摩，避開眼周，再以清水洗淨。每週 1–2 次。"],
+ [10,"PH敏感萬用修護全能霜","ph",["cream"],"30ml","萬用型修護全能霜，針對局部乾燥或不穩部位加強修護。","於需要加強的部位局部塗抹。"],
+ [11,"PH舒緩平衡補水保濕面膜","ph",["mask"],"30ml（10入）","補水型面膜，迅速改善乾燥缺水。","洗臉後敷 15–20 分鐘，取下後輕拍剩餘精華。"],
+ [12,"PH 清涼面膜","ph",["mask"],"5片","清涼感面膜，適合曬後或悶熱時鎮靜降溫。","洗臉後敷 15–20 分鐘，可先冷藏增加清涼感。"],
+ [13,"PH 舒緩面膜","ph",["mask"],"5片","舒緩型面膜，安撫泛紅不適的敏弱肌。","洗臉後敷 15–20 分鐘。"],
+ [14,"PH 提亮面膜","ph",["mask"],"5片","提亮型面膜，改善暗沉，讓膚色更有光澤。","洗臉後敷 15–20 分鐘。"],
+ [15,"PH敏感毛孔緊緻面膜","ph",["mask"],"30ml（10入）","毛孔調理面膜，幫助肌膚看起來更細緻。","洗臉後敷 15–20 分鐘。"],
+ [16,"PH敏感抗老緊緻面膜","ph",["mask"],"30ml（10入）","活力型面膜，讓疲倦肌膚恢復彈潤。","洗臉後敷 15–20 分鐘。"],
+ [17,"PH 六款面膜選擇組","ph",["mask"],"30ml × 15片","六種功效面膜組合，可依當天肌膚狀態挑選。","依肌膚需求選擇，洗臉後敷 15–20 分鐘。"],
+ [18,"毛孔酵素潔顏粉","pore",["clean"],"50g","酵素潔顏粉，溫和分解毛孔髒污與老廢角質。","取適量於掌心加水起泡，按摩後洗淨。"],
+ [19,"酵母毛孔淨化水潤卸妝油","pore",["remove"],"200ml","清爽水感卸妝油，乳化快、帶走毛孔內彩妝與油脂。","乾手乾臉取適量按摩，加水乳化後洗淨。"],
+ [20,"氧氣毛孔煥顏霜","pore",["toner"],"180ml","清爽化妝水，調理油水平衡、收斂毛孔感。","洗臉後以化妝棉擦拭或輕拍全臉。"],
+ [21,"酵母能量毛孔精華","pore",["serum"],"40ml","以乳酸菌發酵成分為主的毛孔精華，居家照顧粗大毛孔。","化妝水後取適量塗抹，T 字部位可加強。"],
+ [22,"毛孔淨化酵母霜","pore",["cream"],"60ml","清爽控油面霜，保濕不黏膩，適合混合肌與油肌。","保養最後一步取適量塗抹。"],
+ [23,"毛孔深層清潔兩步驟面膜","pore",["mask","clean"],"4片","兩步驟設計，先清潔毛孔再調理收斂。","依包裝順序先使用第一步，再敷第二步面膜。"],
+ [24,"B5淨潤潔面凝膠","pan",["clean"],"100ml","果凍質地潔顏露，含泛醇，洗後保持水潤。","取適量加水搓揉，按摩後洗淨。"],
+ [25,"B5舒緩煥膚去角質爽膚水","pan",["toner"],"180ml","兼具溫和去角質與保濕的化妝水，日常代謝角質。","洗臉後以化妝棉輕輕擦拭全臉。"],
+ [26,"B5全效舒緩精華","pan",["serum"],"50ml","雙劑型泛醇精華，集中舒緩修護。","使用前搖勻，化妝水後取適量塗抹。"],
+ [27,"B5雙重防禦凝膠乳霜","pan",["cream"],"50g","以泛醇為核心的修護面霜，快速舒緩泛紅乾燥。","保養最後一步取適量塗抹。"],
+ [28,"泛醇清涼面膜","pan",["mask"],"5片","清涼舒緩面膜，適合曬後或泛紅時使用。","洗臉後敷 15–20 分鐘。"],
+ [29,"泛醇豐盈面膜","pan",["mask"],"5片","滋潤修護面膜，給乾燥肌膚飽滿水潤感。","洗臉後敷 15–20 分鐘。"],
+ [30,"第七項：待確認","pan",[],"—","官方頁面尚未完整取得，待確認後補上。",""],
+ [31,"PDRN 水光貼合化妝水","pdrn",["toner"],"150ml","水光感化妝水，貼合肌膚補水，帶來透亮感。","洗臉後輕拍全臉，可多層疊擦。"],
+ [32,"PDRN 光采精華","pdrn",["serum"],"35ml","提亮光采精華，改善暗沉、提升膚色透亮度。","化妝水後取適量塗抹。"],
+ [33,"PDRN 緊緻精華","pdrn",["serum"],"35ml","緊緻彈潤精華，加強肌膚彈性。","化妝水後取適量塗抹，可由下往上輕推。"],
+ [34,"PDRN全效淨化修護晚安面膜（01淨膚款）","pdrn",["mask"],"70ml","免沖洗晚安面膜，夜間淨化調理。","晚間保養最後一步薄擦全臉，隔天早上洗淨。"],
+ [35,"PDRN逆齡再生修護晚安面膜（02煥夜款）","pdrn",["mask"],"70ml","夜間修護晚安面膜，配合肌膚夜間修復節律。","晚間保養最後一步薄擦全臉，隔天早上洗淨。"],
+ [36,"PDRN導入式煥采水凝面膜","pdrn",["mask"],"33g × 4片","水凝膠面膜，服貼不易滑落，集中緊緻彈潤。","洗臉後敷 20–30 分鐘。"],
+ [37,"專業全效亮膚空氣感防曬精華","pdrn",["sun"],"40ml","精華質地防曬，輕盈好推，防曬兼保養。","保養最後一步均勻塗抹。"],
+ [38,"敏感肌純淨氣墊粉餅","sen",["base","sun"],"SPF50・PA+++","敏感肌氣墊粉餅，兼具修飾與高係數防曬。","以粉撲沾取，由臉部中央向外輕拍。"],
+ [39,"敏感肌密潤鎖養顏霜","sen",["base"],"30ml","輕透潤色養顏霜，自然修飾膚色，素顏也有好氣色。","保養後取適量均勻推開。"],
+ [40,"全能修護敏感防曬棒 SPF50, PA++++","sen",["sun"],"10g × 2入","攜帶型防曬棒，方便隨時補擦。","直接塗抹於臉部或身體，妝上也可補擦。"],
+ [41,"PH舒緩深層洗卸精華乳","sen",["remove"],"200ml","溫和卸妝乳，低刺激卸除彩妝與防曬。","取適量按摩全臉，以清水或化妝棉清潔。"],
+ [42,"敏感肌透明護唇膏","sen",["lip"],"3.3g","無色護唇膏，滋潤乾燥唇部。","隨時塗抹於唇部。"],
+ [43,"敏感肌桂花護唇膏","sen",["lip"],"3.3g","桂花色調護唇膏，滋潤同時帶來淡淡氣色。","隨時塗抹於唇部。"],
+ [44,"豐盈保濕身體乳霜","hb",["hb"],"400ml","大容量身體乳霜，長效保濕乾燥肌膚。","沐浴後趁肌膚微濕時塗抹全身。"],
+ [45,"水轉安瓶護髮素","hb",["hb"],"200ml","安瓶型護髮素，修護毛躁受損髮絲。","洗髮後塗抹於髮絲，停留片刻後沖淨。"],
+ [46,"豐盈起泡頭皮洗髮精","hb",["hb","clean"],"490ml","綿密泡沫洗髮精，清潔頭皮並讓髮根蓬鬆。","取適量於頭皮按摩起泡後沖淨。"],
+ [47,"PDRN SHOT（PDRN 再生修護）","shot",["serum"],"依官方標示","雙劑型 PDRN 精華，密集修護、提升彈潤。","使用前混合兩劑，化妝水後塗抹。"],
+ [48,"RETINOL SHOT（視黃醇・改善彈性）","shot",["serum"],"依官方標示","雙劑型視黃醇精華，改善彈性與細紋。","建議晚間使用，混合後塗抹，白天務必防曬。"],
+ [49,"PEPTITIN SHOT（胜肽・緊緻彈力）","shot",["serum"],"依官方標示","雙劑型胜肽精華，加強緊緻與彈力。","使用前混合兩劑，化妝水後塗抹。"],
+ [50,"GLUTAMIDE SHOT（穀胱甘肽・提亮膚色）","shot",["serum"],"依官方標示","雙劑型提亮精華，改善暗沉、均勻膚色。","使用前混合兩劑，化妝水後塗抹。"]
+].map(a=>({id:a[0],name:a[1],s:a[2],cats:a[3],size:a[4],desc:a[5],how:a[6]}));
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+/* ===== 首頁區塊預設內容 =====
+   實際顯示的內容以 blocks.js 為準；要修改請在網址後面加 #edit 開啟編輯器，
+   編輯後下載 blocks.js 上傳到 GitHub 覆蓋即可。 */
+const KOL_EMBED={
+ "products": [
+  {
+   "id": 1,
+   "name": "PH 化妝水",
+   "s": "ph",
+   "cats": [
+    "toner"
+   ],
+   "size": "130ml",
+   "desc": "弱酸性化妝水，清潔後第一道補水，舒緩並平衡肌膚。",
+   "how": "洗臉後取適量以手或化妝棉輕拍全臉。",
+   "img": "/_blob/9fb00d84d71d3df8e1537060bad8bbbc"
+  },
+  {
+   "id": 2,
+   "name": "PH敏感潔顏泡沫潔顏乳",
+   "s": "ph",
+   "cats": [
+    "clean"
+   ],
+   "size": "150ml",
+   "desc": "弱酸性凝膠潔面，含玻尿酸與植物萃取，洗後不緊繃。",
+   "how": "取適量加水搓揉起泡，輕柔按摩後以清水洗淨。",
+   "img": "/_blob/1815702bf4ea4cf3b968da0c04c99a6a"
+  },
+  {
+   "id": 3,
+   "name": "PH敏感雙重屏障修護霜",
+   "s": "ph",
+   "cats": [
+    "cream"
+   ],
+   "size": "100ml",
+   "desc": "大容量屏障修護面霜，加強鎖水，適合乾燥或換季肌膚。",
+   "how": "保養最後一步取適量均勻塗抹全臉。",
+   "img": "/_blob/3ffc9ad3f83503661aff81bfb3966ab2"
+  },
+  {
+   "id": 4,
+   "name": "PH舒緩平衡面霜噴霧",
+   "s": "ph",
+   "cats": [
+    "toner"
+   ],
+   "size": "100ml",
+   "desc": "乳霜質地的保濕噴霧，隨時為乾燥肌膚補水，也可在妝上使用。",
+   "how": "距離臉部約 20 公分均勻噴灑，輕拍吸收。",
+   "img": "/_blob/aa52ff5b7816b51617931703c7209b9a"
+  },
+  {
+   "id": 5,
+   "name": "PH舒緩平衡棉片",
+   "s": "ph",
+   "cats": [
+    "exfo"
+   ],
+   "size": "130ml（60入）",
+   "desc": "溫和擦拭型棉片，輕柔帶走老廢角質，也可局部濕敷。",
+   "how": "洗臉後取一片沿肌膚紋理輕輕擦拭，粗糙部位可濕敷數分鐘。",
+   "img": "/_blob/535e6a43b5b81f380df3b46e6de68bb8"
+  },
+  {
+   "id": 6,
+   "name": "PH 安瓶精華",
+   "s": "ph",
+   "cats": [
+    "serum"
+   ],
+   "size": "30ml",
+   "desc": "濃縮保濕安瓶，加強舒緩與屏障修護。",
+   "how": "化妝水後取 2–3 滴輕拍至吸收。",
+   "img": "/_blob/cb613fd68385394fe1fb94d4b8e3fac9"
+  },
+  {
+   "id": 7,
+   "name": "PH完美舒緩平衡乳霜",
+   "s": "ph",
+   "cats": [
+    "cream"
+   ],
+   "size": "60ml",
+   "desc": "接近肌膚 pH 值的保濕面霜，含玻尿酸與類神經醯胺成分，長效保濕。",
+   "how": "保養最後一步取適量塗抹全臉。",
+   "img": "/_blob/6ad56a977e397d74888023d0451acfda"
+  },
+  {
+   "id": 8,
+   "name": "PH高係數敏感防曬乳",
+   "s": "ph",
+   "cats": [
+    "sun"
+   ],
+   "size": "50ml",
+   "desc": "溫和弱酸性防曬乳，日常防護同時保濕。",
+   "how": "保養最後一步、出門前 15 分鐘均勻塗抹，戶外適時補擦。",
+   "img": "/_blob/e08dd81ad5022c0503f782b3edcfe30f"
+  },
+  {
+   "id": 9,
+   "name": "PH雲朵纖維素去角質",
+   "s": "ph",
+   "cats": [
+    "exfo"
+   ],
+   "size": "120ml",
+   "desc": "輕柔凝膠去角質，溫和代謝老廢角質。",
+   "how": "於乾燥臉部取適量輕輕按摩，避開眼周，再以清水洗淨。每週 1–2 次。",
+   "img": "/_blob/fd790a60e97a2a1540ff2260d1acee27"
+  },
+  {
+   "id": 10,
+   "name": "PH敏感萬用修護全能霜",
+   "s": "ph",
+   "cats": [
+    "cream"
+   ],
+   "size": "30ml",
+   "desc": "萬用型修護全能霜，針對局部乾燥或不穩部位加強修護。",
+   "how": "於需要加強的部位局部塗抹。",
+   "img": "/_blob/19c81494d2fdc1c6b3498df1e0e7cc06"
+  },
+  {
+   "id": 11,
+   "name": "PH舒緩平衡補水保濕面膜",
+   "s": "ph",
+   "cats": [
+    "mask"
+   ],
+   "size": "30ml（10入）",
+   "desc": "補水型面膜，迅速改善乾燥缺水。",
+   "how": "洗臉後敷 15–20 分鐘，取下後輕拍剩餘精華。",
+   "img": "/_blob/70c85fb40fb2a61364a276e0dbbc8d37"
+  },
+  {
+   "id": 12,
+   "name": "PH 清涼面膜",
+   "s": "ph",
+   "cats": [
+    "mask"
+   ],
+   "size": "5片",
+   "desc": "清涼感面膜，適合曬後或悶熱時鎮靜降溫。",
+   "how": "洗臉後敷 15–20 分鐘，可先冷藏增加清涼感。",
+   "img": "/_blob/83141883c411f6d2ed9343e30c9bf498"
+  },
+  {
+   "id": 13,
+   "name": "PH 舒緩面膜",
+   "s": "ph",
+   "cats": [
+    "mask"
+   ],
+   "size": "5片",
+   "desc": "舒緩型面膜，安撫泛紅不適的敏弱肌。",
+   "how": "洗臉後敷 15–20 分鐘。",
+   "img": "/_blob/f806c71283de2d8de1b3d56d6806003f"
+  },
+  {
+   "id": 14,
+   "name": "PH 提亮面膜",
+   "s": "ph",
+   "cats": [
+    "mask"
+   ],
+   "size": "5片",
+   "desc": "提亮型面膜，改善暗沉，讓膚色更有光澤。",
+   "how": "洗臉後敷 15–20 分鐘。",
+   "img": "/_blob/cd2164b3b54d52586b23985c944f47b4"
+  },
+  {
+   "id": 15,
+   "name": "PH敏感毛孔緊緻面膜",
+   "s": "ph",
+   "cats": [
+    "mask"
+   ],
+   "size": "30ml（10入）",
+   "desc": "毛孔調理面膜，幫助肌膚看起來更細緻。",
+   "how": "洗臉後敷 15–20 分鐘。",
+   "img": "/_blob/77fc43006ec263e754f44dfa8d45fe2c"
+  },
+  {
+   "id": 16,
+   "name": "PH敏感抗老緊緻面膜",
+   "s": "ph",
+   "cats": [
+    "mask"
+   ],
+   "size": "30ml（10入）",
+   "desc": "活力型面膜，讓疲倦肌膚恢復彈潤。",
+   "how": "洗臉後敷 15–20 分鐘。",
+   "img": "/_blob/4df58d85281f8f80e6f05dbf7280b1a5"
+  },
+  {
+   "id": 18,
+   "name": "毛孔酵素潔顏粉",
+   "s": "pore",
+   "cats": [
+    "clean"
+   ],
+   "size": "50g",
+   "desc": "酵素潔顏粉，溫和分解毛孔髒污與老廢角質。",
+   "how": "取適量於掌心加水起泡，按摩後洗淨。",
+   "img": ""
+  },
+  {
+   "id": 19,
+   "name": "酵母毛孔淨化水潤卸妝油",
+   "s": "pore",
+   "cats": [
+    "remove"
+   ],
+   "size": "200ml",
+   "desc": "清爽水感卸妝油，乳化快、帶走毛孔內彩妝與油脂。",
+   "how": "乾手乾臉取適量按摩，加水乳化後洗淨。",
+   "img": ""
+  },
+  {
+   "id": 20,
+   "name": "氧氣毛孔煥顏霜",
+   "s": "pore",
+   "cats": [
+    "toner"
+   ],
+   "size": "180ml",
+   "desc": "清爽化妝水，調理油水平衡、收斂毛孔感。",
+   "how": "洗臉後以化妝棉擦拭或輕拍全臉。",
+   "img": ""
+  },
+  {
+   "id": 21,
+   "name": "酵母能量毛孔精華",
+   "s": "pore",
+   "cats": [
+    "serum"
+   ],
+   "size": "40ml",
+   "desc": "以乳酸菌發酵成分為主的毛孔精華，居家照顧粗大毛孔。",
+   "how": "化妝水後取適量塗抹，T 字部位可加強。",
+   "img": ""
+  },
+  {
+   "id": 22,
+   "name": "毛孔淨化酵母霜",
+   "s": "pore",
+   "cats": [
+    "cream"
+   ],
+   "size": "60ml",
+   "desc": "清爽控油面霜，保濕不黏膩，適合混合肌與油肌。",
+   "how": "保養最後一步取適量塗抹。",
+   "img": ""
+  },
+  {
+   "id": 23,
+   "name": "毛孔深層清潔兩步驟面膜",
+   "s": "pore",
+   "cats": [
+    "mask",
+    "clean"
+   ],
+   "size": "4片",
+   "desc": "兩步驟設計，先清潔毛孔再調理收斂。",
+   "how": "依包裝順序先使用第一步，再敷第二步面膜。",
+   "img": ""
+  },
+  {
+   "id": 24,
+   "name": "B5淨潤潔面凝膠",
+   "s": "pan",
+   "cats": [
+    "clean"
+   ],
+   "size": "100ml",
+   "desc": "果凍質地潔顏露，含泛醇，洗後保持水潤。",
+   "how": "取適量加水搓揉，按摩後洗淨。",
+   "img": ""
+  },
+  {
+   "id": 25,
+   "name": "B5舒緩煥膚去角質爽膚水",
+   "s": "pan",
+   "cats": [
+    "toner"
+   ],
+   "size": "180ml",
+   "desc": "兼具溫和去角質與保濕的化妝水，日常代謝角質。",
+   "how": "洗臉後以化妝棉輕輕擦拭全臉。",
+   "img": ""
+  },
+  {
+   "id": 26,
+   "name": "B5全效舒緩精華",
+   "s": "pan",
+   "cats": [
+    "serum"
+   ],
+   "size": "50ml",
+   "desc": "雙劑型泛醇精華，集中舒緩修護。",
+   "how": "使用前搖勻，化妝水後取適量塗抹。",
+   "img": "/_blob/4acf5799e7612fb74c8d285af8cafd13"
+  },
+  {
+   "id": 27,
+   "name": "B5雙重防禦凝膠乳霜",
+   "s": "pan",
+   "cats": [
+    "cream"
+   ],
+   "size": "50g",
+   "desc": "以泛醇為核心的修護面霜，快速舒緩泛紅乾燥。",
+   "how": "保養最後一步取適量塗抹。",
+   "img": ""
+  },
+  {
+   "id": 28,
+   "name": "泛醇清涼面膜",
+   "s": "pan",
+   "cats": [
+    "mask"
+   ],
+   "size": "5片",
+   "desc": "清涼舒緩面膜，適合曬後或泛紅時使用。",
+   "how": "洗臉後敷 15–20 分鐘。",
+   "img": ""
+  },
+  {
+   "id": 29,
+   "name": "泛醇豐盈面膜",
+   "s": "pan",
+   "cats": [
+    "mask"
+   ],
+   "size": "5片",
+   "desc": "滋潤修護面膜，給乾燥肌膚飽滿水潤感。",
+   "how": "洗臉後敷 15–20 分鐘。",
+   "img": ""
+  },
+  {
+   "id": 31,
+   "name": "PDRN 水光貼合化妝水",
+   "s": "pdrn",
+   "cats": [
+    "toner"
+   ],
+   "size": "150ml",
+   "desc": "水光感化妝水，貼合肌膚補水，帶來透亮感。",
+   "how": "洗臉後輕拍全臉，可多層疊擦。",
+   "img": ""
+  },
+  {
+   "id": 32,
+   "name": "PDRN 光采精華",
+   "s": "pdrn",
+   "cats": [
+    "serum"
+   ],
+   "size": "35ml",
+   "desc": "提亮光采精華，改善暗沉、提升膚色透亮度。",
+   "how": "化妝水後取適量塗抹。",
+   "img": ""
+  },
+  {
+   "id": 33,
+   "name": "PDRN 緊緻精華",
+   "s": "pdrn",
+   "cats": [
+    "serum"
+   ],
+   "size": "35ml",
+   "desc": "緊緻彈潤精華，加強肌膚彈性。",
+   "how": "化妝水後取適量塗抹，可由下往上輕推。",
+   "img": ""
+  },
+  {
+   "id": 34,
+   "name": "PDRN全效淨化修護晚安面膜（01淨膚款）",
+   "s": "pdrn",
+   "cats": [
+    "mask"
+   ],
+   "size": "70ml",
+   "desc": "免沖洗晚安面膜，夜間淨化調理。",
+   "how": "晚間保養最後一步薄擦全臉，隔天早上洗淨。",
+   "img": "/_blob/b28acd58ea4dfb8a54ed27a2fc8d8c28"
+  },
+  {
+   "id": 35,
+   "name": "PDRN逆齡再生修護晚安面膜（02煥夜款）",
+   "s": "pdrn",
+   "cats": [
+    "mask"
+   ],
+   "size": "70ml",
+   "desc": "夜間修護晚安面膜，配合肌膚夜間修復節律。",
+   "how": "晚間保養最後一步薄擦全臉，隔天早上洗淨。",
+   "img": "/_blob/c6830ff2e12e938ca7a0ffeb1266bd50"
+  },
+  {
+   "id": 36,
+   "name": "PDRN導入式煥采水凝面膜",
+   "s": "pdrn",
+   "cats": [
+    "mask"
+   ],
+   "size": "33g × 4片",
+   "desc": "水凝膠面膜，服貼不易滑落，集中緊緻彈潤。",
+   "how": "洗臉後敷 20–30 分鐘。",
+   "img": ""
+  },
+  {
+   "id": 37,
+   "name": "專業全效亮膚空氣感防曬精華",
+   "s": "pdrn",
+   "cats": [
+    "sun"
+   ],
+   "size": "40ml",
+   "desc": "精華質地防曬，輕盈好推，防曬兼保養。",
+   "how": "保養最後一步均勻塗抹。",
+   "img": "/_blob/af7e2aebf47765b63f2ee63d457764b4"
+  },
+  {
+   "id": 38,
+   "name": "敏感肌純淨氣墊粉餅",
+   "s": "sen",
+   "cats": [
+    "base",
+    "sun"
+   ],
+   "size": "SPF50・PA+++",
+   "desc": "敏感肌氣墊粉餅，兼具修飾與高係數防曬。",
+   "how": "以粉撲沾取，由臉部中央向外輕拍。",
+   "img": ""
+  },
+  {
+   "id": 39,
+   "name": "敏感肌密濾鏡素顏霜",
+   "s": "sen",
+   "cats": [
+    "base"
+   ],
+   "size": "30ml",
+   "desc": "輕透潤色養顏霜，自然修飾膚色，素顏也有好氣色。",
+   "how": "保養後取適量均勻推開。",
+   "img": "/_blob/fa9b500094fd91ba1135afc6a44c411b"
+  },
+  {
+   "id": 40,
+   "name": "全能修護敏感防曬棒 SPF50, PA++++",
+   "s": "sen",
+   "cats": [
+    "sun"
+   ],
+   "size": "10g × 2入",
+   "desc": "攜帶型防曬棒，方便隨時補擦。",
+   "how": "直接塗抹於臉部或身體，妝上也可補擦。",
+   "img": "/_blob/029194532b74d90ada234896352eeba3"
+  },
+  {
+   "id": 41,
+   "name": "PH舒緩深層洗卸精華乳",
+   "s": "sen",
+   "cats": [
+    "remove"
+   ],
+   "size": "200ml",
+   "desc": "溫和卸妝乳，低刺激卸除彩妝與防曬。",
+   "how": "取適量按摩全臉，以清水或化妝棉清潔。",
+   "img": ""
+  },
+  {
+   "id": 42,
+   "name": "敏感肌透明護唇膏",
+   "s": "sen",
+   "cats": [
+    "lip"
+   ],
+   "size": "3.3g",
+   "desc": "無色護唇膏，滋潤乾燥唇部。",
+   "how": "隨時塗抹於唇部。",
+   "img": ""
+  },
+  {
+   "id": 43,
+   "name": "敏感肌桂花護唇膏",
+   "s": "sen",
+   "cats": [
+    "lip"
+   ],
+   "size": "3.3g",
+   "desc": "桂花色調護唇膏，滋潤同時帶來淡淡氣色。",
+   "how": "隨時塗抹於唇部。",
+   "img": ""
+  },
+  {
+   "id": 44,
+   "name": "豐盈保濕身體乳霜",
+   "s": "hb",
+   "cats": [
+    "hb"
+   ],
+   "size": "400ml",
+   "desc": "大容量身體乳霜，長效保濕乾燥肌膚。",
+   "how": "沐浴後趁肌膚微濕時塗抹全身。",
+   "img": ""
+  },
+  {
+   "id": 45,
+   "name": "水轉安瓶護髮素",
+   "s": "hb",
+   "cats": [
+    "hb"
+   ],
+   "size": "200ml",
+   "desc": "安瓶型護髮素，修護毛躁受損髮絲。",
+   "how": "洗髮後塗抹於髮絲，停留片刻後沖淨。",
+   "img": ""
+  },
+  {
+   "id": 46,
+   "name": "豐盈起泡頭皮洗髮精",
+   "s": "hb",
+   "cats": [
+    "hb",
+    "clean"
+   ],
+   "size": "490ml",
+   "desc": "綿密泡沫洗髮精，清潔頭皮並讓髮根蓬鬆。",
+   "how": "取適量於頭皮按摩起泡後沖淨。",
+   "img": ""
+  },
+  {
+   "id": 47,
+   "name": "PDRN SHOT（PDRN 再生修護）",
+   "s": "shot",
+   "cats": [
+    "serum"
+   ],
+   "size": "依官方標示",
+   "desc": "雙劑型 PDRN 精華，密集修護、提升彈潤。",
+   "how": "使用前混合兩劑，化妝水後塗抹。",
+   "img": ""
+  },
+  {
+   "id": 48,
+   "name": "RETINOL SHOT（視黃醇・改善彈性）",
+   "s": "shot",
+   "cats": [
+    "serum"
+   ],
+   "size": "依官方標示",
+   "desc": "雙劑型視黃醇精華，改善彈性與細紋。",
+   "how": "建議晚間使用，混合後塗抹，白天務必防曬。",
+   "img": ""
+  },
+  {
+   "id": 49,
+   "name": "PEPTITIN SHOT（胜肽・緊緻彈力）",
+   "s": "shot",
+   "cats": [
+    "serum"
+   ],
+   "size": "依官方標示",
+   "desc": "雙劑型胜肽精華，加強緊緻與彈力。",
+   "how": "使用前混合兩劑，化妝水後塗抹。",
+   "img": ""
+  },
+  {
+   "id": 50,
+   "name": "GLUTAMIDE SHOT（穀胱甘肽・提亮膚色）",
+   "s": "shot",
+   "cats": [
+    "serum"
+   ],
+   "size": "依官方標示",
+   "desc": "雙劑型提亮精華，改善暗沉、均勻膚色。",
+   "how": "使用前混合兩劑，化妝水後塗抹。",
+   "img": ""
+  }
+ ],
+ "series": {},
+ "blocks": [
+  {
+   "id": "yanna",
+   "type": "kol",
+   "name": "YANNA",
+   "title": "",
+   "sub": "@___7yanna22___・依限時動態主題整理",
+   "link": "https://www.instagram.com/___7yanna22___/",
+   "linkLabel": "",
+   "themes": [
+    {
+     "id": "pdrn",
+     "title": "PDRN 晚安面膜",
+     "items": [
+      {
+       "label": "綠色晚安面膜",
+       "product": 34,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4016957257480554325&rpxt=NzdrZmVrZzEwYzNo",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "粉色晚安面膜",
+       "product": 35,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4016981250996686695&rpxt=NzdrZmVrZzEwYzNo",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "PDRN 水凝面膜",
+       "product": 36,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzNDI4MjAyMTQ1NzAx?story_media_id=3810439031059105818&xtok=MWd4ZDhiMG43N2pqaw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "PH 一般面膜系列",
+       "product": null,
+       "video": "https://www.instagram.com/reel/C-zVbz5PQPR/?exln=MXg4MDlvMzNtd3NzMw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "cream",
+     "title": "面霜大集合",
+     "items": [
+      {
+       "label": "屏障修護霜",
+       "product": 3,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA1NTM1MDc2MjY2MTAy?story_media_id=4017021219073871589&cplk=NzdrZmVrZzEwYzNo",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "平衡面霜",
+       "product": 7,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3608191810927440831&xtok=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 面霜",
+       "product": 27,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔面霜",
+       "product": 22,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxMjYwNDQ3MDI1MjY1?story_media_id=3699521432285245445&psln=MXQ3Mzh4ZXhiM3JsYQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "超神萬用霜",
+       "product": 10,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTQ4NjE3MzA0Mzc4NDM5?story_media_id=3659635021403013453&mdxt=MWVtc2xwYm11Nnhlbw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "clean",
+     "title": "清潔・洗卸",
+     "items": [
+      {
+       "label": "PH 平衡洗面乳",
+       "product": 2,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ3OTE5NjQxMTQ2Mzk0?story_media_id=3538592362560182457&dlrf=MTRjaGl3NGt6cG8wNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "潔顏粉",
+       "product": 18,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg3NDE2MzA1Njc4NzAw?story_media_id=3658252953355930207&exln=YnAzanViM3RlZ25k",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 洗面凝膠",
+       "product": 24,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3606032689016914492&psln=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔清潔卸妝油",
+       "product": 19,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "mask",
+     "title": "面膜系列",
+     "items": [
+      {
+       "label": "PH 保濕補水面膜",
+       "product": 11,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODg0MDQyNjMyMTE4NTQ5?story_media_id=3494636104043502272&exln=MWhwODRpaTY5ZHczbw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "沁涼面膜",
+       "product": 12,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3918412106165971114&mdxt=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔面膜",
+       "product": 15,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3918437052283713962&cplk=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "激光面膜",
+       "product": 23,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg3NDE2MzA1Njc4NzAw?story_media_id=3658291950971203074&psln=YnAzanViM3RlZ25k",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "pore",
+     "title": "毛孔護理",
+     "items": [
+      {
+       "label": "毛孔清潔卸妝油",
+       "product": 19,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔護理氧氣瓶",
+       "product": 20,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzYxNDE5NDEyMTUwMTMy?story_media_id=3672707581283888539&psln=MWR5d2ljdHp4enF1cA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔緊緻精華",
+       "product": 21,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzYxNDE5NDEyMTUwMTMy?story_media_id=3674160532095448521&psln=MWR5d2ljdHp4enF1cA",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "毛孔面霜",
+       "product": 22,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxMjYwNDQ3MDI1MjY1?story_media_id=3699521432285245445&psln=MXQ3Mzh4ZXhiM3JsYQ==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "b5",
+     "title": "B5 泛醇修護",
+     "items": [
+      {
+       "label": "B5 洗面凝膠",
+       "product": 24,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3606032689016914492&psln=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 去角質爽膚水",
+       "product": 25,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ4MjI2MTI3MTg4NjE4?story_media_id=3657465694968978275&psln=bWNpZ3Vha2VnZG9q",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 舒緩精華",
+       "product": 26,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ4MjI2MTI3MTg4NjE4?story_media_id=3657522973080556215&vrfl=bWNpZ3Vha2VnZG9q",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "B5 面霜",
+       "product": 27,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "exfo",
+     "title": "去角質・棉片",
+     "items": [
+      {
+       "label": "雲朵去角質",
+       "product": 9,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3626990793518880200&mdxt=MWIzeWduZWtjOWp1cw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "平衡棉片",
+       "product": 5,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzkwMTU3Nzc0NTM5?story_media_id=3605361189897305228&dlrf=MWV2Mm1jZzg3NWptbA==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "平滑棉片",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxNDYzMDYzOTAxNjk5?story_media_id=3671297145548203055&obrf=MXl1endoNmxnMTI2",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "霜噴霧",
+       "product": 4,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQxNDYzMDYzOTAxNjk5?story_media_id=3671273935268074580&srtk=MXl1endoNmxnMTI2",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "sun",
+     "title": "防曬・素顏",
+     "items": [
+      {
+       "label": "三種防曬重點整理",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTc0ODM2OTIzNDI1NzMz?story_media_id=3956765784190204919&dlrf=MXBteHkxdGJoeGdkdg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "防曬乳",
+       "product": 8,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3917672316847911832&rpxt=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "防曬棒",
+       "product": 40,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDMzNDczMDA2NDM4MTI5?story_media_id=3674841832783515867&srtk=MWE4b3pibjl1dmc4eg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "PDRN 噴霧",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTY2NTc5Njc2MDk1Mjcx?story_media_id=3917701310317987615&dlrf=MTlqbGZpbDAxdTVpMg==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "懶人素顏霜",
+       "product": 39,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTQ4NjE3MzA0Mzc4NDM5?story_media_id=3659689062325679555&dlrf=MWVtc2xwYm11Nnhlbw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "懶人素顏霜（新版）",
+       "product": 39,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzNDI4MjAyMTQ1NzAx?story_media_id=3811919232767319099&obrf=MWd4ZDhiMG43N2pqaw==",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "hair",
+     "title": "頭髮護理",
+     "items": [
+      {
+       "label": "洗髮露",
+       "product": 46,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA5NzMzNTA5NTE1Mjkw?story_media_id=3658954261981537769&rpxt=amRxNjkzNXRydW5o",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "護髮素",
+       "product": 45,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA5NzMzNTA5NTE1Mjkw?story_media_id=3659040912200039150&vrfl=amRxNjkzNXRydW5o",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "routine",
+     "title": "保養順序",
+     "items": [
+      {
+       "label": "使用順序 1",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTEwMTE3NTI1MDgxMjk3?story_media_id=3539282492434226932&xtok=MWpsdGRubDhpcmEzNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "使用順序 2",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgzOTY2NzA0ODM0Nzkx?story_media_id=3679665930604780056&vrfl=NjJlZGYyMXUyazN4",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    },
+    {
+     "id": "tmvt52cnw010",
+     "title": "超強私密保養三大王",
+     "items": [
+      {
+       "label": "妹妹三寶",
+       "product": null,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDgwODIzODMyOTAzNDIx?story_media_id=3694460924574228146&exln=dWM2djF6eDYwdHQy",
+       "desc": "",
+       "buy": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bmvsa5zhj1",
+   "type": "brand",
+   "name": "韓國藥局限定",
+   "title": "",
+   "sub": "",
+   "link": "",
+   "linkLabel": "",
+   "themes": []
+  }
+ ],
+ "buy": {}
+};
+/* ===== 首頁區塊類型（新增區塊時可選）===== */
+const BTYPES={
+  kol:{label:"KOL 推薦",eyebrow:"KOL PICKS",title:n=>`${n} 總推薦`,linkLabel:"前往 IG",itemBtn:n=>`看 ${n} 的精選介紹`,count:"則精選介紹",tagHint:"點標籤看產品介紹 ›",note:n=>`${n} 的限時動態分享，點下方按鈕觀看精選介紹。`},
+  brand:{label:"品牌專區",eyebrow:"BRAND",title:n=>n,linkLabel:"前往官網",itemBtn:()=>"看產品介紹",count:"項產品",tagHint:"點標籤看產品介紹 ›",note:()=>"點下方按鈕看完整產品介紹。"},
+  event:{label:"活動專區",eyebrow:"EVENT",title:n=>n,linkLabel:"活動詳情",itemBtn:()=>"看活動介紹",count:"項內容",tagHint:"點標籤看內容 ›",note:()=>"點下方按鈕看活動內容。"}
+};
+function normItem(it){return {label:it.label||"",product:it.product?+it.product:null,video:it.video||"",desc:it.desc||"",buy:it.buy||""}}
+function normTheme(t){const items=Array.isArray(t.items)?t.items:(t.products||[]).map(id=>({product:+id,video:t.ig||""}));
+  return {id:t.id||"",title:t.title||"",items:items.map(normItem).filter(it=>it.label||it.product)}}
+function normBlock(b){return {id:b.id||"",type:BTYPES[b.type]?b.type:"kol",name:b.name||"",title:b.title||"",sub:b.sub||"",link:b.link||"",linkLabel:b.linkLabel||"",themes:(b.themes||[]).map(normTheme)}}
+let KOLCFG=window.SITE_BLOCKS||KOL_EMBED, picked=new Map(), bstate={};
+/* 產品資料：設定裡有 products 時取代內建清單（可在編輯器新增／編輯／刪除）*/
+const clean=v=>String(v==null?"":v).replace(/[<>]/g,"").trim();
+const okImg=u=>/^(https:\/\/\S+|\/_blob\/[0-9a-f]{32}|data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+)$/i.test(String(u||"").trim());
+function normProd(p){return {id:+p.id,name:clean(p.name),s:p.s||"ph",cats:Array.isArray(p.cats)?p.cats.filter(c=>CATNAME[c]):[],size:clean(p.size),desc:clean(p.desc),how:clean(p.how),img:okImg(p.img)?String(p.img).trim():""}}
+function applyCatalog(cfg){
+  if(cfg&&cfg.series)for(const [k,v] of Object.entries(cfg.series))SERIES[k]={en:clean(v.en)||clean(v.name).toUpperCase(),name:clean(v.name),t1:v.t1||"#ece6ea",t2:v.t2||"#f8f5f7"};
+  if(cfg&&Array.isArray(cfg.products)&&cfg.products.length)P=cfg.products.map(normProd).filter(p=>p.id&&p.name).map(p=>({...p,s:SERIES[p.s]?p.s:"ph"}));
+}
+applyCatalog(KOLCFG);
+function blocksList(){const c=KOLCFG||{};
+  if(Array.isArray(c.blocks))return c.blocks.map(normBlock).filter(b=>b.name||b.title);
+  return [normBlock({id:"yanna",type:"kol",name:KOL.name,sub:KOL.handle+"・依限時動態主題整理",link:KOL.ig,themes:c.themes||[]})]}
+function syncPicked(){picked=new Map();for(const b of blocksList())if(b.type==="kol")for(const t of b.themes)for(const i of t.items)if(i.product&&!picked.has(i.product))picked.set(i.product,b)}
+function introOf(id){for(const b of blocksList())for(const t of b.themes)for(const i of t.items)if(i.product===id&&i.video)return {url:i.video,text:BTYPES[b.type].itemBtn(b.name)};return null}
+const badgeOf=id=>{const b=picked.get(id);return b?`<span class="badge">${esc(b.name)} 推薦</span>`:""};
+syncPicked();
+const gbState=()=>{try{const g=GB;if(!g||!g.start||!g.end)return"";const n=Date.now();return n<g.start?"soon":n<=g.end?"live":"ended"}catch(e){return""}};
+const buyOf=()=>(gbState()==="live"&&GB&&GB.link)||"";
+const offLabel=()=>({live:"購買連結準備中",ended:"本檔團購已結束"})[gbState()]||"開團後開放購買";
+const st={step:1,cat:null,cons:[]};
+
+/* 產品圖片：取自 SAM'U 官網（sam-u.com），載入失敗時自動顯示系列色塊 */
+const IMG={"1": "202404/2466a2da6793fa5cb519e567cdc8b146", "2": "202511/548996e95725d244ae215d0f253a2ca7", "3": "202610/6532a555358a327a87a5db5080179405", "4": "202404/cd9d408924244704bd76705142f06dc0", "5": "202406/7f2184fc17c360f595c3740bbfad06ec", "6": "202404/bdc86c76328e52fed660146f1eda787e", "7": "202505/be42af0ce690dd455f33c5fed03a03b4", "8": "202511/2719a3ce706186715e1d9e1cab051225", "9": "202408/e6da855fa45f58275c6cf9c08345e875", "10": "202505/d1df0457c9a56344bce3aa884f5cc63b", "11": "202609/19f8c46d484c858af3976e2114d0014e", "12": "202609/5504f708fe23c8d0e7f16cc1b94f3e3c", "13": "202609/ad38db8c1ee048e9c597de8337ae5b28", "14": "202609/f104e6848f9eabaf30bdb9f00fe4bff9", "15": "202609/24630aaa9fd51d63af83df935b9a66e9", "16": "202609/53c34f563e6eb90360c82458bfbfc020", "17": "202609/562dee831415c0e09ccd8747bae4932a", "18": "202503/abb1f125ca224fd4f0d0d3c705bb4221", "19": "202503/57dedfac12f8d8c9bcf2e59423e873b2", "20": "202411/e63f7efa39cad2df2b6d5d0ae743b272", "21": "202404/9d3c8fbabdbe56262912304b311961d5", "22": "202505/d15f3ace4112bbd0318cd2d6d350d1e5", "23": "202508/1d9af0c06ce8e334c0fe2bba6a74beb0", "24": "202406/2446d4985b4e6dcc8a33878af6b86d42", "25": "202406/c50781f9da4942173388eb8b9b191dd6", "26": "202406/47b1d16df8f7abc095d429cac0e9e852", "27": "202411/e16db6917aa4033dab7eeb047ef195c2", "28": "202406/1d23198438cd339bb43bfa52c0b00a20", "29": "202602/d5b071ecf9461caceb2f3d61921e2a79", "31": "202602/c2c33a2b4cce5748b4296b015e9f12c9", "32": "202602/8f2a2dab97131b0740a45381ba4becf0", "33": "202602/6a4320b787bd8a8d88dde90a59a3ccd9", "34": "202602/43adf8bae33580e3900797c08da78198", "35": "202602/e4d8e1171a54741f735c2797ed548479", "36": "202602/1079e8b97985c6629688bab4437806b7", "37": "202602/f760e08b33991a3c5bd01cac6fc12dc9", "38": "202406/5d39707815dc79109d2ee466f342d028", "39": "202404/34d3c2a3da4c15299f628d73b463d8b0", "40": "202404/9c38ce3c6666bc9633b9e9688be8d03f", "41": "202404/47490f2b659f3bff0fb12750ff3c6896", "44": "202404/9627ca1e7e6b5f0d8ab53f812890c130", "45": "202404/428ebb306b68800e3998a2cdd5081184", "46": "202404/45351a5fdd71d7c0191e7586086a0e3f", "47": "202602/110a57a3357c1b92706396f7b7ab09b5", "48": "202602/70333c7ef45c26d6399b06f340f71c07", "49": "202602/92df49588afa75b8063fdc3ba8f8bd47", "50": "202602/dcbe4eee221db9940be6b8f5d30e3222"};
+const imgOf=p=>!p?"":(p.img&&!(window.SITE_MODE&&/^\/_blob\//.test(p.img)))?p.img:IMG[p.id]?"https://sam-u.com/web/product/medium/"+IMG[p.id]+".jpg":"";
+function sw(S,p){const u=imgOf(p);return `<span class="sw${u?" has-img":""}" style="--t1:${S.t1};--t2:${S.t2}"><span class="sw-t">${S.en}</span>${u?`<img src="${u}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer">`:""}</span>`}
+document.addEventListener("error",e=>{const t=e.target;if(t&&t.tagName==="IMG"&&t.parentElement&&t.parentElement.classList.contains("sw")){t.parentElement.classList.remove("has-img");t.remove()}},true);
+function bar(n){return `<div class="prog"><span>Q${Math.min(n,2)} / 2</span><div class="bar"><i style="width:${n===1?33:n===2?66:100}%"></i></div></div>`}
+
+function render(){
+  const q=$("quiz");
+  if(st.step===1){
+    q.innerHTML=bar(1)+`<div class="q"><small>QUESTION 1</small><h1>你要找什麼產品？</h1></div>
+     <div class="opts">${CATS.map(c=>`<button class="opt" data-cat="${c.k}"><b>${c.name}</b></button>`).join("")}
+     <button class="opt wide" data-cat="any"><b>還不確定，依肌膚狀況推薦我</b></button></div>
+     <div class="nav"><span></span><button class="link" data-go="all">直接看全部產品</button></div>`;
+  }else if(st.step===2){
+    q.innerHTML=bar(2)+`<div class="q"><small>QUESTION 2</small><h2>你最在意的肌膚困擾是？</h2><p>可以複選，選好後按「看推薦結果」。</p></div>
+     <div class="opts">${CONCERNS.map(c=>{const on=st.cons.includes(c.k);return `<button class="opt multi" data-con="${c.k}" aria-pressed="${on}"><i class="ck" aria-hidden="true"></i><b>${c.name}</b><span>${c.hint}</span></button>`}).join("")}
+     ${st.cat!=="any"?`<button class="opt wide" data-con="none"><b>沒有特別，全部都看看</b></button>`:""}</div>
+     <button class="go-res" data-go="result" ${st.cons.length?"":"disabled"}>${st.cons.length?`看推薦結果（已選 ${st.cons.length} 項）`:"請至少選一項"}</button>
+     <div class="nav"><button class="link" data-go="back">← 上一題</button><span></span></div>`;
+  }else{
+    const cat=CATS.find(c=>c.k===st.cat), cons=CONCERNS.filter(c=>st.cons.includes(c.k)), conSeries=[...new Set(cons.flatMap(c=>c.series))], conNames=cons.map(c=>c.name).join("、");
+    const okCat=p=>!cat||p.cats.some(x=>cat.cats.includes(x));
+    const okCon=p=>!cons.length||conSeries.includes(p.s);
+    let list=P.filter(p=>p.cats.length&&okCat(p)&&okCon(p)), fallback=false;
+    if(!list.length&&cat){list=P.filter(p=>p.cats.length&&okCat(p));fallback=true}
+    const rank=p=>Math.min(...p.cats.map(c=>ORDER.indexOf(c)));
+    list.sort((a,b)=>(picked.has(b.id)-picked.has(a.id))||rank(a)-rank(b)||a.id-b.id);
+    const tags=[cat&&cat.name,...cons.map(c=>c.name)].filter(Boolean);
+    q.innerHTML=bar(3)+`<div class="q"><small>YOUR MATCH</small><h2>${tags.length?"為你找到 "+list.length+" 項產品":"全部產品・"+list.length+" 項"}</h2>
+      ${tags.length?`<div class="chips">${tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div>`:""}</div>
+      ${tags.length?routineHTML(cons):""}
+      ${tags.length?`<h3 class="rt-h">${cat?cat.name+"類":"其他"}符合的產品</h3>`:""}
+      ${fallback?`<p class="note">這個類別裡沒有專攻「${conNames}」的品項，先列出全部${cat.name}產品給你參考。</p>`:""}
+      <div class="list">${list.map(p=>{const S=SERIES[p.s];return `<button class="item" data-id="${p.id}">${sw(S,p)}
+        <span class="txt"><span class="s">${S.name}</span><b>${esc(p.name)}${badgeOf(p.id)}</b><span class="d">${p.desc}</span><em class="tapx">點我看詳情 ›</em></span>
+        <span class="r">${p.size}</span></button>`}).join("")}</div>
+      <div class="nav"><button class="link" data-go="back">← 上一題</button><button class="link" data-go="restart">重新選擇</button></div>`;
+  }
+}
+/* ----- 推薦保養順序 ----- */
+const ROUTINE=[
+  {cat:"remove",name:"卸妝",time:"晚上",why:"有上妝或擦防曬的日子先卸妝，減少毛孔阻塞。"},
+  {cat:"clean",name:"潔面",time:"早晚",why:"洗去髒污與多餘油脂，為後續保養打好基礎。"},
+  {cat:"toner",name:"化妝水",time:"早晚",why:"潔面後馬上補水，讓肌膚更好吸收精華。"},
+  {cat:"serum",name:"精華",time:"早晚",why:"針對你最在意的困擾集中加強。"},
+  {cat:"cream",name:"乳霜",time:"早晚",why:"鎖住水分與精華，穩定肌膚屏障。"},
+  {cat:"sun",name:"防曬",time:"早上",why:"白天最後一步，預防光老化與曬後泛紅。"}
+];
+const WEEKLY=[
+  {cat:"exfo",name:"去角質",freq:"每週 1–2 次"},
+  {cat:"mask",name:"面膜",freq:"每週 2–3 次"}
+];
+const CON_NOTE={dry:"以弱酸保濕的 PH 系列為主，重點是補水與鎖水。",pore:"以酵母系列為主，清潔、控油兩頭兼顧。",red:"以 B5 泛醇與敏感肌系列為主，先穩定再加強。",glow:"以 PDRN 系列為主，加強光采與彈潤。"};
+function pickFor(stepCat,seriesList,used){
+  const ok=p=>!(used&&used.has(p.id));
+  const score=p=>[picked.has(p.id)?0:1,p.cats[0]===stepCat?0:1,seriesList.indexOf(p.s),p.id];
+  const cmp=(a,b)=>{const x=score(a),y=score(b);for(let i=0;i<x.length;i++)if(x[i]!==y[i])return x[i]-y[i];return 0};
+  let c=P.filter(p=>ok(p)&&p.cats.includes(stepCat)&&seriesList.includes(p.s));
+  if(c.length)return {p:c.sort(cmp)[0],fb:false};
+  const base=["ph","sen","pan"];
+  c=P.filter(p=>ok(p)&&p.cats.includes(stepCat)&&base.includes(p.s)).sort((a,b)=>base.indexOf(a.s)-base.indexOf(b.s)||(a.cats[0]===stepCat?0:1)-(b.cats[0]===stepCat?0:1)||a.id-b.id);
+  return c.length?{p:c[0],fb:true}:null;
+}
+function routineHTML(cons){
+  const series=cons.length?[...new Set(cons.flatMap(c=>c.series))]:["ph"];
+  const steps=ROUTINE.map(s=>({...s,r:pickFor(s.cat,series)})).filter(s=>s.r);
+  const used=new Set(steps.map(s=>s.r.p.id));
+  const weekly=WEEKLY.map(s=>({...s,r:pickFor(s.cat,series,used)})).filter(s=>s.r);
+  ROUTINE_IDS=new Set([...steps,...weekly].map(s=>s.r.p.id));
+  const row=(label,meta,s)=>{const p=s.r.p,S=SERIES[p.s];return `<button class="rs" data-id="${p.id}">${sw(S,p)}<span class="rs-t">
+    <span class="rs-no">${label}<span class="rs-time">${meta}</span></span>
+    <b>${esc(p.name)}${badgeOf(p.id)}</b>
+    <span class="rs-why">${s.why||p.desc}${s.r.fb?"（此系列沒有這一步，搭配溫和的基礎品項）":""}</span>
+    <span class="rs-how">${p.how}</span><em class="tapx">點我看詳情 ›</em></span></button>`};
+  return `<div class="rt"><div class="rt-head"><h3>你的推薦保養順序</h3><p>${cons.length?cons.map(c=>CON_NOTE[c.k]).join(""):"先從溫和的基礎保養開始，以弱酸的 PH 系列打底。"}點產品可看詳細介紹。</p></div>
+    <div class="rs-list">${steps.map((s,i)=>row(`STEP ${i+1}・${s.name}`,s.time,s)).join("")}</div>
+    ${weekly.length?`<div class="rt-sub">每週加強</div><div class="rs-list">${weekly.map(s=>row(s.name,s.freq,s)).join("")}</div>`:""}
+    <p class="note">早上：潔面 → 化妝水 → 精華 → 乳霜 → 防曬。晚上：卸妝 → 潔面 → 化妝水 → 精華 → 乳霜。使用新產品前建議先在耳後或下顎局部試用。</p></div>`;
+}
+let ROUTINE_IDS=new Set();
+function renderKol(){renderBlocks()}
+function renderBlocks(){
+  const box=$("blocks"); if(!box)return;
+  const bs=blocksList();
+  box.innerHTML=bs.map((b,bi)=>`<section class="kol" data-b="${bi}"></section>`).join("");
+  box.hidden=!bs.length;
+  bs.forEach((b,bi)=>renderBlock(bi,b));
+}
+function renderBlock(bi,b){
+  const sec=$("blocks").querySelector(`[data-b="${bi}"]`); if(!sec)return;
+  const T=BTYPES[b.type], key=b.id||("b"+bi), stt=bstate[key]||(bstate[key]={t:0,i:0});
+  const themes=b.themes.filter(t=>t.title);
+  if(stt.t>=themes.length)stt.t=0;
+  const t=themes[stt.t], items=t?t.items:[];
+  if(stt.i>=items.length)stt.i=0;
+  const it=items[stt.i], kp=it&&it.product?P.find(p=>p.id===it.product):null;
+  const nameOf=x=>x.label||((P.find(p=>p.id===x.product)||{}).name)||"";
+  const isIG=/instagram\.com/i.test(b.link);
+  const IGI=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>`;
+  const PLAY=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>`;
+  const vbtn=it&&it.video?`<a class="vid" href="${esc(it.video)}" target="_blank" rel="noopener">${PLAY}${esc(T.itemBtn(b.name))}</a>`:"";
+  let card="";
+  if(kp){const S=SERIES[kp.s],buy=buyOf();
+    card=`<div class="kp">${sw(S,kp)}<div class="kp-t"><span class="s">${S.name}・${kp.size}</span><b>${esc(kp.name)}</b>${it.label&&it.label!==kp.name?`<span class="alias">${b.type==="kol"?esc(b.name)+" 影片中稱為":"又稱"}「${esc(it.label)}」</span>`:""}${it.desc?`<p class="pick-note">${esc(it.desc)}</p>`:""}<p>${kp.desc}</p>${kp.how?`<p class="how">使用方式：${kp.how}</p>`:""}
+      <div class="kp-act">${vbtn}${buy?`<a class="buy" data-buy="${kp.id}" href="${esc(buy)}" target="_blank" rel="noopener">前往購買 ↗</a>`:`<span class="buy off" aria-disabled="true">${offLabel()}</span>`}
+      <button class="link" data-id="${kp.id}">點我看完整介紹 ›</button></div></div></div>`}
+  else if(it){card=`<div class="kp kp-v"><div class="kp-t"><span class="s">${esc(t.title)}</span><b>${esc(nameOf(it))}</b><p>${esc(it.desc||T.note(b.name))}</p><div class="kp-act">${vbtn}${buyOf()?`<a class="buy" href="${esc(buyOf())}" target="_blank" rel="noopener">前往購買 ↗</a>`:""}</div></div></div>`}
+  const title=b.title||T.title(b.name);
+  const keepX=(sec.querySelector(".stories")||{}).scrollLeft||0;
+  sec.innerHTML=`<div class="kh"><div class="av">${esc((b.name||title)[0]||"")}</div>
+    <div class="who"><small>${T.eyebrow}</small><b>${esc(title)}</b>${b.sub?`<span>${esc(b.sub)}</span>`:""}</div>
+    ${b.link?`<a class="ig" href="${esc(b.link)}" target="_blank" rel="noopener">${isIG?IGI:""}${esc(b.linkLabel||T.linkLabel)}</a>`:""}</div>
+    ${themes.length?`<p class="tap">點我切換主題 ›</p><div class="stories" role="tablist" aria-label="${esc(title)}主題">${themes.map((x,i)=>`<button type="button" class="story" role="tab" data-theme="${i}" aria-selected="${i===stt.t}"><span class="ring"><span><i class="ch" aria-hidden="true"></i></span></span><small>${esc(x.title)}</small></button>`).join("")}</div>
+    <div class="th"><b>${esc(t.title)}</b><span>${items.length} ${T.count}</span></div>
+    ${items.length?`<p class="tap">${T.tagHint}</p><div class="tags">${items.map((x,n)=>`<button type="button" class="tagb" data-ki="${n}" aria-pressed="${n===stt.i}">${esc(nameOf(x))}</button>`).join("")}</div>${card}`:`<p class="note">這個主題還沒有加入內容。</p>`}`
+    :`<p class="note">這個區塊還沒有主題。</p>`}`;
+  const st2=sec.querySelector(".stories");if(st2)st2.scrollLeft=keepX;
+  sec.querySelectorAll("[data-theme]").forEach(x=>{x.onclick=ev=>{ev.stopPropagation();stt.t=+x.dataset.theme;stt.i=0;renderBlock(bi,b)}});
+  sec.querySelectorAll("[data-ki]").forEach(x=>{x.onclick=ev=>{ev.stopPropagation();stt.i=+x.dataset.ki;renderBlock(bi,b);
+    const cur=items[stt.i];try{if(cur&&cur.product&&typeof trackClick==="function")trackClick(cur.product)}catch(e){}
+    const c=sec.querySelector(".kp");if(c){const r=c.getBoundingClientRect();if(r.bottom>innerHeight||r.top<0)c.scrollIntoView({behavior:"smooth",block:"nearest"})}}});
+}
+function openSheet(id){
+  const p=P.find(x=>x.id===id);if(!p)return;const S=SERIES[p.s];
+  const intro=introOf(id), buy=buyOf(id);
+  const rel=P.filter(x=>x.s===p.s&&x.id!==p.id&&x.cats.length).slice(0,4);
+  $("sheet").innerHTML=`<button class="close" id="x">關閉</button>${sw(S,p)}
+   <div><span class="s">${S.name}</span><h3 id="d-name">${esc(p.name)}${badgeOf(id)}</h3></div><p>${p.desc}</p>
+   <dl><dt>類別</dt><dd>${p.cats.map(c=>CATNAME[c]).join("、")}</dd><dt>容量</dt><dd>${p.size}</dd>${p.how?`<dt>使用方式</dt><dd>${p.how}</dd>`:""}</dl>
+   <div class="kp-act">${buy?`<a class="buy" data-buy="${id}" href="${esc(buy)}" target="_blank" rel="noopener">前往購買 ↗</a>`:`<span class="buy off" aria-disabled="true">${offLabel()}</span>`}
+   ${intro?`<a class="vid" href="${esc(intro.url)}" target="_blank" rel="noopener">▶ ${esc(intro.text)}</a>`:""}</div>
+   ${rel.length?`<div class="rel">同系列：${rel.map(r=>`<button data-id="${r.id}">${esc(r.name)}</button>`).join("")}</div>`:""}`;
+  $("scrim").hidden=false;$("sheet").hidden=false;$("sheet").scrollTop=0;$("x").focus();
+}
+function closeSheet(){$("sheet").hidden=true;$("scrim").hidden=true}
+document.addEventListener("click",e=>{
+  const o=e.target.closest("[data-cat]");
+  if(o){const c=CATS.find(x=>x.k===o.dataset.cat);st.cat=o.dataset.cat;st.cons=[];st.step=c&&c.skip?3:2;render();return}
+  const n=e.target.closest("[data-con]");
+  if(n){const k=n.dataset.con;if(k==="none"){st.cons=[];st.step=3;render();$("quiz").scrollIntoView({block:"start",behavior:"smooth"});return}st.cons=st.cons.includes(k)?st.cons.filter(x=>x!==k):[...st.cons,k];render();return}
+  const g=e.target.closest("[data-go]");
+  if(g){const v=g.dataset.go;
+    if(v==="result"){if(!st.cons.length)return;st.step=3}
+    else if(v==="all"){st.cat=null;st.cons=[];st.step=3}
+    else if(v==="restart"){st.step=1;st.cat=null;st.cons=[]}
+    else if(v==="back"){const c=CATS.find(x=>x.k===st.cat);st.step=(st.step===3&&st.cat&&!(c&&c.skip))?2:1}
+    render();$("quiz").scrollIntoView({block:v==="result"?"start":"nearest",behavior:"smooth"});return}
+  const d=e.target.closest("[data-id]");if(d){openSheet(+d.dataset.id);return}
+  if(e.target.id==="x"||e.target.id==="scrim")closeSheet();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet()});
+/* ----- 產品搜尋 ----- */
+const norm=t=>String(t||"").toLowerCase().replace(/[\s・、，,／/（）()]+/g,"");
+function aliasesOf(id){const out=[];for(const b of blocksList())for(const t of b.themes)for(const i of t.items)if(i.product===id&&i.label)out.push(i.label);return out}
+let qTimer=null;
+function runSearch(){
+  const raw=$("q").value.trim(), box=$("qres"); $("qClear").hidden=!raw;
+  if(!raw){box.hidden=true;box.innerHTML="";return}
+  const toks=raw.split(/\s+/).map(norm).filter(Boolean);
+  const res=P.filter(p=>p.name).map(p=>{const S=SERIES[p.s]||{},al=aliasesOf(p.id);
+    const hay=norm([p.name,S.name,S.en,p.cats.map(c=>CATNAME[c]).join(""),p.size,p.desc,al.join(" "),"no"+p.id].join(" "));
+    if(!toks.every(t=>hay.includes(t)))return null;
+    const n=norm(p.name+al.join(""));const score=toks.reduce((a,t)=>a+(n.includes(t)?0:1),0);
+    return {p,S,al,score}}).filter(Boolean).sort((a,b)=>a.score-b.score||a.p.id-b.p.id);
+  const show=res.slice(0,8);
+  box.innerHTML=res.length?`<p class="sres-h">找到 ${res.length} 項產品${res.length>8?"，顯示前 8 項":""}</p>${show.map(({p,S,al})=>`<button type="button" class="sitem" data-id="${p.id}">${sw(S,p)}<span class="txt"><b>${esc(p.name)}${badgeOf(p.id)}</b><span class="s">${esc(S.name||"")}・${p.cats.map(c=>CATNAME[c]).join("、")||"未分類"}・${esc(p.size)}</span>${al.length&&!al.includes(p.name)?`<span class="s">也叫：${esc([...new Set(al)].join("、"))}</span>`:""}</span><em class="tapx">點我看詳情 ›</em></button>`).join("")}`
+    :`<p class="sres-h">找不到「${esc(raw)}」相關的產品，換個關鍵字試試，例如系列名稱或「面霜」「防曬」。</p>`;
+  box.hidden=false;
+  clearTimeout(qTimer);qTimer=setTimeout(()=>{try{if(typeof gaEvent==="function")gaEvent("search",{search_term:raw,results:res.length})}catch(e){}},1200);
+}
+$("q").addEventListener("input",runSearch);
+$("q").addEventListener("keydown",e=>{if(e.key==="Escape"){$("q").value="";runSearch()}});
+$("qClear").addEventListener("click",()=>{$("q").value="";runSearch();$("q").focus()});
+$("more").addEventListener("click",()=>$("quiz").scrollIntoView({behavior:"smooth",block:"start"}));
+render();renderKol();
+
+/* ===== 雲端資料：造訪紀錄、團購活動、管理後台 ===== */
+/* ===== 團購活動預設值（實際以 blocks.js 為準，請用 #edit 編輯器修改）=====
+   start：開團日期（當天 00:00）　end：結團日期（當天 23:59）
+   link：團購連結　note：備註　products：活動產品編號
+   不辦活動時把 start 改成 "" 即可隱藏團購區 */
+const GROUPBUY={title:"Sam'U 新品大派對🎉🎉🎉",start:"2026-11-03",end:"2026-11-09",link:"",note:"",products:[]};
+const GB_EMBED=GROUPBUY.start?{...GROUPBUY,start:new Date(GROUPBUY.start+"T00:00:00").getTime(),end:new Date(GROUPBUY.end+"T23:59:59").getTime()}:null;
+let DB=null, UID=null, IS_ADMIN=false, GB=(window.SITE_BLOCKS&&"groupbuy" in window.SITE_BLOCKS)?window.SITE_BLOCKS.groupbuy:GB_EMBED, myRef=null, mySessions=[], writing=false, dirty=false, saveTimer=null;
+const sess={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),t:Date.now(),step:0,done:false,cat:null,con:null,c:{},i:{},ig:0,gb:0};
+const pad=n=>String(n).padStart(2,"0");
+const CATLABEL=Object.fromEntries(CATS.map(c=>[c.k,c.name])); CATLABEL.any="不確定・依膚況推薦"; CATLABEL.all="直接看全部";
+const CONLABEL=Object.fromEntries(CONCERNS.map(c=>[c.k,c.name]));
+
+function scheduleSave(){ if(!myRef)return; dirty=true; clearTimeout(saveTimer); saveTimer=setTimeout(flush,800); }
+async function flush(){
+  if(writing||!dirty||!myRef)return;
+  writing=true; dirty=false;
+  const list=mySessions.filter(s=>s.id!==sess.id).concat([sess]).slice(-60);
+  try{await myRef.set({sessions:list,updated:Date.now()}); mySessions=list}
+  catch(e){if(e&&e.code==="invalid_argument")myRef=null; else dirty=true}
+  writing=false; if(dirty){clearTimeout(saveTimer);saveTimer=setTimeout(flush,3000)}
+}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")flush()});
+document.addEventListener("click",e=>{
+  if(e.target.closest("#admin"))return;
+  const a=e.target.closest("a[href*='instagram.com']"); if(a){sess.ig++;scheduleSave();return}
+  if(e.target.closest("[data-gbgo]")){sess.gb++;scheduleSave();return}
+  const c=e.target.closest("[data-cat]"); if(c){sess.cat=c.dataset.cat;sess.step=Math.max(sess.step,1);scheduleSave();return}
+  const n=e.target.closest("[data-con]"); if(n){sess.step=Math.max(sess.step,2);scheduleSave();return}
+  const g=e.target.closest("[data-go='all']"); if(g){sess.cat="all";return}
+  const d=e.target.closest("[data-id]"); if(d){const id=d.dataset.id;sess.c[id]=(sess.c[id]||0)+1;scheduleSave()}
+},true);
+const _render=render;
+render=function(){_render(); if(st.step===3){sess.step=3;sess.done=true;sess.con=st.cons.slice();new Set([...document.querySelectorAll("#quiz .item,#quiz .rs")].map(el=>el.dataset.id)).forEach(id=>{sess.i[id]=(sess.i[id]||0)+1});scheduleSave()}};
+
+/* ----- 開團灑花 ----- */
+let CELEBRATED=false;
+function celebrate(){
+  try{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return}catch(e){}
+  const cv=document.createElement("canvas"); cv.setAttribute("aria-hidden","true");
+  cv.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30";
+  document.body.appendChild(cv);
+  const ctx=cv.getContext("2d"), dpr=Math.min(2,window.devicePixelRatio||1);
+  let W,H; const size=()=>{W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}; size(); addEventListener("resize",size);
+  const COLORS=["#c4203d","#e8546f","#f6b4c2","#7c1328","#ffffff","#f3d36b","#5d7a3b"];
+  const parts=[], r=(a,b)=>a+Math.random()*(b-a);
+  const add=(x,y,ang,spd,n)=>{for(let i=0;i<n;i++){const a=ang+r(-.45,.45),v=spd*r(.55,1.1);
+    parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,rot:r(0,6.28),vr:r(-.25,.25),w:r(6,11),h:r(4,8),c:COLORS[i%COLORS.length],shape:Math.random()<.18?"cherry":Math.random()<.5?"rect":"circle",life:0,tilt:r(0,6.28)})}};
+  add(0,H*.85,-Math.PI/3,17,90); add(W,H*.85,-Math.PI*2/3,17,90);
+  setTimeout(()=>{for(let i=0;i<70;i++)add(r(0,W),-20,Math.PI/2,r(2,4),1)},500);
+  const drawCherry=(p)=>{ctx.strokeStyle="#5d7a3b";ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(0,-9);ctx.quadraticCurveTo(-2,-3,-4,1);ctx.moveTo(0,-9);ctx.quadraticCurveTo(3,-3,4,2);ctx.stroke();
+    ctx.fillStyle="#c4203d";ctx.beginPath();ctx.arc(-4,4,4,0,6.28);ctx.arc(4.5,5,4,0,6.28);ctx.fill();
+    ctx.fillStyle="rgba(255,255,255,.7)";ctx.beginPath();ctx.arc(-5.5,2.5,1.1,0,6.28);ctx.fill()};
+  const t0=performance.now();
+  (function frame(t){
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){p.vy+=.32;p.vx*=.985;p.vy*=.985;if(p.vy>4.5)p.vy=4.5;p.x+=p.vx+Math.sin(p.tilt+=.08)*.6;p.y+=p.vy;p.rot+=p.vr;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      if(p.shape==="cherry")drawCherry(p);
+      else{ctx.fillStyle=p.c;ctx.scale(1,Math.abs(Math.cos(p.tilt)));if(p.shape==="rect")ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);else{ctx.beginPath();ctx.arc(0,0,p.h/2,0,6.28);ctx.fill()}}
+      ctx.restore()}
+    if(t-t0<5200&&parts.some(p=>p.y<H+30))requestAnimationFrame(frame);
+    else{removeEventListener("resize",size);cv.remove()}
+  })(t0);
+}
+/* ----- 前台團購區（倒數） ----- */
+let cdTimer=null;
+const fmt=ts=>{const d=new Date(ts);return `${d.getMonth()+1}/${d.getDate()} ${pad(d.getHours())}:${pad(d.getMinutes())}`};
+function renderGB(){
+  const el=$("gb"); clearInterval(cdTimer); const g=GB;
+  if(!g||!g.start||!g.end){el.hidden=true;return}
+  const ids=(g.products||[]).map(Number).filter(id=>P.some(p=>p.id===id&&p.cats.length));
+  const tick=()=>{
+    const now=Date.now(); let state,target;
+    if(now<g.start){state="即將開團";target=g.start} else if(now<=g.end){state="團購進行中";target=g.end} else {state="本檔已結團";target=null}
+    if(state==="團購進行中"&&!CELEBRATED){CELEBRATED=true;setTimeout(celebrate,400)}
+    let cd="";
+    if(target){const s=Math.max(0,Math.floor((target-now)/1000));cd=`<div class="cd"><span style="background:none;padding:0;opacity:.85">${now<g.start?"距離開團":"距離結團"}</span><span><b>${Math.floor(s/86400)}</b> 天</span><span><b>${pad(Math.floor(s%86400/3600))}</b> 時</span><span><b>${pad(Math.floor(s%3600/60))}</b> 分</span><span><b>${pad(s%60)}</b> 秒</span></div>`}
+    el.innerHTML=`<div class="row"><span class="tagx">${state}</span><span class="left">團購時間 ${fmt(g.start)} – ${fmt(g.end)}</span></div>
+      <h2>${esc(g.title||"SAM'U 團購活動")}</h2>${g.note?`<p>${esc(g.note)}</p>`:""}${cd}
+      ${ids.length?`<div class="pp">${ids.map(id=>`<button data-id="${id}">${esc(P.find(p=>p.id===id).name)}</button>`).join("")}</div>`:""}
+      ${g.link&&target?`<a class="go" data-gbgo href="${esc(g.link)}" target="_blank" rel="noopener">立即跟團 →</a>`:""}`;
+    if(!target)clearInterval(cdTimer);
+  };
+  el.hidden=false; tick(); cdTimer=setInterval(tick,1000);
+}
+
+/* ----- 管理後台 ----- */
+let adUnsub=null, ADOCS=[], sortKey="c";
+const LOCK=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
+function showAdmin(on){
+  $("front").hidden=on; $("admin").hidden=!on; document.querySelector(".wrap").classList.toggle("wide",on); window.scrollTo(0,0);
+  $("brandR").innerHTML=on?"":`<button class="adm-btn" id="admToggle">管理後台</button>`;
+  if(on){buildAdmin(); if(!adUnsub)startAdmin(); else renderStats()}
+}
+function buildAdmin(){
+  $("admin").innerHTML=`<div class="ad-top"><div><h1><span class="ch" aria-hidden="true"></span>SAM'U 管理後台</h1><div class="sub" id="adSub">讀取資料中…</div></div>
+      <button class="btn2" id="toSite">← 回到前台</button></div>
+    <div class="lock">${LOCK}<div><b>管理者專用・一般消費者看不到</b><span>此後台只有頁面擁有者與編輯者能開啟，一般消費者看不到入口，也讀不到任何造訪與點擊資料。</span></div></div>
+    <div class="panel"><h3>團購活動設定 <small>儲存後前台團購區立即更新</small></h3>
+      <form class="form" id="gbForm">
+        <label class="full">活動名稱<input id="gb-title" maxlength="40" placeholder="例：SAM'U PDRN 系列團購第一波"></label>
+        <label>開團日期（當天 00:00 開始）<input id="gb-start" type="date"></label>
+        <label>結團日期（當天 23:59 結束）<input id="gb-end" type="date"></label>
+        <label class="full">團購連結（全站所有「前往購買」按鈕都會連到這裡）<input id="gb-link" type="url" placeholder="https://"></label>
+        <label>備註（選填，顯示在團購區）<input id="gb-note" maxlength="60" placeholder="例：滿 2 件享 9 折"></label>
+        <label>活動產品編號（選填）<input id="gb-products" placeholder="例：31, 32, 36"></label>
+        <div class="row"><button class="btn" type="submit">儲存活動</button><button class="btn2" type="button" id="gbClear">清除活動</button><span class="status" id="gbMsg" aria-live="polite"></span></div>
+      </form></div>
+    <div class="panel" id="kolPanel"></div>
+    <div id="adEmpty" class="empty" hidden>還沒有任何造訪紀錄。有人打開網頁或作答後，數據會出現在這裡。</div>
+    <div id="adBody" class="adm">
+      <div class="kpis" id="kpis"></div>
+      <div class="grid2">
+        <div class="panel"><h3>作答漏斗 <small>每一步有多少人走到</small></h3><div id="funnel"></div></div>
+        <div class="panel"><h3>近 14 天趨勢 <small>造訪 vs. 看到推薦</small></h3><div id="trend"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h3>想找的產品類別 <small>Q1 選擇</small></h3><div id="dCat"></div></div>
+        <div class="panel"><h3>肌膚困擾 <small>Q2 選擇</small></h3><div id="dCon"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h3>系列點擊 <small>產品詳情開啟次數</small></h3><div id="dSer"></div></div>
+        <div class="panel"><h3>連結點擊 <small>次數</small></h3><div id="dLink"></div></div>
+      </div>
+      <div class="panel"><h3>產品點擊排行 <small>點欄位標題可排序</small></h3><div class="tbl" id="ptable"></div>
+        <p class="sub" style="margin:10px 0 0;font-size:12px;color:var(--sub)">曝光＝產品出現在推薦結果的次數；點擊＝產品詳情被打開的次數（含 KOL 推薦與團購區）；點擊率＝點擊 ÷ 曝光。管理者自己的操作不列入。</p></div>
+      <div class="panel"><h3>最近 30 筆紀錄 <small>不含個人資料</small></h3>
+        <div class="tbl"><table><thead><tr><th>時間</th><th>進度</th><th>想找的類別</th><th>肌膚困擾</th><th>點開的產品</th><th>連結點擊</th></tr></thead><tbody id="recent"></tbody></table></div></div>
+    </div>`;
+  fillForm(); BDRAFT=null; BMODE="admin"; renderKolAdmin();
+}
+/* ===== 首頁區塊編輯器（後台與自架版 #edit 共用）===== */
+let BDRAFT=null, BMODE="admin";
+const itemsToText=items=>items.map(i=>[i.label,i.product||"",i.video,i.desc].join(" | ").replace(/(\s\|\s*)+$/,"")).join("\n");
+const textToItems=txt=>txt.split("\n").map(l=>l.trim()).filter(Boolean).map(l=>{const [a="",b="",c="",d="",...e]=l.split(/\s*[|｜]\s*/);const n=parseInt(b,10);
+  return {label:a.trim(),product:((BDRAFT&&BDRAFT.products)||P).some(p=>p.id===n)?n:null,video:c.trim(),desc:d.trim(),buy:e.join("|").trim()}}).filter(i=>i.label||i.product);
+function draftFromCfg(){return {blocks:JSON.parse(JSON.stringify(blocksList())),buy:{...((KOLCFG&&KOLCFG.buy)||{})},products:JSON.parse(JSON.stringify(P)),series:JSON.parse(JSON.stringify((KOLCFG&&KOLCFG.series)||{})),pedit:null,psearch:""}}
+function readBDraft(){
+  const box=$("kolPanel"); if(!BDRAFT||!box||!box.querySelector(".be"))return;
+  BDRAFT.blocks=BDRAFT.blocks.map((b,bi)=>({id:b.id,type:$("b-type-"+bi)?.value||b.type,name:($("b-name-"+bi)?.value||"").trim(),title:($("b-title-"+bi)?.value||"").trim(),
+    sub:($("b-sub-"+bi)?.value||"").trim(),link:($("b-link-"+bi)?.value||"").trim(),linkLabel:($("b-ll-"+bi)?.value||"").trim(),
+    themes:b.themes.map((t,ti)=>({id:t.id,title:($(`b-${bi}-t-${ti}`)?.value||"").trim(),items:textToItems($(`b-${bi}-i-${ti}`)?.value||"")}))}));
+  if($("eg-title")){const v=id=>($(id)?.value||"").trim();BDRAFT.gb={title:v("eg-title"),start:v("eg-start"),end:v("eg-end"),link:v("eg-link"),note:v("eg-note")}}
+}
+function renderKolAdmin(){
+  const box=$("kolPanel"); if(!box)return;
+  if(!BDRAFT)BDRAFT=draftFromCfg();
+  const typeOpts=v=>Object.entries(BTYPES).map(([k,x])=>`<option value="${k}"${k===v?" selected":""}>${x.label}</option>`).join("");
+  box.innerHTML=`<h3>首頁區塊設定 <small>像限時動態一樣的大區塊，可自由新增、排序與刪除</small></h3>
+    <p class="sub" style="margin:0 0 12px">每個主題的清單每行一則，格式：<b>標籤 | 產品編號 | 介紹連結 | 說明</b>。產品編號、說明都可留空；不是分類總表裡的產品（例如其他品牌），產品編號留空、在「說明」寫介紹即可。</p>
+    <div style="display:grid;gap:14px">${BDRAFT.blocks.map((b,bi)=>{const T=BTYPES[b.type]||BTYPES.kol;return `<div class="be">
+      <div class="be-h"><b>區塊 ${bi+1}・${T.label}</b><span class="be-btns"><button class="btn2" type="button" data-bmove="${bi}:-1" ${bi===0?"disabled":""}>上移</button><button class="btn2" type="button" data-bmove="${bi}:1" ${bi===BDRAFT.blocks.length-1?"disabled":""}>下移</button><button class="btn2" type="button" data-bdel="${bi}">刪除區塊</button></span></div>
+      <div class="be-f">
+        <label>類型<select id="b-type-${bi}" data-btype="${bi}">${typeOpts(b.type)}</select></label>
+        <label>名稱<input id="b-name-${bi}" maxlength="20" value="${esc(b.name)}" placeholder="例：YANNA、pureit、雙 11 精選"></label>
+        <label>標題（選填）<input id="b-title-${bi}" maxlength="24" value="${esc(b.title)}" placeholder="留空自動為「${esc(T.title(b.name||"名稱"))}」"></label>
+        <label>副標（選填）<input id="b-sub-${bi}" maxlength="50" value="${esc(b.sub)}" placeholder="例：@帳號・依限時動態主題整理"></label>
+        <label>主按鈕連結（選填）<input id="b-link-${bi}" type="url" value="${esc(b.link)}" placeholder="https://"></label>
+        <label>主按鈕文字（選填）<input id="b-ll-${bi}" maxlength="12" value="${esc(b.linkLabel)}" placeholder="留空自動為「${T.linkLabel}」"></label>
+      </div>
+      ${b.themes.map((t,ti)=>`<div class="kt2" data-tpos="${bi}:${ti}"><div class="kt2h"><span class="drag" title="按住拖曳調整順序">⋮⋮</span><span class="tmv"><button class="btn2" type="button" data-tmove="${bi}:${ti}:-1" ${ti===0?"disabled":""} aria-label="主題上移">↑</button><button class="btn2" type="button" data-tmove="${bi}:${ti}:1" ${ti===b.themes.length-1?"disabled":""} aria-label="主題下移">↓</button></span><label>主題名稱<input id="b-${bi}-t-${ti}" maxlength="16" value="${esc(t.title)}" placeholder="例：換季保濕"></label><button class="btn2" type="button" data-tdel="${bi}:${ti}">刪除主題</button></div>
+        <label>內容清單<textarea id="b-${bi}-i-${ti}" rows="${Math.max(3,t.items.length+1)}" placeholder="綠色晚安面膜 | 34 | https://www.instagram.com/...">${esc(itemsToText(t.items))}</textarea></label></div>`).join("")}
+      <div><button class="btn2" type="button" data-tadd="${bi}">＋ 新增主題</button></div></div>`}).join("")||`<p class="sub" style="margin:0">目前沒有任何區塊。</p>`}
+    <div class="be-add"><label>新區塊類型<select id="newBType">${typeOpts("kol")}</select></label><button class="btn2" type="button" id="bAdd">＋ 新增區塊</button></div></div>
+    ${productEditorHTML()}
+    ${BMODE==="file"?gbEditorHTML():`<p class="sub" style="margin:16px 0 0">購買按鈕統一使用上方「團購活動設定」的團購連結。</p>`}
+    <div class="form" style="margin-top:14px"><div class="row">${BMODE==="admin"?`<button class="btn" type="button" id="kSave">儲存區塊設定</button>`:`<button class="btn" type="button" id="kPreview">套用並預覽</button><button class="btn2" type="button" id="kDownload">下載 blocks.js</button><button class="btn2" type="button" id="kCopy">複製設定內容</button>`}<span class="status" id="kMsg" aria-live="polite"></span></div></div>`;
+}
+function draftData(){
+  readBDraft(); const m=$("kMsg"); m.className="status";
+  const links=BDRAFT.blocks.flatMap(b=>[b.link,...b.themes.flatMap(t=>t.items.map(i=>i.video))]).concat(BDRAFT.gb&&BDRAFT.gb.link?[BDRAFT.gb.link]:[]).filter(Boolean);
+  if(links.find(u=>!/^https:\/\//i.test(u))){m.className="status err";m.textContent="連結請以 https:// 開頭。";return null}
+  if(BDRAFT.blocks.some(b=>!b.name&&!b.title)){m.className="status err";m.textContent="每個區塊都要填名稱。";return null}
+  if(BDRAFT.pedit!=null){m.className="status err";m.textContent="產品資料還在編輯中，請先按「完成」或「取消」。";return null}
+  let groupbuy;
+  if(BMODE==="file"&&BDRAFT.gb){const g=BDRAFT.gb;
+    if(g.start||g.end){if(!g.start||!g.end){m.className="status err";m.textContent="團購的開團與結團日期都要填。";return null}
+      const st=new Date(g.start+"T00:00:00").getTime(),en=new Date(g.end+"T23:59:59").getTime();
+      if(en<=st){m.className="status err";m.textContent="結團日期不能早於開團日期。";return null}
+      groupbuy={title:g.title,start:st,end:en,link:g.link,note:g.note,products:(GB&&GB.products)||[]}}else groupbuy=null}
+  return {...(groupbuy!==undefined?{groupbuy}:{}),products:BDRAFT.products,series:BDRAFT.series,blocks:BDRAFT.blocks.map((b,bi)=>({...b,id:b.id||("b"+Date.now().toString(36)+bi),themes:b.themes.filter(t=>t.title).map((t,ti)=>({...t,id:t.id||("t"+Date.now().toString(36)+bi+ti)}))})),buy:BDRAFT.buy};
+}
+async function saveKol(){
+  const data=draftData(); if(!data)return; const m=$("kMsg");
+  m.textContent="儲存中…";
+  try{await DB.doc("site/kol").set({...data,at:Date.now()})}
+  catch(err){m.className="status err";m.textContent="儲存失敗："+(err&&err.code==="invalid_argument"?"你的帳號沒有編輯權限。":"請稍後再試一次。");return}
+  KOLCFG=data; applyCatalog(data); syncPicked(); renderBlocks(); render();
+  m.textContent="已儲存，登入的訪客已看到更新。正在同步給未登入的訪客…";
+  try{sessionStorage.setItem("samu-admin","1")}catch(e){}
+  try{await publishEmbed({kol:data})}
+  catch(err){if(err&&err.code==="conflict")return; m.className="status err";m.textContent="已儲存，但未登入訪客的版本沒有同步成功（"+(err&&err.code||"unknown")+"），請稍後再按一次儲存。"}
+}
+/* ----- 團購設定（自架版編輯器）----- */
+function gbEditorHTML(){
+  if(!BDRAFT.gb){const g=GB||{};const d=ts=>ts?toLocal(ts):"";BDRAFT.gb={title:g.title||"",start:d(g.start),end:d(g.end),link:g.link||"",note:g.note||""}}
+  const g=BDRAFT.gb;
+  return `<h3 style="margin-top:20px">團購設定 <small>開團期間，全站所有「前往購買」按鈕都會連到這個團購連結</small></h3>
+    <div class="be-f">
+      <label>活動名稱<input id="eg-title" maxlength="40" value="${esc(g.title)}" placeholder="例：Sam'U 新品大派對"></label>
+      <label>團購連結<input id="eg-link" type="url" value="${esc(g.link)}" placeholder="https://（開團後填入）"></label>
+      <label>開團日期（當天 00:00）<input id="eg-start" type="date" value="${esc(g.start)}"></label>
+      <label>結團日期（當天 23:59）<input id="eg-end" type="date" value="${esc(g.end)}"></label>
+      <label>備註（選填）<input id="eg-note" maxlength="60" value="${esc(g.note)}" placeholder="例：滿 3000 免運"></label>
+    </div><p class="sub" style="margin:6px 0 0">不辦活動時，把兩個日期都清空即可隱藏團購區。</p>`;
+}
+/* ----- 產品資料編輯 ----- */
+function allSeries(){return {...SERIES,...(BDRAFT?BDRAFT.series:{})}}
+function productEditorHTML(){
+  const D=BDRAFT, SS=allSeries(), list=D.products.slice().sort((a,b)=>a.id-b.id);
+  const form=pp=>{const ser=SS[pp.s]||{};return `<div class="pf" id="pf">
+    <div class="pf-g">
+      <label>名稱<input id="pf-name" maxlength="40" value="${esc(pp.name||"")}" placeholder="例：PH敏感潔顏泡沫潔顏乳"></label>
+      <label>系列<input id="pf-series" list="seriesList" maxlength="20" value="${esc(ser.name||"")}" placeholder="選擇或輸入新系列名稱"><datalist id="seriesList">${Object.values(SS).map(x=>`<option value="${esc(x.name)}">`).join("")}</datalist></label>
+      <label>容量／規格<input id="pf-size" maxlength="30" value="${esc(pp.size||"")}" placeholder="例：150ml"></label>
+      <label>圖片網址（選填）<input id="pf-img" type="url" value="${esc(/^https:/i.test(pp.img||"")?pp.img:"")}" placeholder="https://…jpg，或用下方上傳"></label>
+    </div>
+    <div class="pf-up"><span class="pf-prev" id="pfPrev">${pp.img||imgOf(pp)?`<img src="${esc(pp.img||imgOf(pp))}" alt="">`:"無圖片"}</span>
+      <div class="pf-up-r"><label class="btn2 pf-file">上傳圖片<input id="pf-file" type="file" accept="image/jpeg,image/png,image/webp"></label>
+      <button class="btn2" type="button" id="pfImgDel" ${pp.img?"":"hidden"}>移除上傳圖片</button>
+      <input type="hidden" id="pf-imgv" value="${esc(/^https:/i.test(pp.img||"")?"":(pp.img||""))}">
+      <span class="sub" id="pfUpMsg">JPG／PNG／WebP，會自動縮小到 600px。${BMODE==="admin"?"":"圖片會存進 blocks.js。"}</span></div></div>
+    <div class="pf-cats"><span>類別（可複選）</span>${Object.entries(CATNAME).map(([k,n])=>`<label class="pf-ck"><input type="checkbox" id="pf-cat-${k}" ${(pp.cats||[]).includes(k)?"checked":""}>${n}</label>`).join("")}</div>
+    <label>產品介紹<textarea id="pf-desc" rows="2" maxlength="200">${esc(pp.desc||"")}</textarea></label>
+    <label>使用方式<textarea id="pf-how" rows="2" maxlength="200">${esc(pp.how||"")}</textarea></label>
+    <div class="pf-act"><button class="btn" type="button" id="pfDone">完成</button><button class="btn2" type="button" id="pfCancel">取消</button><span class="status err" id="pfMsg"></span></div></div>`};
+  const row=pp=>{const ser=SS[pp.s]||{};return `<div class="pr" data-pname="${esc((pp.name+" "+(ser.name||"")+" "+pp.id).toLowerCase())}">
+    <span class="pr-th">${imgOf(pp)?`<img src="${esc(imgOf(pp))}" alt="" loading="lazy" referrerpolicy="no-referrer">`:""}</span><span class="pr-id">No.${pad(pp.id)}</span><span class="pr-n">${esc(pp.name)}<small>${esc(ser.name||"")}・${pp.cats.map(c=>CATNAME[c]).join("、")||"未分類"}・${esc(pp.size)}</small></span>
+    <span class="pr-b"><button class="btn2" type="button" data-pedit="${pp.id}">編輯</button><button class="btn2" type="button" data-pdel="${pp.id}">刪除</button></span></div>
+    ${D.pedit===pp.id?form(pp):""}`};
+  return `<h3 style="margin-top:20px">產品資料 <small>共 ${list.length} 項，可新增、編輯、刪除</small></h3>
+    <div class="pr-top"><input id="pSearch" type="search" placeholder="搜尋產品名稱、系列或編號" value="${esc(D.psearch||"")}"><button class="btn2" type="button" id="pAdd">＋ 新增產品</button></div>
+    ${D.pedit==="new"?form({id:0,name:"",s:"",cats:[],size:"",desc:"",how:"",img:""}):""}
+    <div class="pr-list" id="prList">${list.map(row).join("")}</div>`;
+}
+function filterProducts(){const q=($("pSearch")?.value||"").trim().toLowerCase();if(BDRAFT)BDRAFT.psearch=q;document.querySelectorAll("#prList .pr").forEach(r=>{r.hidden=!!q&&!r.dataset.pname.includes(q)})}
+function commitProduct(){
+  const D=BDRAFT, msg=$("pfMsg"), v=id=>($(id)?.value||"").trim();
+  const name=v("pf-name"), sname=v("pf-series"), img=v("pf-img")||v("pf-imgv");
+  if(!name){msg.textContent="請填產品名稱。";return}
+  if(!sname){msg.textContent="請選擇或輸入系列。";return}
+  if(img&&!okImg(img)){msg.textContent="圖片網址請以 https:// 開頭。";return}
+  const SS=allSeries(); let key=Object.keys(SS).find(k=>SS[k].name===sname||k===sname);
+  if(!key){key="s"+Date.now().toString(36);D.series[key]={en:sname.toUpperCase().slice(0,18),name:sname,t1:"#ece6ea",t2:"#f8f5f7"}}
+  const cats=Object.keys(CATNAME).filter(k=>$("pf-cat-"+k)?.checked);
+  const data={name,s:key,cats,size:v("pf-size"),desc:v("pf-desc"),how:v("pf-how"),img};
+  if(D.pedit==="new"){const id=Math.max(0,...D.products.map(p=>p.id))+1;D.products.push({id,...data})}
+  else{const i=D.products.findIndex(p=>p.id===D.pedit);if(i>=0)D.products[i]={...D.products[i],...data}}
+  D.pedit=null; renderKolAdmin(); filterProducts();
+  const m=$("kMsg"); if(m){m.className="status";m.textContent=BMODE==="admin"?"產品已更新，記得按「儲存區塊設定」。":"產品已更新，記得下載 blocks.js。"}
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest("#kolPanel"))return; const t=e.target;
+  if(t.id==="pAdd"){readBDraft();BDRAFT.pedit="new";renderKolAdmin();filterProducts();$("pf-name")?.focus();return}
+  const pe=t.closest("[data-pedit]");if(pe){readBDraft();BDRAFT.pedit=+pe.dataset.pedit;renderKolAdmin();filterProducts();$("pf")?.scrollIntoView({block:"nearest"});return}
+  const pd=t.closest("[data-pdel]");if(pd){if(pd.dataset.confirm!=="1"){pd.dataset.confirm="1";pd.textContent="再按一次確認";return}
+    readBDraft();BDRAFT.products=BDRAFT.products.filter(p=>p.id!==+pd.dataset.pdel);if(BDRAFT.pedit===+pd.dataset.pdel)BDRAFT.pedit=null;renderKolAdmin();filterProducts();return}
+  if(t.id==="pfDone"){readBDraft();commitProduct();return}
+  if(t.id==="pfCancel"){readBDraft();BDRAFT.pedit=null;renderKolAdmin();filterProducts();return}
+});
+document.addEventListener("input",e=>{if(e.target.id==="pSearch")filterProducts()});
+function shrinkImage(file,max=600){return new Promise((ok,no)=>{const url=URL.createObjectURL(file),im=new Image();
+  im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+    const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);
+    c.toBlob(b=>b?ok({blob:b,data:c.toDataURL("image/jpeg",.82)}):no(new Error("encode")),"image/jpeg",.82)};
+  im.onerror=()=>{URL.revokeObjectURL(url);no(new Error("decode"))};im.src=url})}
+document.addEventListener("change",async e=>{
+  if(e.target.id!=="pf-file")return; const f=e.target.files&&e.target.files[0], msg=$("pfUpMsg"); if(!f)return;
+  if(!/^image\/(jpeg|png|webp)$/.test(f.type)){msg.textContent="只能上傳 JPG、PNG 或 WebP 圖片。";return}
+  msg.textContent="處理中…";
+  try{const {blob,data}=await shrinkImage(f);let val;
+    if(BMODE==="admin"){const assets=window.claude&&claude.use?await claude.use("assets"):null;
+      if(!assets){msg.textContent="這個帳號沒有上傳權限，請用頁面擁有者或編輯者帳號。";return}
+      const r=await assets.upload(blob);val="/_blob/"+r.id}
+    else val=data;
+    $("pf-imgv").value=val;$("pf-img").value="";$("pfPrev").innerHTML=`<img src="${esc(val)}" alt="">`;$("pfImgDel").hidden=false;
+    msg.textContent="已上傳，按「完成」後套用。"}
+  catch(err){msg.textContent="上傳失敗"+(err&&err.code?`（${err.code}）`:"")+"，請換一張圖片或稍後再試。"}
+  e.target.value="";
+});
+document.addEventListener("click",e=>{if(e.target.id==="pfImgDel"){$("pf-imgv").value="";$("pfPrev").textContent="無圖片";e.target.hidden=true;$("pfUpMsg").textContent="已移除，按「完成」後套用。"}});
+const blocksFile=data=>"/* SAM'U 首頁區塊設定：由編輯器產生，上傳到 GitHub 覆蓋 blocks.js 即可更新 */\nwindow.SITE_BLOCKS="+JSON.stringify(data,null,2)+";\n";
+document.addEventListener("click",async e=>{
+  if(!e.target.closest("#kolPanel"))return;
+  const t=e.target;
+  if(t.id==="bAdd"){readBDraft();const ty=$("newBType").value;BDRAFT.blocks.push({id:"",type:ty,name:"",title:"",sub:"",link:"",linkLabel:"",themes:[{id:"",title:"",items:[]}]});renderKolAdmin();$("b-name-"+(BDRAFT.blocks.length-1))?.focus();return}
+  const mv=t.closest("[data-bmove]");if(mv){readBDraft();const [a,d]=mv.dataset.bmove.split(":").map(Number),b=a+d;if(b>=0&&b<BDRAFT.blocks.length){[BDRAFT.blocks[a],BDRAFT.blocks[b]]=[BDRAFT.blocks[b],BDRAFT.blocks[a]];renderKolAdmin()}return}
+  const bd=t.closest("[data-bdel]");if(bd){const i=+bd.dataset.bdel;if(bd.dataset.confirm!=="1"){bd.dataset.confirm="1";bd.textContent="再按一次確認刪除";return}readBDraft();BDRAFT.blocks.splice(i,1);renderKolAdmin();return}
+  const ta=t.closest("[data-tadd]");if(ta){readBDraft();BDRAFT.blocks[+ta.dataset.tadd].themes.push({id:"",title:"",items:[]});renderKolAdmin();return}
+  const td=t.closest("[data-tdel]");if(td){readBDraft();const [bi,ti]=td.dataset.tdel.split(":").map(Number);BDRAFT.blocks[bi].themes.splice(ti,1);renderKolAdmin();return}
+  if(t.id==="kSave"){saveKol();return}
+  if(t.id==="kPreview"){const d=draftData();if(!d)return;KOLCFG=d;applyCatalog(d);if("groupbuy" in d){GB=d.groupbuy;CELEBRATED=true;renderGB()}syncPicked();renderBlocks();render();showEditor(false,true);return}
+  if(t.id==="kDownload"){const d=draftData();if(!d)return;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([blocksFile(d)],{type:"text/javascript"}));a.download="blocks.js";document.body.appendChild(a);a.click();a.remove();$("kMsg").textContent="已下載 blocks.js，上傳到 GitHub 覆蓋舊檔即可更新網站。";return}
+  if(t.id==="kCopy"){const d=draftData();if(!d)return;const txt=blocksFile(d);try{await navigator.clipboard.writeText(txt);$("kMsg").textContent="已複製，貼到 GitHub 的 blocks.js 取代全部內容即可。"}catch(err){$("kMsg").textContent="無法自動複製，請改用下載。"}return}
+});
+/* 主題拖曳排序 */
+let dragT=null;
+function moveTheme(bi,from,to){readBDraft();const th=BDRAFT.blocks[bi].themes;if(to<0||to>=th.length||from===to)return;const [x]=th.splice(from,1);th.splice(to,0,x);renderKolAdmin();
+  const m=$("kMsg");if(m){m.className="status";m.textContent=BMODE==="admin"?"主題順序已調整，記得按「儲存區塊設定」。":"主題順序已調整，記得下載 blocks.js。"}}
+document.addEventListener("pointerdown",e=>{const h=e.target.closest("#kolPanel .drag");if(h){const k=h.closest(".kt2");k.draggable=true}});
+document.addEventListener("dragstart",e=>{const k=e.target.closest&&e.target.closest("#kolPanel .kt2[draggable=true]");if(!k)return;
+  dragT=k.dataset.tpos.split(":").map(Number);k.classList.add("dragging");try{e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain","theme")}catch(err){}});
+document.addEventListener("dragover",e=>{if(!dragT)return;const k=e.target.closest&&e.target.closest("#kolPanel .kt2");if(!k)return;
+  const [bi]=k.dataset.tpos.split(":").map(Number);if(bi!==dragT[0])return;e.preventDefault();
+  document.querySelectorAll("#kolPanel .kt2.over-b,#kolPanel .kt2.over-a").forEach(x=>x.classList.remove("over-b","over-a"));
+  const r=k.getBoundingClientRect();k.classList.add(e.clientY<r.top+r.height/2?"over-b":"over-a")});
+document.addEventListener("drop",e=>{if(!dragT)return;const k=e.target.closest&&e.target.closest("#kolPanel .kt2");if(!k)return;e.preventDefault();
+  const [bi,ti]=k.dataset.tpos.split(":").map(Number);if(bi!==dragT[0])return;
+  const r=k.getBoundingClientRect();let to=ti+(e.clientY<r.top+r.height/2?0:1);if(dragT[1]<to)to--;const from=dragT[1];dragT=null;moveTheme(bi,from,to)});
+document.addEventListener("dragend",()=>{dragT=null;document.querySelectorAll("#kolPanel .kt2").forEach(x=>{x.draggable=false;x.classList.remove("dragging","over-b","over-a")})});
+document.addEventListener("click",e=>{const b=e.target.closest("#kolPanel [data-tmove]");if(b){const [bi,ti,d]=b.dataset.tmove.split(":").map(Number);moveTheme(bi,ti,ti+d)}});
+document.addEventListener("change",e=>{const s=e.target.closest("[data-btype]");if(s){readBDraft();renderKolAdmin()}});
+/* 自架版：網址加上 #edit 開啟編輯器 */
+function showEditor(on,preview){
+  if(!window.SITE_MODE)return;
+  $("front").hidden=on; $("admin").hidden=!on; document.querySelector(".wrap").classList.toggle("wide",on);
+  if(on){BMODE="file";$("admin").innerHTML=`<div class="ad-top"><div><h1><span class="ch" aria-hidden="true"></span>首頁區塊編輯器</h1><div class="sub">編輯完成後下載 blocks.js，上傳到 GitHub 覆蓋舊檔，網站就會更新。這個頁面只會產生檔案，不會直接改到網站。</div></div><button class="btn2" type="button" id="edExit">← 回到前台</button></div><div class="panel" id="kolPanel"></div>`;if(!BDRAFT)BDRAFT=draftFromCfg();renderKolAdmin()}
+  $("brandR").innerHTML=on?"":(preview?`<button class="adm-btn" id="edBack">回到編輯器</button>`:"FIND YOUR MATCH");
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{if(e.target.id==="edExit"){history.replaceState(null,"",location.pathname);showEditor(false)}else if(e.target.id==="edBack"){showEditor(true)}});
+if(window.SITE_MODE){const chk=()=>{if(location.hash==="#edit")showEditor(true)};addEventListener("hashchange",chk);setTimeout(chk,0)}
+function trackClick(id){if(typeof sess==="undefined")return;sess.c[id]=(sess.c[id]||0)+1;scheduleSave()}
+const toLocal=ts=>{if(!ts)return"";const d=new Date(ts);return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`};
+function fillForm(){
+  if(!$("gbForm"))return; const g=GB||{};
+  $("gb-title").value=g.title||""; $("gb-start").value=toLocal(g.start); $("gb-end").value=toLocal(g.end);
+  $("gb-link").value=g.link||""; $("gb-note").value=g.note||""; $("gb-products").value=(g.products||[]).join(", ");
+}
+function bars(el,entries,opts={}){
+  const total=entries.reduce((a,e)=>a+e[1],0), max=Math.max(1,...entries.map(e=>e[1]));
+  el.innerHTML=entries.length?entries.map(([label,n,color])=>`<div class="hb"><label title="${esc(label)}">${color?`<i style="background:${color}"></i>`:""}${esc(label)}</label>
+    <div class="tr"><i class="${opts.green?"g":""}" style="width:${n/max*100}%"></i></div><em>${n}${opts.noPct?"":` · ${total?Math.round(n/total*100):0}%`}</em></div>`).join(""):`<div class="sub">尚無資料</div>`;
+}
+const sumObj=o=>Object.values(o||{}).reduce((a,b)=>a+(+b||0),0);
+function renderStats(){
+  if(!$("adSub"))return;
+  const all=[]; ADOCS.forEach(d=>{const s=(d.data()||{}).sessions; if(Array.isArray(s))s.forEach(x=>x&&all.push(x))});
+  $("adSub").textContent=`最後更新 ${new Date().toLocaleString("zh-TW",{hour12:false})}・資料即時同步`;
+  const empty=!all.length; $("adEmpty").hidden=!empty; $("adBody").hidden=empty; if(empty)return;
+  const started=all.filter(s=>s.step>0), done=all.filter(s=>s.done);
+  const C={},I={}; all.forEach(s=>{for(const k in s.c||{})C[k]=(C[k]||0)+(+s.c[k]||0); for(const k in s.i||{})I[k]=(I[k]||0)+(+s.i[k]||0)});
+  const totC=sumObj(C), totI=sumObj(I), ig=all.reduce((a,s)=>a+(+s.ig||0),0), gbc=all.reduce((a,s)=>a+(+s.gb||0),0);
+  const clickers=done.filter(s=>sumObj(s.c)>0).length;
+  let evNote="未設定團購";
+  if(GB&&GB.start&&GB.end){evNote=`團購期間 ${all.filter(s=>s.t>=GB.start&&s.t<=GB.end).length} 次造訪`}
+  const k=(l,v,sub,hl)=>`<div class="kpi${hl?" hl":""}"><span>${l}</span><b>${v}</b><small>${sub}</small></div>`;
+  $("kpis").innerHTML=k("造訪人數",ADOCS.length,"不重複帳號")+k("造訪次數",all.length,evNote)+k("開始作答",started.length,`${Math.round(started.length/all.length*100)}% 的造訪`)
+    +k("看到推薦",done.length,`完成率 ${started.length?Math.round(done.length/started.length*100):0}%`,true)
+    +k("產品點擊",totC,`點擊率 ${totI?(totC/totI*100).toFixed(1):0}%・${done.length?Math.round(clickers/done.length*100):0}% 有點產品`,true)
+    +k("IG＋團購點擊",ig+gbc,`IG ${ig}・團購 ${gbc}`);
+  bars($("funnel"),[["進入網頁",all.length],["選了類別",all.filter(s=>s.step>=1).length],["選了困擾",all.filter(s=>s.step>=2).length],["看到推薦",done.length],["點開產品",all.filter(s=>sumObj(s.c)>0).length]],{green:true});
+  // 近 14 天
+  const days=[]; const now=new Date(); now.setHours(0,0,0,0);
+  for(let d=13;d>=0;d--)days.push({t:now.getTime()-d*864e5,v:0,c:0});
+  all.forEach(s=>{const i=Math.floor((s.t-days[0].t)/864e5); if(i>=0&&i<14){days[i].v++; if(s.done)days[i].c++}});
+  const W=560,H=180,PD=28,max=Math.max(1,...days.map(d=>d.v)),bw=(W-PD-8)/14,step=max<=4?1:Math.ceil(max/4),ticks=[];
+  for(let y=0;y<=max;y+=step)ticks.push(y);
+  const yy=v=>H-22-(v/max)*(H-40), lab=t=>`${new Date(t).getMonth()+1}/${new Date(t).getDate()}`;
+  $("trend").innerHTML=`<svg class="trend" viewBox="0 0 ${W} ${H}" role="img" aria-label="近 14 天造訪與看到推薦次數">
+    ${ticks.map(t=>`<line x1="${PD}" x2="${W-4}" y1="${yy(t)}" y2="${yy(t)}" stroke="var(--line)"/><text x="${PD-6}" y="${yy(t)+4}" text-anchor="end" font-size="10" fill="var(--sub)">${t}</text>`).join("")}
+    ${days.map((d,n)=>{const x=PD+4+n*bw;return `<rect x="${x}" y="${yy(d.v)}" width="${bw*.42}" height="${H-22-yy(d.v)}" rx="2" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width=".6"><title>${lab(d.t)} 造訪 ${d.v}</title></rect>
+      <rect x="${x+bw*.46}" y="${yy(d.c)}" width="${bw*.42}" height="${H-22-yy(d.c)}" rx="2" fill="var(--rose)"><title>${lab(d.t)} 看到推薦 ${d.c}</title></rect>
+      ${n%2===0?`<text x="${x+bw*.44}" y="${H-6}" text-anchor="middle" font-size="10" fill="var(--sub)">${lab(d.t)}</text>`:""}`}).join("")}</svg>
+    <div class="legend"><span><i style="background:var(--rose-soft);border:1px solid var(--rose)"></i>造訪</span><span><i style="background:var(--rose)"></i>看到推薦</span></div>`;
+  const cnt=(fn)=>{const m={};all.forEach(s=>{const v=fn(s);if(v)m[v]=(m[v]||0)+1});return m};
+  const cc=cnt(s=>s.cat); bars($("dCat"),Object.keys(CATLABEL).map(k=>[CATLABEL[k],cc[k]||0]).filter(e=>e[1]||CATS.some(c=>c.k===e[0])).sort((a,b)=>b[1]-a[1]));
+  const cn={};all.forEach(s=>{(Array.isArray(s.con)?s.con:s.con?[s.con]:[]).forEach(k=>cn[k]=(cn[k]||0)+1)}); bars($("dCon"),CONCERNS.map(c=>[c.name,cn[c.k]||0]));
+  const bySer={}; for(const id in C){const p=P.find(x=>x.id===+id); if(p)bySer[p.s]=(bySer[p.s]||0)+C[id]}
+  bars($("dSer"),Object.keys(SERIES).map(k=>[SERIES[k].name,bySer[k]||0,SERIES[k].t1]).sort((a,b)=>b[1]-a[1]));
+  bars($("dLink"),[[`${KOL.name} IG`,ig],["團購連結",gbc]],{noPct:true});
+  // 產品排行
+  const rows=P.filter(p=>p.cats.length).map(p=>{const c=C[p.id]||0,i=I[p.id]||0;return {p,c,i,r:i?c/i:0}});
+  rows.sort((a,b)=>sortKey==="id"?a.p.id-b.p.id:(b[sortKey]-a[sortKey])||a.p.id-b.p.id);
+  const maxC=Math.max(1,...rows.map(r=>r.c));
+  const th=(key,l,n)=>`<th class="${n?"n":""}"><button data-sort="${key}" aria-pressed="${sortKey===key}">${l}</button></th>`;
+  $("ptable").innerHTML=`<table><thead><tr>${th("id","產品")}<th>系列</th>${th("i","曝光",1)}${th("c","點擊",1)}${th("r","點擊率",1)}<th>點擊占比</th></tr></thead><tbody>
+    ${rows.map(r=>{const S=SERIES[r.p.s];return `<tr><td>No.${pad(r.p.id)} ${esc(r.p.name)}${badgeOf(r.p.id)}</td>
+      <td style="white-space:nowrap"><span class="hb" style="display:inline;margin:0"><label style="display:inline-flex"><i style="background:${S.t1}"></i>${S.name}</label></span></td>
+      <td class="n">${r.i}</td><td class="n">${r.c}</td><td class="n">${r.i?(r.r*100).toFixed(1)+"%":"—"}</td>
+      <td><div class="meter"><i style="width:${r.c/maxC*100}%"></i></div></td></tr>`}).join("")}</tbody></table>`;
+  // 最近紀錄
+  $("recent").innerHTML=all.slice().sort((a,b)=>b.t-a.t).slice(0,30).map(s=>{
+    const prods=Object.keys(s.c||{}).map(id=>"No."+pad(id)).join("、");
+    const links=[s.ig?`IG×${s.ig}`:"",s.gb?`團購×${s.gb}`:""].filter(Boolean).join("、");
+    return `<tr><td>${new Date(s.t).toLocaleString("zh-TW",{hour12:false,month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</td>
+      <td><span class="st${s.done?" ok":""}">${s.done?"看到推薦":s.step?`答到第 ${s.step} 題`:"只瀏覽"}</span></td>
+      <td>${esc(CATLABEL[s.cat]||"—")}</td><td>${esc((Array.isArray(s.con)?s.con:s.con?[s.con]:[]).map(k=>CONLABEL[k]).filter(Boolean).join("、")||"—")}</td><td>${esc(prods||"—")}</td><td>${esc(links||"—")}</td></tr>`}).join("");
+}
+function startAdmin(){
+  adUnsub=DB.collection("clicks").limit(1000).onSnapshot(snap=>{ADOCS=snap.docs;renderStats()},()=>{if($("adSub"))$("adSub").textContent="讀取失敗，請重新整理頁面。";adUnsub=null});
+}
+document.addEventListener("click",async e=>{
+  if(e.target.id==="admToggle"){showAdmin(true);return}
+  if(e.target.id==="toSite"){showAdmin(false);return}
+  const s=e.target.closest("[data-sort]"); if(s){sortKey=s.dataset.sort;renderStats();return}
+  if(e.target.id==="gbClear"){saveGB({start:null,end:null},"已清除活動。")}
+});
+
+/* 把團購設定寫進頁面本身，讓未登入的訪客也看得到 */
+const SKEL_HEAD='<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>';
+async function publishEmbed(over){
+  const art=await claude.use("artifact"); if(!art)throw {code:"not_granted"};
+  const res=await fetch("src.html",{cache:"no-store"}); if(!res.ok)throw {code:"no_src"};
+  let src=await res.text();
+  const vals={GB:("gb" in over)?over.gb:(GB&&GB.start?GB:null),KOL:("kol" in over)?over.kol:{blocks:blocksList(),buy:(KOLCFG&&KOLCFG.buy)||{},products:P,series:(KOLCFG&&KOLCFG.series)||{}}};
+  for(const k of ["GB","KOL"]){
+    const mk="/*"+k+"*"+"/";
+    const re=new RegExp("\\/\\*"+k+"\\*\\/[\\s\\S]*?\\/\\*"+k+"\\*\\/");
+    if(!re.test(src))throw {code:"no_marker"};
+    const json=JSON.stringify(vals[k]).replace(/</g,"\\u003c");
+    src=src.replace(re,()=>mk+json+mk);
+  }
+  await art.publish(SKEL_HEAD+src+"</body></html>");
+}
+async function saveGB(data,okMsg){
+  const m=$("gbMsg"); m.className="status"; m.textContent="儲存中…";
+  try{await DB.doc("site/groupbuy").set({...data,at:Date.now()})}
+  catch(err){m.className="status err";m.textContent="儲存失敗："+(err&&err.code==="invalid_argument"?"你的帳號沒有編輯權限。":"請稍後再試一次。");return}
+  m.textContent=okMsg+" 正在同步給未登入的訪客…";
+  try{sessionStorage.setItem("samu-admin","1")}catch(e){}
+  try{await publishEmbed({gb:data.start?data:null})}
+  catch(err){if(err&&err.code==="conflict")return;
+    m.className="status err";m.textContent=okMsg+" 但未登入訪客的版本沒有同步成功（"+(err&&err.code||"unknown")+"），請稍後再按一次儲存。"}
+}
+document.addEventListener("submit",async e=>{
+  if(e.target.id!=="gbForm")return; e.preventDefault();
+  const m=$("gbMsg"); m.className="status";
+  const v=id=>$(id).value.trim();
+  const start=v("gb-start")?new Date(v("gb-start")+"T00:00:00").getTime():NaN, end=v("gb-end")?new Date(v("gb-end")+"T23:59:59").getTime():NaN, link=v("gb-link");
+  if(!start||!end){m.className="status err";m.textContent="請填入開團與結團日期。";return}
+  if(end<=start){m.className="status err";m.textContent="結團日期不能早於開團日期。";return}
+  if(link&&!/^https:\/\//i.test(link)){m.className="status err";m.textContent="團購連結請以 https:// 開頭。";return}
+  const products=v("gb-products").split(/[,，\s]+/).map(Number).filter(n=>P.some(p=>p.id===n&&p.cats.length));
+  saveGB({title:v("gb-title"),start,end,link,note:v("gb-note"),products},"已儲存，登入的訪客已看到更新。");
+});
+
+(async()=>{
+  renderGB();renderKol();
+  if(!window.claude||!claude.use)return;
+  const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]);
+  DB=db; if(!DB)return;
+  DB.doc("site/kol").onSnapshot(s=>{if(s.exists){const d=s.data();KOLCFG=d;applyCatalog(d);syncPicked();renderBlocks();if(st.step===3)_render()}},()=>{});
+  DB.doc("site/groupbuy").onSnapshot(s=>{GB=s.exists?s.data():null;renderGB();renderKol();if(!$("admin").hidden&&!document.activeElement?.closest("#gbForm"))fillForm();if(!$("admin").hidden)renderStats()},()=>{});
+  if(!user)return;
+  IS_ADMIN=await user.canEdit().catch(()=>false);
+  if(IS_ADMIN){$("brandR").innerHTML=`<button class="adm-btn" id="admToggle">管理後台</button>`; let back=false;try{back=sessionStorage.getItem("samu-admin")==="1";sessionStorage.removeItem("samu-admin")}catch(e){} if(location.hash==="#admin"||back)showAdmin(true); return}
+  const w=await user.can("data.write").catch(()=>null);
+  UID=await user.id().catch(()=>null);
+  if(!UID||w===false)return;
+  const ref=DB.doc("clicks/"+UID);
+  try{const s=await ref.get();const d=s.exists?s.data():null;mySessions=d&&Array.isArray(d.sessions)?d.sessions:[]}catch(e){mySessions=[]}
+  myRef=ref; dirty=true; flush();
+})();
+
+/* ===== Google Analytics 事件追蹤 ===== */
+(function(){
+  const pname=id=>(P.find(p=>p.id===+id)||{}).name||String(id);
+  document.addEventListener("click",e=>{const t=e.target;
+    const c=t.closest("[data-cat]");if(c){gaEvent("quiz_category",{category:CATLABEL[c.dataset.cat]||c.dataset.cat});return}
+    const n=t.closest("[data-con]");if(n){gaEvent("quiz_concern",{concern:CONLABEL[n.dataset.con]||"沒有特別"});return}
+    const th=t.closest("[data-theme]");if(th){gaEvent("kol_theme",{theme:th.textContent.trim()});return}
+    const ki=t.closest("[data-ki]");if(ki){gaEvent("kol_tag",{label:ki.textContent.trim()});return}
+    const v=t.closest("a.vid");if(v){gaEvent("kol_video",{label:(v.closest(".kol")&&v.closest(".kol").querySelector(".tagb[aria-pressed=true]")||{}).textContent||""});return}
+    const b=t.closest("a.buy");if(b){gaEvent("buy_click",{product:pname(b.dataset.buy)});return}
+    if(t.closest("[data-gbgo]")){gaEvent("groupbuy_click");return}
+    if(t.closest("a[href*='instagram.com']")){gaEvent("ig_click");return}
+    const d=t.closest("[data-id]");if(d){gaEvent("product_view",{product:pname(d.dataset.id)})}
+  },true);
+  const _r=render;
+  render=function(){_r();if(st.step===3)gaEvent("quiz_result",{category:CATLABEL[st.cat]||"全部",concerns:st.cons.map(k=>CONLABEL[k]).join("、")||"未選"})};
+})();
+</script>
+
+</body>
+</html>
