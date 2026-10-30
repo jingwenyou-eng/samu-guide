@@ -1129,7 +1129,7 @@ window.SITE_BLOCKS={
             {
               "label": "拉提三件組",
               "product": 54,
-              "video": "",
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAzNTM5MDA3MDA4NDIz?story_media_id=4016286237670282434&cplk=MWxuYTR5dHYzbXk1Zw==",
               "desc": "",
               "buy": ""
             },
