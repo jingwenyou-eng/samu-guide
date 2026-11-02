@@ -1136,21 +1136,21 @@ window.SITE_BLOCKS={
             {
               "label": "脂質體精華",
               "product": 55,
-              "video": "",
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAzNTM5MDA3MDA4NDIz?story_media_id=4021538518908707684&rpxt=MWxuYTR5dHYzbXk1Zw==",
               "desc": "",
               "buy": ""
             },
             {
               "label": "胜肽面霜",
               "product": 56,
-              "video": "",
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAzNTM5MDA3MDA4NDIz?story_media_id=4021554577951291753&vrfl=MWxuYTR5dHYzbXk1Zw==",
               "desc": "",
               "buy": ""
             },
             {
               "label": "水凝膠面膜",
               "product": 57,
-              "video": "",
+              "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAzNTM5MDA3MDA4NDIz?story_media_id=4021588477791676780&srtk=MWxuYTR5dHYzbXk1Zw==",
               "desc": "",
               "buy": ""
             }
