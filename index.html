@@ -222,7 +222,7 @@ footer::before{content:"";display:block;height:18px;margin-bottom:12px;backgroun
 .rte-notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
 .rte-pk{min-width:560px}
 .rte-pk td,.rte-pk th{padding:5px 6px}
-.rte-pk input{width:70px;text-align:center}
+.rte-pk input{width:96px;text-align:center}
 @media (max-width:640px){.rte-row{grid-template-columns:1fr 1fr}.rte-row .wide{grid-column:1/-1}.rte .tmv{grid-column:1/-1}}
 /* blocks */
 .blocks{display:grid;gap:22px}
@@ -387,6 +387,18 @@ footer a{color:var(--sub)}
 .gb-note b{font-size:12px;letter-spacing:.12em;color:#fff;opacity:.85}
 .gb .gb-note p{opacity:1;font-size:13.5px;line-height:1.75;white-space:pre-line;max-width:none}
 .be-f textarea{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;resize:vertical}
+.rs-grp{display:grid;gap:6px}
+.rs.rs-alt{margin-left:22px;width:calc(100% - 22px);border-style:dashed}
+.rs.rs-alt .rs-no{color:var(--sub)}
+.gh-box .gh-ok,.gh-box .gh-set{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.gh-box .gh-set{display:grid}
+.gh-box b{font-size:14px}
+.gh-box span{font-size:12.5px;color:var(--sub)}
+.gh-box .gh-ok span{flex:1;min-width:180px}
+.gh-row{display:flex;flex-wrap:wrap;gap:8px}
+.gh-row input{font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;flex:1;min-width:200px}
+.gh-box .status{margin:6px 2px 0}
+#kPublish:disabled{opacity:.6;cursor:default}
 </style>
 <script>window.SITE_MODE=true;</script>
 <script>document.write('<script src="blocks.js?v='+Date.now()+'"><\/script>');</script>
@@ -533,7 +545,7 @@ const KOL_EMBED={
     "cat": "remove",
     "name": "卸妝",
     "time": "晚上",
-    "why": "有上妝或擦防曬的日子先卸妝，減少毛孔阻塞。"
+    "why": "有上妝或擦防曬的日子先卸妝，減少毛孔髒污阻塞。"
    },
    {
     "id": "s2",
@@ -568,7 +580,35 @@ const KOL_EMBED={
     "cat": "sun",
     "name": "防曬",
     "time": "早上",
-    "why": "白天最後一步，預防光老化與曬後泛紅。"
+    "why": "白天保養最後一步，預防光老化與曬後泛紅。"
+   },
+   {
+    "id": "smvwnvnxl",
+    "cat": "mask",
+    "name": "面膜",
+    "time": "晚上",
+    "why": "可在化妝水後敷吸收率更好，敷後把多餘精華清水清洗後保養。"
+   },
+   {
+    "id": "smvwnxunu",
+    "cat": "mask",
+    "name": "水凝面膜",
+    "time": "晚上",
+    "why": "前面保養一定要吸收在敷，不會滑落也能敷到隔天早上。"
+   },
+   {
+    "id": "smvwnzr87",
+    "cat": "mask",
+    "name": "晚安面膜",
+    "time": "晚上",
+    "why": "可懶人保養單敷也能，上完化妝水精華後敷，敷到隔天早上清洗即可。"
+   },
+   {
+    "id": "smvwo1dw1",
+    "cat": "hb",
+    "name": "護髮精華",
+    "time": "早晚",
+    "why": "洗髮後直接擠到髮尾會有熱感立馬修護髮絲，可用到頭皮上非常方便。"
    }
   ],
   "weekly": [
@@ -582,17 +622,17 @@ const KOL_EMBED={
     "id": "w2",
     "cat": "mask",
     "name": "面膜",
-    "freq": "每週 2–3 次"
+    "freq": "每週3-4次"
    }
   ],
   "notes": {
-   "dry": "以弱酸保濕的 PH 系列為主，重點是補水與鎖水。",
-   "pore": "以酵母系列為主，清潔、控油兩頭兼顧。",
-   "red": "以 B5 泛醇與敏感肌系列為主，先穩定再加強。",
-   "glow": "以 PDRN 系列為主，加強光采與彈潤。",
+   "dry": "以弱酸維持保濕PH 系列為主，重點是補水鎖水保護屏障。",
+   "pore": "以酵母金縷梅系列為主，清潔、控油、毛孔全方位兼顧。",
+   "red": "以 B5 高泛醇鎮定舒緩與敏感肌系列為主，先穩定再加強。",
+   "glow": "以拉提澎潤抗老系列為主，加強光采與彈潤緊緻。",
    "none": "先從溫和的基礎保養開始，以弱酸的 PH 系列打底。"
   },
-  "footer": "早上：潔面 → 化妝水 → 精華 → 乳霜 → 防曬。晚上：卸妝 → 潔面 → 化妝水 → 精華 → 乳霜。使用新產品前建議先在耳後或下顎局部試用。",
+  "footer": "早上：潔面 → 化妝水 → 精華 → 乳霜 （看情況）→ 防曬。晚上：卸妝 → 潔面 → 化妝水 →有時面膜（需請水洗）→精華 → 乳霜。使用新產品前建議先在耳後或下顎局部測試。",
   "pick": {
    "dry": {},
    "pore": {},
@@ -917,7 +957,7 @@ const KOL_EMBED={
   },
   {
    "id": 28,
-   "name": "泛醇清涼面膜",
+   "name": "泛醇肌底賦活面膜",
    "s": "pan",
    "cats": [
     "mask"
@@ -1361,6 +1401,13 @@ const KOL_EMBED={
        "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTUwNDAwMzA2OTUwMjA4?story_media_id=3627763809995529131&vrfl=MWIzeWduZWtjOWp1cw==",
        "desc": "",
        "buy": ""
+      },
+      {
+       "label": "PH舒緩深層洗卸精華乳",
+       "product": 41,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDU1Njc0MjMwMTIyMDE1?story_media_id=3584266561789946435&psln=ZW1tdjBxMTJlN2t5",
+       "desc": "",
+       "buy": ""
       }
      ]
     },
@@ -1400,6 +1447,20 @@ const KOL_EMBED={
        "label": "PH 一般面膜系列",
        "product": 11,
        "video": "https://www.instagram.com/reel/C-zVbz5PQPR/?exln=MXg4MDlvMzNtd3NzMw==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "抗老緊緻面膜",
+       "product": 16,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDYxMDg4NjIwODU5NjAw?story_media_id=3603871753019602872&vrfl=cTE3NTVzbWVwenNz",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "泛醇肌底賦活面膜",
+       "product": 28,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTc2NzY1MzU3MDg1ODkz?story_media_id=3962944340809514833&srtk=MWF2b3ZmZmNtNXIwbw==",
        "desc": "",
        "buy": ""
       }
@@ -1461,6 +1522,13 @@ const KOL_EMBED={
        "label": "B5 面霜",
        "product": 27,
        "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzEzMDk0ODk5MzAxMDQ5?story_media_id=3740118118439016301&psln=MWt0a2VybTk5dmQwNQ==",
+       "desc": "",
+       "buy": ""
+      },
+      {
+       "label": "泛醇肌底賦活面膜",
+       "product": 28,
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTc2NzY1MzU3MDg1ODkz?story_media_id=3962944340809514833&srtk=MWF2b3ZmZmNtNXIwbw==",
        "desc": "",
        "buy": ""
       }
@@ -1626,7 +1694,7 @@ const KOL_EMBED={
       {
        "label": "拉提三件組",
        "product": 54,
-       "video": "",
+       "video": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAzNTM5MDA3MDA4NDIz?story_media_id=4016286237670282434&cplk=MWxuYTR5dHYzbXk1Zw==",
        "desc": "",
        "buy": ""
       },
@@ -1744,10 +1812,11 @@ const DEF_RT={
   footer:"早上：潔面 → 化妝水 → 精華 → 乳霜 → 防曬。晚上：卸妝 → 潔面 → 化妝水 → 精華 → 乳霜。使用新產品前建議先在耳後或下顎局部試用。",
   pick:{}
 };
+const rtIds=v=>[...new Set((Array.isArray(v)?v:String(v==null?"":v).split(/[^0-9]+/)).map(n=>parseInt(n,10)).filter(n=>n>0))];
 const RT_KEYS=[["dry","乾燥缺水"],["pore","毛孔・出油"],["red","泛紅敏感"],["glow","暗沉・彈性"],["none","沒選困擾"]];
 let RT=JSON.parse(JSON.stringify(DEF_RT));
 function normRT(r){r=r||{};const st=x=>({id:clean(x.id)||("s"+Math.random().toString(36).slice(2,8)),cat:CATNAME[x.cat]?x.cat:"cream",name:clean(x.name),time:clean(x.time),why:clean(x.why),freq:clean(x.freq)});
-  const pick={};for(const [k] of RT_KEYS){pick[k]={};const src=(r.pick||{})[k]||{};for(const sid in src){const n=parseInt(src[sid],10);if(n)pick[k][sid]=n}}
+  const pick={};for(const [k] of RT_KEYS){pick[k]={};const src=(r.pick||{})[k]||{};for(const sid in src){const ids=rtIds(src[sid]);if(ids.length)pick[k][sid]=ids}}
   return {steps:Array.isArray(r.steps)?r.steps.map(st).filter(x=>x.name):DEF_RT.steps.map(st),weekly:Array.isArray(r.weekly)?r.weekly.map(st).filter(x=>x.name):DEF_RT.weekly.map(st),
     notes:Object.fromEntries(RT_KEYS.map(([k])=>[k,clean((r.notes||{})[k]!=null?(r.notes||{})[k]:DEF_RT.notes[k])])),footer:clean(r.footer!=null?r.footer:DEF_RT.footer),pick}}
 function applyRoutine(cfg){RT=normRT(cfg&&cfg.routine)}
@@ -1765,16 +1834,18 @@ function pickFor(stepCat,seriesList,used){
 function routineHTML(cons){
   const series=cons.length?[...new Set(cons.flatMap(c=>c.series))]:["ph"];
   const keys=cons.length?cons.map(c=>c.k):["none"];
-  const fixed=sid=>{for(const k of keys){const id=(RT.pick[k]||{})[sid];const p=id&&P.find(x=>x.id===id);if(p)return {p,fb:false}}return null};
-  const steps=RT.steps.map(s=>({...s,r:fixed(s.id)||pickFor(s.cat,series)})).filter(s=>s.r);
-  const used=new Set(steps.map(s=>s.r.p.id));
-  const weekly=RT.weekly.map(s=>({...s,r:fixed(s.id)||pickFor(s.cat,series,used)})).filter(s=>s.r);
-  ROUTINE_IDS=new Set([...steps,...weekly].map(s=>s.r.p.id));
-  const row=(label,meta,s)=>{const p=s.r.p,S=SERIES[p.s];return `<button class="rs" data-id="${p.id}">${sw(S,p)}<span class="rs-t">
-    <span class="rs-no">${label}<span class="rs-time">${meta}</span></span>
+  const fixed=sid=>{const ids=[...new Set(keys.flatMap(k=>(RT.pick[k]||{})[sid]||[]))];return ids.map(id=>P.find(x=>x.id===id)).filter(Boolean).map(p=>({p,fb:false}))};
+  const pickAll=(s,used)=>{const f=fixed(s.id);if(f.length)return f;const r=pickFor(s.cat,series,used);return r?[r]:[]};
+  const steps=RT.steps.map(s=>({...s,rs:pickAll(s)})).filter(s=>s.rs.length);
+  const used=new Set(steps.flatMap(s=>s.rs.map(r=>r.p.id)));
+  const weekly=RT.weekly.map(s=>({...s,rs:pickAll(s,used)})).filter(s=>s.rs.length);
+  ROUTINE_IDS=new Set([...steps,...weekly].flatMap(s=>s.rs.map(r=>r.p.id)));
+  const one=(label,meta,s,r,i)=>{const p=r.p,S=SERIES[p.s];return `<button class="rs${i?" rs-alt":""}" data-id="${p.id}">${sw(S,p)}<span class="rs-t">
+    <span class="rs-no">${i?`也推薦・${label}`:label}<span class="rs-time">${meta}</span></span>
     <b>${esc(p.name)}${badgeOf(p.id)}</b>
-    <span class="rs-why">${esc(s.why||p.desc)}${s.r.fb?"（此系列沒有這一步，搭配溫和的基礎品項）":""}</span>
+    <span class="rs-why">${esc(i?p.desc:(s.why||p.desc))}${r.fb?"（此系列沒有這一步，搭配溫和的基礎品項）":""}</span>
     <span class="rs-how">${p.how}</span><em class="tapx">點我看詳情 ›</em></span></button>`};
+  const row=(label,meta,s)=>s.rs.length>1?`<div class="rs-grp">${s.rs.map((r,i)=>one(label,meta,s,r,i)).join("")}</div>`:one(label,meta,s,s.rs[0],0);
   return `<div class="rt"><div class="rt-head"><h3>你的推薦保養順序</h3><p>${esc(keys.map(k=>RT.notes[k]||"").join(""))}點產品可看詳細介紹。</p></div>
     <div class="rs-list">${steps.map((s,i)=>row(`STEP ${i+1}・${esc(s.name)}`,esc(s.time),s)).join("")}</div>
     ${weekly.length?`<div class="rt-sub">每週加強</div><div class="rs-list">${weekly.map(s=>row(esc(s.name),esc(s.freq),s)).join("")}</div>`:""}
@@ -1882,7 +1953,7 @@ render();renderKol();
    start：開團日期（當天 00:00）　end：結團日期（當天 23:59）
    link：團購連結　note：備註　products：活動產品編號
    不辦活動時把 start 改成 "" 即可隱藏團購區 */
-const GROUPBUY={title:"Sam'U 新品大派對🎉🎉🎉",start:"2026-11-03",end:"2026-11-09",link:"",note:"",products:[]};
+const GROUPBUY={"title": "🎠SAM'U新品無敵大派對🎠", "start": "2026-11-03", "end": "2026-11-09", "link": "", "note": "滿3000$免運  未滿超商：60$ l 宅配：100$  \n海外：香港/澳門/新加波皆可購買（運費依照kg數比照順豐官方價格）\n\n現貨：閉團後陸續出貨\n預購：閉團後開始算17～21個工作天\n⚠️以上皆不包含週末連假⚠️\n\n滿3000$贈品隨機送出30包+小樣旅行組\n⭐️限量送完為止⭐️", "products": []};
 const GB_EMBED=GROUPBUY.start?{...GROUPBUY,start:new Date(GROUPBUY.start+"T00:00:00").getTime(),end:new Date(GROUPBUY.end+"T23:59:59").getTime()}:null;
 let DB=null, UID=null, IS_ADMIN=false, GB=(window.SITE_BLOCKS&&"groupbuy" in window.SITE_BLOCKS)?window.SITE_BLOCKS.groupbuy:GB_EMBED, myRef=null, mySessions=[], writing=false, dirty=false, saveTimer=null;
 const sess={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),t:Date.now(),step:0,done:false,cat:null,con:null,c:{},i:{},ig:0,gb:0};
@@ -2024,7 +2095,7 @@ function readBDraft(){
   if($("rt-footer")){const R=BDRAFT.routine,g=id=>($(id)?.value||"").trim();
     R.steps=R.steps.map((x,i)=>({id:x.id,cat:g("rt-s-cat-"+i)||x.cat,name:g("rt-s-name-"+i),time:g("rt-s-time-"+i),why:g("rt-s-why-"+i)}));
     R.weekly=R.weekly.map((x,i)=>({id:x.id,cat:g("rt-w-cat-"+i)||x.cat,name:g("rt-w-name-"+i),freq:g("rt-w-freq-"+i)}));
-    for(const [k] of RT_KEYS){R.notes[k]=g("rt-note-"+k);R.pick[k]={};for(const x of [...R.steps,...R.weekly]){const n=parseInt(g(`rt-pk-${k}-${x.id}`),10);if(n)R.pick[k][x.id]=n}}
+    for(const [k] of RT_KEYS){R.notes[k]=g("rt-note-"+k);R.pick[k]={};for(const x of [...R.steps,...R.weekly]){const ids=rtIds(g(`rt-pk-${k}-${x.id}`));if(ids.length)R.pick[k][x.id]=ids}}
     R.footer=g("rt-footer")}
   if($("eg-title")){const v=id=>($(id)?.value||"").trim();BDRAFT.gb={title:v("eg-title"),start:v("eg-start"),end:v("eg-end"),link:v("eg-link"),note:v("eg-note")}}
 }
@@ -2051,7 +2122,7 @@ function renderKolAdmin(){
     ${productEditorHTML()}
     ${routineEditorHTML()}
     ${BMODE==="file"?gbEditorHTML():`<p class="sub" style="margin:16px 0 0">購買按鈕統一使用上方「團購活動設定」的團購連結。</p>`}
-    <div class="form" style="margin-top:14px"><div class="row">${BMODE==="admin"?`<button class="btn" type="button" id="kSave">儲存區塊設定</button>`:`<button class="btn" type="button" id="kPreview">套用並預覽</button><button class="btn2" type="button" id="kDownload">下載 blocks.js</button><button class="btn2" type="button" id="kCopy">複製設定內容</button>`}<span class="status" id="kMsg" aria-live="polite"></span></div></div>`;
+    <div class="form" style="margin-top:14px"><div class="row">${BMODE==="admin"?`<button class="btn" type="button" id="kSave">儲存區塊設定</button>`:`<button class="btn" type="button" id="kPublish">發佈到網站</button><button class="btn2" type="button" id="kPreview">先預覽</button><button class="btn2" type="button" id="kDownload">下載 blocks.js（備份）</button>`}<span class="status" id="kMsg" aria-live="polite"></span></div></div>`;
 }
 function draftData(){
   readBDraft(); const m=$("kMsg"); m.className="status";
@@ -2066,7 +2137,7 @@ function draftData(){
       if(en<=st){m.className="status err";m.textContent="結團日期不能早於開團日期。";return null}
       groupbuy={title:g.title,start:st,end:en,link:g.link,note:g.note,products:(GB&&GB.products)||[]}}else groupbuy=null}
   const rtBad=[...BDRAFT.routine.steps,...BDRAFT.routine.weekly].find(x=>!x.name);if(rtBad){m.className="status err";m.textContent="推薦保養順序的每個步驟都要填名稱。";return null}
-  const badPick=RT_KEYS.flatMap(([k])=>Object.values(BDRAFT.routine.pick[k]||{})).find(n=>!BDRAFT.products.some(p=>p.id===n));
+  const badPick=RT_KEYS.flatMap(([k])=>Object.values(BDRAFT.routine.pick[k]||{}).flat()).find(n=>!BDRAFT.products.some(p=>p.id===n));
   if(badPick){m.className="status err";m.textContent=`推薦保養順序指定的產品編號 ${badPick} 不存在。`;return null}
   return {...(groupbuy!==undefined?{groupbuy}:{}),routine:BDRAFT.routine,products:BDRAFT.products,series:BDRAFT.series,blocks:BDRAFT.blocks.map((b,bi)=>({...b,id:b.id||("b"+Date.now().toString(36)+bi),themes:b.themes.filter(t=>t.title).map((t,ti)=>({...t,id:t.id||("t"+Date.now().toString(36)+bi+ti)}))})),buy:BDRAFT.buy};
 }
@@ -2109,9 +2180,9 @@ function routineEditorHTML(){
       <div><button class="btn2" type="button" data-rtadd="w">＋ 新增每週步驟</button></div>
       <b class="rte-h">各肌膚困擾的開頭說明</b>
       <div class="rte-notes">${RT_KEYS.map(([k,n])=>`<label>${n}<input id="rt-note-${k}" maxlength="80" value="${esc(R.notes[k]||"")}"></label>`).join("")}</div>
-      <b class="rte-h">指定推薦產品 <small>填產品編號；留空會依系列自動挑選。複選多個困擾時，以排在前面的困擾為準。</small></b>
+      <b class="rte-h">指定推薦產品 <small>填產品編號，多個用逗號隔開（例：6, 3）；留空會依系列自動挑選。複選多個困擾時，各困擾指定的產品都會列出，重複的只顯示一次。</small></b>
       <div class="tbl"><table class="rte-pk"><thead><tr><th>步驟</th>${RT_KEYS.map(([,n])=>`<th>${n}</th>`).join("")}</tr></thead><tbody>
-        ${all.map(x=>`<tr><td>${esc(x.lab)}</td>${RT_KEYS.map(([k])=>`<td><input id="rt-pk-${k}-${x.id}" inputmode="numeric" maxlength="4" value="${(R.pick[k]||{})[x.id]||""}" placeholder="自動"></td>`).join("")}</tr>`).join("")}
+        ${all.map(x=>`<tr><td>${esc(x.lab)}</td>${RT_KEYS.map(([k])=>`<td><input id="rt-pk-${k}-${x.id}" maxlength="40" value="${((R.pick[k]||{})[x.id]||[]).join(", ")}" placeholder="自動"></td>`).join("")}</tr>`).join("")}
       </tbody></table></div>
       <label class="rte-foot">結尾小提醒<textarea id="rt-footer" rows="2" maxlength="200">${esc(R.footer)}</textarea></label>
       <div><button class="btn2" type="button" id="rtReset">恢復預設順序</button></div>
@@ -2170,7 +2241,7 @@ function commitProduct(){
   if(D.pedit==="new"){const id=Math.max(0,...D.products.map(p=>p.id))+1;D.products.push({id,...data})}
   else{const i=D.products.findIndex(p=>p.id===D.pedit);if(i>=0)D.products[i]={...D.products[i],...data}}
   D.pedit=null; renderKolAdmin(); filterProducts();
-  const m=$("kMsg"); if(m){m.className="status";m.textContent=BMODE==="admin"?"產品已更新，記得按「儲存區塊設定」。":"產品已更新，記得下載 blocks.js。"}
+  const m=$("kMsg"); if(m){m.className="status";m.textContent=BMODE==="admin"?"產品已更新，記得按「儲存區塊設定」。":"產品已更新，記得按「發佈到網站」。"}
 }
 document.addEventListener("click",e=>{
   if(!e.target.closest("#kolPanel"))return; const t=e.target;
@@ -2219,7 +2290,7 @@ document.addEventListener("click",async e=>{
 /* 主題拖曳排序 */
 let dragT=null;
 function moveTheme(bi,from,to){readBDraft();const th=BDRAFT.blocks[bi].themes;if(to<0||to>=th.length||from===to)return;const [x]=th.splice(from,1);th.splice(to,0,x);renderKolAdmin();
-  const m=$("kMsg");if(m){m.className="status";m.textContent=BMODE==="admin"?"主題順序已調整，記得按「儲存區塊設定」。":"主題順序已調整，記得下載 blocks.js。"}}
+  const m=$("kMsg");if(m){m.className="status";m.textContent=BMODE==="admin"?"主題順序已調整，記得按「儲存區塊設定」。":"主題順序已調整，記得按「發佈到網站」。"}}
 document.addEventListener("pointerdown",e=>{const h=e.target.closest("#kolPanel .drag");if(h){const k=h.closest(".kt2");k.draggable=true}});
 document.addEventListener("dragstart",e=>{const k=e.target.closest&&e.target.closest("#kolPanel .kt2[draggable=true]");if(!k)return;
   dragT=k.dataset.tpos.split(":").map(Number);k.classList.add("dragging");try{e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain","theme")}catch(err){}});
@@ -2237,10 +2308,55 @@ document.addEventListener("change",e=>{const s=e.target.closest("[data-btype]");
 function showEditor(on,preview){
   if(!window.SITE_MODE)return;
   $("front").hidden=on; $("admin").hidden=!on; document.querySelector(".wrap").classList.toggle("wide",on);
-  if(on){BMODE="file";$("admin").innerHTML=`<div class="ad-top"><div><h1><span class="ch" aria-hidden="true"></span>首頁區塊編輯器</h1><div class="sub">編輯完成後下載 blocks.js，上傳到 GitHub 覆蓋舊檔，網站就會更新。這個頁面只會產生檔案，不會直接改到網站。</div></div><button class="btn2" type="button" id="edExit">← 回到前台</button></div><div class="panel" id="kolPanel"></div>`;if(!BDRAFT)BDRAFT=draftFromCfg();renderKolAdmin()}
+  if(on){BMODE="file";$("admin").innerHTML=`<div class="ad-top"><div><h1><span class="ch" aria-hidden="true"></span>首頁區塊編輯器</h1><div class="sub">改完按最下面的「發佈到網站」，約 1–2 分鐘後網站就會更新。</div></div><button class="btn2" type="button" id="edExit">← 回到前台</button></div><div class="gh-box" id="ghBox"></div><div class="panel" id="kolPanel"></div>`;if(!BDRAFT)BDRAFT=draftFromCfg();renderKolAdmin();renderGhBox();ghLoadLatest()}
   $("brandR").innerHTML=on?"":(preview?`<button class="adm-btn" id="edBack">回到編輯器</button>`:"FIND YOUR MATCH");
   window.scrollTo(0,0);
 }
+/* ----- 直接發佈到 GitHub（金鑰只存在這台電腦的瀏覽器）----- */
+const ls={get:k=>{try{return localStorage.getItem(k)||""}catch(e){return ""}},set:(k,v)=>{try{v?localStorage.setItem(k,v):localStorage.removeItem(k)}catch(e){}}};
+const ghTok=()=>ls.get("samu_gh_tok");
+function ghRepo(){const o=ls.get("samu_gh_repo");if(o)return o;const m=location.hostname.match(/^([^.]+)\.github\.io$/i);if(!m)return "";const seg=location.pathname.split("/").filter(Boolean)[0];return m[1]+"/"+(seg&&!/\.html?$/i.test(seg)?seg:m[1]+".github.io")}
+async function ghApi(path,opt={},raw){const h={"Accept":raw?"application/vnd.github.raw+json":"application/vnd.github+json","Authorization":"Bearer "+ghTok(),"X-GitHub-Api-Version":"2022-11-28"};
+  return fetch("https://api.github.com"+path,{...opt,cache:"no-store",headers:{...h,...(opt.headers||{})}})}
+const b64utf8=str=>{const b=new TextEncoder().encode(str);let o="";for(let i=0;i<b.length;i+=0x8000)o+=String.fromCharCode.apply(null,b.subarray(i,i+0x8000));return btoa(o)};
+function renderGhBox(msg,err){const el=$("ghBox");if(!el)return;const repo=ghRepo(),tok=ghTok();const keep={r:$("ghRepoIn")?.value||"",t:$("ghTokIn")?.value||""};
+  el.innerHTML=tok&&repo?`<div class="gh-ok"><b>✓ 已連結 GitHub</b><span>${esc(repo)}・按「發佈到網站」會直接更新網站</span><button class="btn2" type="button" id="ghForget">移除金鑰</button></div>${msg?`<p class="status${err?" err":""}">${esc(msg)}</p>`:""}`
+  :`<div class="gh-set"><b>第一次使用：連結 GitHub</b><span>貼上 GitHub 金鑰（Personal access token）後，就能在這裡直接發佈，不用再上傳檔案。金鑰只會存在這台電腦的瀏覽器。</span>
+    <div class="gh-row">${repo?"":`<input id="ghRepoIn" placeholder="帳號/儲存庫，例：jingwenyou-eng/samu-guide">`}<input id="ghTokIn" type="password" autocomplete="off" placeholder="github_pat_…"><button class="btn" type="button" id="ghSave">連結</button></div>
+    ${msg?`<p class="status${err?" err":""}">${esc(msg)}</p>`:""}</div>`;
+  if($("ghRepoIn"))$("ghRepoIn").value=keep.r;if($("ghTokIn"))$("ghTokIn").value=keep.t}
+async function ghLoadLatest(){if(!ghTok()||!ghRepo())return;
+  try{const r=await ghApi(`/repos/${ghRepo()}/contents/blocks.js?t=${Date.now()}`,{},true);if(!r.ok)return;const txt=await r.text();
+    const d=JSON.parse(txt.slice(txt.indexOf("{"),txt.lastIndexOf("}")+1));if(JSON.stringify(d)===JSON.stringify(KOLCFG))return;
+    KOLCFG=d;applyCatalog(d);applyRoutine(d);if("groupbuy" in d){GB=d.groupbuy;renderGB()}syncPicked();renderBlocks();render();
+    BDRAFT=draftFromCfg();renderKolAdmin();renderGhBox("已載入 GitHub 上最新的內容。")}catch(e){}}
+async function ghPublish(){const m=$("kMsg");const d=draftData();if(!d)return;
+  if(!ghTok()||!ghRepo()){m.className="status err";m.textContent="請先在最上方連結 GitHub。";$("ghBox").scrollIntoView({behavior:"smooth"});return}
+  const btn=$("kPublish");btn.disabled=true;m.className="status";m.textContent="發佈中…";
+  try{const path=`/repos/${ghRepo()}/contents/blocks.js`;
+    const g=await ghApi(path+"?t="+Date.now());if(g.status===401)throw "金鑰無效或已過期，請重新連結。";if(g.status===403||g.status===404&&!(await ghApi(`/repos/${ghRepo()}`)).ok)throw "這把金鑰沒有這個儲存庫的權限。";
+    const j=g.ok?await g.json():null;
+    const r=await ghApi(path,{method:"PUT",body:JSON.stringify({message:"從網站編輯器更新內容",content:b64utf8(blocksFile(d)),...(j&&j.sha?{sha:j.sha}:{})})});
+    if(r.status===409)throw "GitHub 上的檔案剛好被更新，請重新整理編輯器再發佈一次。";
+    if(r.status===403||r.status===404)throw "這把金鑰沒有寫入權限（Contents 要選 Read and write）。";
+    if(!r.ok)throw "發佈失敗（"+r.status+"），請稍後再試，或先下載 blocks.js 備份。";
+    KOLCFG=d;applyCatalog(d);applyRoutine(d);if("groupbuy" in d){GB=d.groupbuy;renderGB()}syncPicked();renderBlocks();render();
+    m.className="status";m.textContent="✓ 已發佈！約 1–2 分鐘後網站會更新。"}
+  catch(e){m.className="status err";m.textContent=typeof e==="string"?e:"連不上 GitHub，請檢查網路後再試一次。"}
+  finally{btn.disabled=false}}
+document.addEventListener("click",async e=>{const id=e.target.id;
+  if(id==="kPublish"){ghPublish();return}
+  if(id==="ghForget"){if(e.target.dataset.confirm!=="1"){e.target.dataset.confirm="1";e.target.textContent="確認移除";return}ls.set("samu_gh_tok","");renderGhBox("已移除這台電腦上的金鑰。");return}
+  if(id==="ghSave"){const tok=($("ghTokIn").value||"").trim(),ri=$("ghRepoIn"),repo=ri?(ri.value||"").trim().replace(/^https?:\/\/github\.com\//,"").replace(/\/$/,""):ghRepo();
+    if(!tok){renderGhBox("請貼上金鑰。",true);return}if(!/^[\w.-]+\/[\w.-]+$/.test(repo)){renderGhBox("請填入「帳號/儲存庫」。",true);return}
+    e.target.disabled=true;e.target.textContent="檢查中…";
+    try{const r=await fetch(`https://api.github.com/repos/${repo}`,{cache:"no-store",headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+tok}});
+      if(r.status===401){renderGhBox("金鑰不正確，請確認有完整複製。",true);return}
+      if(!r.ok){renderGhBox("這把金鑰看不到 "+repo+"，建立金鑰時請在 Repository access 選這個儲存庫。",true);return}
+      const j=await r.json();if(j.permissions&&!j.permissions.push){renderGhBox("這把金鑰只有讀取權限，請把 Contents 設成 Read and write。",true);return}
+      ls.set("samu_gh_tok",tok);if(ri)ls.set("samu_gh_repo",repo);renderGhBox("連結成功！之後改完直接按「發佈到網站」。");ghLoadLatest()}
+    catch(err){renderGhBox("連不上 GitHub，請檢查網路後再試一次。",true)}return}
+});
 document.addEventListener("click",e=>{if(e.target.id==="edExit"){history.replaceState(null,"",location.pathname);showEditor(false)}else if(e.target.id==="edBack"){showEditor(true)}});
 if(window.SITE_MODE){const chk=()=>{if(location.hash==="#edit")showEditor(true)};addEventListener("hashchange",chk);setTimeout(chk,0)}
 function trackClick(id){if(typeof sess==="undefined")return;sess.c[id]=(sess.c[id]||0)+1;scheduleSave()}
